@@ -1,0 +1,12 @@
+<svg width="420" height="128" viewBox="0 0 420 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BETOCH key logo</title>
+  <desc id="desc">Traditional house and key symbol beside the BETOCH name.</desc>
+  <rect x="14" y="22" width="92" height="84" rx="22" fill="#F7F1E6"/>
+  <path d="M27 59C33 39 45 29 60 29C75 29 87 39 93 59H27Z" fill="#123C31"/>
+  <path d="M35 59H85V93H35V59Z" fill="#8B4A2F"/>
+  <path d="M48 93V78C48 72.48 52.48 68 58 68C63.52 68 68 72.48 68 78V93H48Z" fill="#F7F1E6"/>
+  <circle cx="76" cy="78" r="8" stroke="#E6A93D" stroke-width="5"/>
+  <path d="M83 78H98M93 78V86" stroke="#E6A93D" stroke-width="5" stroke-linecap="round"/>
+  <text x="126" y="62" fill="#123C31" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="900" letter-spacing="0">BETOCH</text>
+  <text x="129" y="86" fill="#6C756F" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="0">Rent without broker pressure.</text>
+</svg>

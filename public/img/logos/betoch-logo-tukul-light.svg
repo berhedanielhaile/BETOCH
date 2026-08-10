@@ -1,0 +1,12 @@
+<svg width="420" height="128" viewBox="0 0 420 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BETOCH tukul logo light</title>
+  <desc id="desc">Light hero version of the traditional Ethiopian hut symbol beside the BETOCH name.</desc>
+  <rect x="10" y="18" width="92" height="92" rx="24" fill="#F7F1E6"/>
+  <path d="M28 61C33 41 43 30 56 30C69 30 79 41 84 61H28Z" fill="#E6A93D"/>
+  <path d="M33 61H79V92H33V61Z" fill="#123C31"/>
+  <path d="M40 61C45 50 50 45 56 45C62 45 67 50 72 61" stroke="#F7F1E6" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 92V77C50 72.58 53.58 69 58 69C62.42 69 66 72.58 66 77V92H50Z" fill="#F7F1E6"/>
+  <path d="M28 61H84" stroke="#F7F1E6" stroke-width="4" stroke-linecap="round"/>
+  <text x="122" y="62" fill="#FFFFFF" font-family="Inter, Arial, sans-serif" font-size="44" font-weight="900" letter-spacing="0">BETOCH</text>
+  <text x="125" y="86" fill="#FFFFFF" opacity="0.78" font-family="Inter, Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="0">Find homes. Talk to owners.</text>
+</svg>

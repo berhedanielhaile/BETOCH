@@ -1,0 +1,553 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i,500,600,700"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut" href="css/favicon.svg" />
+
+    <title>
+      BETOCH - Rent Direct, Save More | No Middleman, No Brokerage Fees
+    </title>
+  </head>
+  <body>
+    <header class="header">
+      <a href="homepage.html">
+        <img
+          class="header__logo"
+          src="./img/logos/betoch-wordmark.svg"
+          alt="BETOCH logo"
+        />
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button
+        class="header__hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle menu"
+      >
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+
+      <nav class="header__nav" id="main-nav">
+        <a href="listings.html" class="header__nav--btn header__nav--browse">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+          </svg>
+          Browse Listings
+        </a>
+        <a
+          href="post-listing.html"
+          class="header__nav--btn header__nav--listing"
+        >
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-home"></use>
+          </svg>
+          Add Listing
+        </a>
+        <span class="header__nav--divider"></span>
+        <a href="login.html" class="header__nav--btn header__nav--login">Login</a>
+        <a href="signup.html" class="header__nav--btn header__nav--signup">Sign Up</a>
+      </nav>
+    </header>
+
+    <section class="section-hero">
+      <div class="hero">
+        <div class="hero__badge">🏠 No Middleman • No Brokerage Fees</div>
+        <h1 class="heading__primary">Rent Direct, Save More</h1>
+        <p class="hero__description">
+          Connect directly with landlords and tenants. Skip the middleman, avoid
+          brokerage fees, and keep more money in your pocket. The smarter,
+          fairer way to rent in Ethiopia.
+        </p>
+        <div class="hero__search">
+          <form action="listings.html" method="GET" id="search-form" class="hero__search--form">
+            <svg class="hero__location--icon">
+              <use xlink:href="./css/icons-sprite.svg#icon-location"></use>
+            </svg>
+            <input
+              type="text"
+              name="query"
+              class="hero__search--input"
+              id="search-input"
+              placeholder="Enter a location to search (e.g., Bole, Piazza, Gerji)"
+            />
+            <button type="submit" class="hero__search--btn">
+              <svg class="hero__search--icon">
+                <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+              </svg>
+            </button>
+          </form>
+          <p class="hero__search--description">
+            🎉 Join 24,000+ Ethiopians renting smarter with BETOCH
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-how">
+      <h2 class="heading__secondary">
+        Make renting fairer, safer and cheaper for everyone
+      </h2>
+      <div class="how">
+        <h3 class="heading__teritiary how__heading">
+          Built for Landlords & Tenants
+        </h3>
+        <div class="how__landlords">
+          <div class="how__landlords--text">
+            <h4 class="heading__forth">For Landlords</h4>
+            <h3 class="heading__teritiary heading__teritiary--landlords">
+              Post Your Rental Property - No Commission
+            </h3>
+            <p class="how__description">
+              List your property directly to thousands of verified tenants. No
+              middleman taking a cut, no commission fees, no hidden charges. You
+              stay in control and keep 100% of your rental income.
+            </p>
+            <ul class="how__list">
+              <li>100% Free Advertising - No Commission</li>
+              <li>No Hidden Fees or Brokerage Charges</li>
+              <li>Direct Contact with Tenants</li>
+              <li>No Credit Card Required to Start</li>
+            </ul>
+            <a href="post-listing.html" class="how__button">Post Property Free</a>
+          </div>
+          <div class="how__landlords--img">
+            <img src="./img/image-landlords.jpg" alt="Landlord posting property" />
+          </div>
+        </div>
+        <div class="how__tenants">
+          <div class="how__tenants--img">
+            <img src="./img/image-tenants.jpg" alt="Tenant searching for home" />
+          </div>
+          <div class="how__tenants--text">
+            <h4 class="heading__forth">For Tenants</h4>
+            <h3 class="heading__teritiary heading__teritiary--tenants">
+              Find Your Next Home - Zero Brokerage Fees
+            </h3>
+            <p class="how__description">
+              Browse verified listings and connect directly with landlords. No
+              broker fees, no admin charges, no middleman markup. Save thousands
+              of birr on every rental.
+            </p>
+            <ul class="how__list">
+              <li>Zero Brokerage & Admin Fees</li>
+              <li>Direct Communication with Landlords</li>
+              <li>Only Active, Verified Listings</li>
+              <li>Save Money on Every Rental</li>
+            </ul>
+            <a href="listings.html" class="how__button">Search Properties</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-features">
+      <div class="features__header">
+        <div>
+          <h3 class="heading__teritiary feature__teritiary">
+            Featured Properties
+          </h3>
+          <h2 class="heading__secondary feature__secondary">
+            Available properties near you
+          </h2>
+        </div>
+      </div>
+
+      <div class="feature__container">
+        <button
+          class="features__overlay-btn features__overlay-btn--left"
+          id="scroll-left"
+          aria-label="Scroll left"
+        >
+          <svg class="features__scroll-icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-chevron-left"></use>
+          </svg>
+        </button>
+        <div class="feature" id="feature-scroll">
+          <a href="listing-detail.html" class="feature__card" style="text-decoration: none;">
+            <img src="./img/home-img-1.jpg" alt="Condominium in Kasanchis" class="feature__card--img" />
+            <div class="feature__card--details">
+              <div class="feature__card--price-box">
+                <span class="feature__card--currency">ETB</span>
+                <span class="feature__card--price">25,000</span>
+                <span class="feature__card--period">/mo</span>
+              </div>
+              <div class="feature__card--description">Condominium</div>
+              <div class="feature__card--location">
+                <svg class="feature__card--location-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-location"></use>
+                </svg>
+                Kasanchis, Addis Ababa
+              </div>
+              <div class="feature__card--home">
+                <span class="feature__card--numbedroom">3</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                </svg>
+                <span class="feature__card--numshower">3</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="listing-detail.html" class="feature__card" style="text-decoration: none;">
+            <img src="./img/gal-3.jpeg" alt="Apartment in Gerji" class="feature__card--img" />
+            <div class="feature__card--details">
+              <div class="feature__card--price-box">
+                <span class="feature__card--currency">ETB</span>
+                <span class="feature__card--price">45,000</span>
+                <span class="feature__card--period">/mo</span>
+              </div>
+              <div class="feature__card--description">Apartment, Floor 2</div>
+              <div class="feature__card--location">
+                <svg class="feature__card--location-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-location"></use>
+                </svg>
+                Gerji, Addis Ababa
+              </div>
+              <div class="feature__card--home">
+                <span class="feature__card--numbedroom">4</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                </svg>
+                <span class="feature__card--numshower">2</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="listing-detail.html" class="feature__card" style="text-decoration: none;">
+            <img src="./img/home-img-3.jpg" alt="Studio in Bole Arabsa" class="feature__card--img" />
+            <div class="feature__card--details">
+              <div class="feature__card--price-box">
+                <span class="feature__card--currency">ETB</span>
+                <span class="feature__card--price">18,000</span>
+                <span class="feature__card--period">/mo</span>
+              </div>
+              <div class="feature__card--description">Studio Apartment</div>
+              <div class="feature__card--location">
+                <svg class="feature__card--location-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-location"></use>
+                </svg>
+                Bole Arabsa, Addis Ababa
+              </div>
+              <div class="feature__card--home">
+                <span class="feature__card--numbedroom">2</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                </svg>
+                <span class="feature__card--numshower">1</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="listing-detail.html" class="feature__card" style="text-decoration: none;">
+            <img src="./img/home-img-4.jpg" alt="Shared room in Kolfe" class="feature__card--img" />
+            <div class="feature__card--details">
+              <div class="feature__card--price-box">
+                <span class="feature__card--currency">ETB</span>
+                <span class="feature__card--price">8,000</span>
+                <span class="feature__card--period">/mo</span>
+              </div>
+              <div class="feature__card--description">Room Shared</div>
+              <div class="feature__card--location">
+                <svg class="feature__card--location-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-location"></use>
+                </svg>
+                Kolfe, Addis Ababa
+              </div>
+              <div class="feature__card--home">
+                <span class="feature__card--numbedroom">1</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                </svg>
+                <span class="feature__card--numshower">1</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                </svg>
+              </div>
+            </div>
+          </a>
+
+          <a href="listing-detail.html" class="feature__card" style="text-decoration: none;">
+            <img src="./img/gallery/gal-1.jpeg" alt="Penthouse in Summit" class="feature__card--img" />
+            <div class="feature__card--details">
+              <div class="feature__card--price-box">
+                <span class="feature__card--currency">ETB</span>
+                <span class="feature__card--price">55,000</span>
+                <span class="feature__card--period">/mo</span>
+              </div>
+              <div class="feature__card--description">Penthouse</div>
+              <div class="feature__card--location">
+                <svg class="feature__card--location-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-location"></use>
+                </svg>
+                Summit, Addis Ababa
+              </div>
+              <div class="feature__card--home">
+                <span class="feature__card--numbedroom">4</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                </svg>
+                <span class="feature__card--numshower">3</span>
+                <svg class="feature__card--icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                </svg>
+              </div>
+            </div>
+          </a>
+        </div>
+        <button
+          class="features__overlay-btn features__overlay-btn--right"
+          id="scroll-right"
+          aria-label="Scroll right"
+        >
+          <svg class="features__scroll-icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-chevron-right"></use>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="section-testimonials">
+      <div class="testimonials__header">
+        <h3 class="heading__teritiary testimonials__teritiary">
+          What Our Users Say
+        </h3>
+        <h2 class="heading__secondary testimonials__secondary">
+          Real Stories from Real People
+        </h2>
+        <p class="testimonials__intro">
+          Thousands of Ethiopians are already saving money and time by renting
+          directly through BETOCH
+        </p>
+      </div>
+
+      <div class="testimonials__container">
+        <button
+          class="testimonials__overlay-btn testimonials__overlay-btn--left"
+          id="testimonials-scroll-left"
+          aria-label="Scroll testimonials left"
+        >
+          <svg class="features__scroll-icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-chevron-left"></use>
+          </svg>
+        </button>
+        <div class="testimonials-scroll" id="testimonials-scroll">
+          <div class="testimonial__card testimonial__card--landlord">
+            <div class="testimonial__rating">★★★★★</div>
+            <p class="testimonial__text">
+              I saved over 50,000 birr in broker fees by listing my apartment
+              directly on BETOCH. Found a great tenant in just 2 weeks. No
+              middleman, no hassle!
+            </p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar testimonial__avatar--clay">AM</div>
+              <div class="testimonial__info">
+                <p class="testimonial__name">Abebe Mulugeta</p>
+                <p class="testimonial__role">Landlord, Bole</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial__card testimonial__card--tenant">
+            <div class="testimonial__rating">★★★★★</div>
+            <p class="testimonial__text">
+              Finally, a platform where I can talk directly to landlords! No more
+              paying brokers thousands of birr. BETOCH made finding my apartment
+              so easy and affordable.
+            </p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar testimonial__avatar--blue">ST</div>
+              <div class="testimonial__info">
+                <p class="testimonial__name">Sara Tadesse</p>
+                <p class="testimonial__role">Tenant, Gerji</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial__card testimonial__card--landlord">
+            <div class="testimonial__rating">★★★★★</div>
+            <p class="testimonial__text">
+              As a property owner with multiple units, BETOCH has been a
+              game-changer. I manage everything myself now and keep 100% of my
+              rental income. Highly recommended!
+            </p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar testimonial__avatar--teal">DK</div>
+              <div class="testimonial__info">
+                <p class="testimonial__name">Daniel Kebede</p>
+                <p class="testimonial__role">Landlord, Kazanchis</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="testimonials__overlay-btn testimonials__overlay-btn--right"
+          id="testimonials-scroll-right"
+          aria-label="Scroll testimonials right"
+        >
+          <svg class="features__scroll-icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-chevron-right"></use>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section class="section-stats">
+      <div class="stats__container">
+        <div class="stats__grid">
+          <div class="stats__item">
+            <div class="stats__number">24K+</div>
+            <div class="stats__label">Active Users</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__number">5K+</div>
+            <div class="stats__label">Properties Listed</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__number">2M+</div>
+            <div class="stats__label">Birr Saved</div>
+          </div>
+          <div class="stats__item">
+            <div class="stats__number">98%</div>
+            <div class="stats__label">Satisfaction Rate</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-cta">
+      <div class="cta__container">
+        <h2 class="cta__title">Ready to Start Saving?</h2>
+        <p class="cta__description">
+          Join thousands of Ethiopians who are already renting smarter. No brokerage fees, no middleman, just direct connections.
+        </p>
+        <div class="cta__buttons">
+          <a href="listings.html" class="cta__button cta__button--primary">Browse Properties</a>
+          <a href="post-listing.html" class="cta__button cta__button--secondary">List Your Property</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="section-footer footer">
+      <div class="footer__content">
+        <div class="footer__logo">
+          <img
+            class="footer-logo"
+            src="./img/logos/betoch-wordmark.svg"
+            alt="BETOCH"
+            style="height: 4rem; filter: brightness(0) invert(1); opacity: 0.8; margin-bottom: 1rem;"
+          />
+          <p class="footer__tagline" style="color: #00a896; font-size: 1.4rem;">Rent Direct. Save More. No Middleman.</p>
+        </div>
+
+        <nav class="footer__links" aria-label="Footer navigation">
+          <ul class="footer__list">
+            <li class="footer__item footer__item--title">
+              <span class="footer__title-text" style="color: white; font-weight: bold;">For Tenants</span>
+            </li>
+            <li class="footer__item">
+              <a href="listings.html" class="footer__link">Search Houses</a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link">Why use BETOCH</a>
+            </li>
+          </ul>
+          <ul class="footer__list">
+            <li class="footer__item footer__item--title">
+              <span class="footer__title-text" style="color: white; font-weight: bold;">Landlords</span>
+            </li>
+            <li class="footer__item">
+              <a href="post-listing.html" class="footer__link">Post Property</a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link">Pricing</a>
+            </li>
+          </ul>
+          <ul class="footer__list">
+            <li class="footer__item footer__item--title">
+              <span class="footer__title-text" style="color: white; font-weight: bold;">Support</span>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link">Help Centre</a>
+            </li>
+            <li class="footer__item">
+              <a href="#" class="footer__link">Contact Us</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__meta" style="margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; color: #a0aab2; font-size: 1.3rem;">
+        <p>© 2024 - 2026 BETOCH plc. Bole Road, Addis Ababa</p>
+        <div style="display: flex; gap: 1.5rem;">
+          <a href="#" style="color: #00a896;">Terms</a>
+          <a href="#" style="color: #00a896;">Privacy</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger-btn");
+      const nav = document.getElementById("main-nav");
+
+      if (hamburger && nav) {
+        hamburger.addEventListener("click", () => {
+          hamburger.classList.toggle("active");
+          nav.classList.toggle("active");
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+            hamburger.classList.remove("active");
+            nav.classList.remove("active");
+          }
+        });
+      }
+
+      // Horizontal scroll for features
+      const scrollContainer = document.getElementById("feature-scroll");
+      const scrollLeft = document.getElementById("scroll-left");
+      const scrollRight = document.getElementById("scroll-right");
+
+      if (scrollContainer && scrollLeft && scrollRight) {
+        scrollLeft.addEventListener("click", () => {
+          scrollContainer.scrollBy({ left: -360, behavior: "smooth" });
+        });
+        scrollRight.addEventListener("click", () => {
+          scrollContainer.scrollBy({ left: 360, behavior: "smooth" });
+        });
+      }
+
+      // Horizontal scroll for testimonials
+      const testimonialsContainer = document.getElementById("testimonials-scroll");
+      const testimonialsLeft = document.getElementById("testimonials-scroll-left");
+      const testimonialsRight = document.getElementById("testimonials-scroll-right");
+
+      if (testimonialsContainer && testimonialsLeft && testimonialsRight) {
+        testimonialsLeft.addEventListener("click", () => {
+          testimonialsContainer.scrollBy({ left: -420, behavior: "smooth" });
+        });
+        testimonialsRight.addEventListener("click", () => {
+          testimonialsContainer.scrollBy({ left: 420, behavior: "smooth" });
+        });
+      }
+    </script>
+  </body>
+</html>

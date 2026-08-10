@@ -1,0 +1,204 @@
+.dashboard {
+  display: grid;
+  grid-template-columns: 24rem 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  &__sidebar {
+    @extend .card;
+    padding: 2rem 0;
+    position: sticky;
+    top: 2rem;
+  }
+
+  &__nav {
+    list-style: none;
+  }
+
+  &__nav-item {
+    a {
+      display: block;
+      padding: 1.2rem 2rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: $color-text;
+      text-decoration: none;
+      border-left: 3px solid transparent;
+      transition: all 0.2s;
+
+      &:hover,
+      &.dashboard__nav-link--active {
+        background-color: rgba($color-primary, 0.08);
+        color: $color-primary-dark;
+        border-left-color: $color-primary;
+      }
+    }
+  }
+
+  &__welcome {
+    margin-bottom: 3rem;
+
+    h2 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      font-style: italic;
+      color: $color-primary-dark;
+      margin-bottom: 0.4rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+      color: $color-muted;
+    }
+  }
+
+  &__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  &__stat-card {
+    @extend .card;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  &__stat-value {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: $color-primary;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  &__stat-label {
+    font-size: 1.4rem;
+    color: $color-muted;
+    text-transform: capitalize;
+  }
+
+  &__panel {
+    @extend .card;
+    padding: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  &__panel-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid $color-line;
+  }
+
+  &__panel-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $color-primary-dark;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.4rem;
+
+    th,
+    td {
+      padding: 1.2rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid $color-line;
+    }
+
+    th {
+      font-weight: 600;
+      color: $color-muted;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    a {
+      color: $color-primary;
+      text-decoration: none;
+      font-weight: 600;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.8rem;
+  }
+
+  &__contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  &__contact-method {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  &__contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: $color-primary;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background: rgba($color-primary, 0.08);
+    border-radius: 999px;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba($color-primary, 0.15);
+
+    svg {
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      background: rgba($color-primary, 0.16);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba($color-primary, 0.25);
+    }
+  }
+}
+
+@media (max-width: $bp-large) {
+  .dashboard {
+    grid-template-columns: 1fr;
+
+    &__sidebar {
+      position: static;
+    }
+
+    &__stats {
+      grid-template-columns: 1fr;
+    }
+
+    &__table-wrap {
+      overflow-x: auto;
+    }
+  }
+}
+
+@media (max-width: $bp-medium) {
+  .dashboard__table {
+    min-width: 60rem;
+  }
+}

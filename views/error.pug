@@ -1,0 +1,37 @@
+extends base
+block content
+  section.error-page
+    .error-page__container
+      .error-page__content
+        .error-page__icon
+          svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+            circle(cx='12' cy='12' r='10')
+            line(x1='12' y1='8' x2='12' y2='12')
+            line(x1='12' y1='16' x2='12.01' y2='16')
+        h1.error-page__title Oops! Something went wrong
+        p.error-page__message
+          | We encountered an unexpected error. Please try again later or contact support if the problem persists.
+        .error-page__actions
+          a.btn.btn--primary.error-page__btn(href='/') Go to Homepage
+          a.btn.btn--outline.error-page__btn(href='/property-listings') Browse Properties
+        .error-page__details
+          if error && (process.env.NODE_ENV === 'development' || error.stack)
+            .error-page__details-toggle
+              button.error-page__details-toggle-btn(type='button' id='error-details-toggle')
+                span Show Error Details
+                svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                  polyline(points='6 9 12 15 18 9')
+            .error-page__details-content(id='error-details-content' style='display: none')
+              .error-page__details-item
+                strong Error Code:
+                span= error.statusCode || '500'
+              .error-page__details-item
+                strong Error Status:
+                span= error.status || 'error'
+              .error-page__details-item
+                strong Error Message:
+                span= error.message || 'Internal Server Error'
+              if error.stack && process.env.NODE_ENV === 'development'
+                .error-page__details-item
+                  strong Stack Trace:
+                  pre.error-page__stack= error.stack

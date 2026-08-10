@@ -1,0 +1,381 @@
+.listings {
+  display: grid;
+  grid-template-columns: 28rem 1fr;
+  gap: 3rem;
+  align-items: start;
+
+  &__filters {
+    @extend .card;
+    padding: 2.4rem;
+    position: sticky;
+    top: 2rem;
+    transition: all 0.3s ease;
+  }
+
+  &__filters-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $color-primary-dark;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $color-line;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__filter-toggle {
+    display: none;
+    width: 100%;
+    padding: 1.2rem 1.6rem;
+    background: $color-primary;
+    color: $color-surface;
+    border: none;
+    border-radius: $radius-md;
+    font-size: 1.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 1.5rem;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: $color-primary-dark;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba($color-primary, 0.4);
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+      transition: transform 0.3s ease;
+    }
+
+    &--active svg {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__results-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    margin-bottom: 2.4rem;
+  }
+
+  &__count {
+    font-size: 1.5rem;
+    color: $color-muted;
+  }
+
+  &__sort {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 1.4rem;
+    color: $color-text;
+
+    select {
+      padding: 0.8rem 1.2rem;
+      border: 1px solid $color-line;
+      border-radius: $radius-sm;
+      font-family: $font-primary;
+      font-size: 1.4rem;
+      background-color: $color-surface;
+      transition: border-color 0.2s;
+
+      &:focus {
+        outline: none;
+        border-color: $color-primary;
+      }
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(26rem, 1fr));
+    gap: 2.4rem;
+  }
+}
+
+.listing-card {
+  @extend .card;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 1.2rem;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(23, 32, 42, 0.14);
+  }
+
+  &__img-wrap {
+    position: relative;
+    height: 20rem;
+    overflow: hidden;
+    background: linear-gradient(135deg, #f0f0f0 0%, #e0e0e0 100%);
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+
+    .listing-card:hover & {
+      transform: scale(1.05);
+    }
+  }
+
+  &__tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1.2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    background: linear-gradient(135deg, rgba($color-primary-dark, 0.9) 0%, rgba($color-primary, 0.85) 100%);
+    color: $color-surface;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  &__body {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    flex: 1;
+  }
+
+  &__price {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: $color-primary-dark;
+    line-height: 1.2;
+
+    span {
+      font-size: 1.4rem;
+      font-weight: 400;
+      color: $color-muted;
+    }
+  }
+
+  &__type {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: $color-ink;
+    text-transform: capitalize;
+  }
+
+  &__location {
+    font-size: 1.4rem;
+    color: $color-muted;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: auto;
+    padding-top: 1.2rem;
+    border-top: 1px solid $color-line;
+    font-size: 1.4rem;
+    color: $color-text;
+  }
+
+  &__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba($color-primary, 0.08);
+    border-radius: 999px;
+    font-weight: 500;
+  }
+
+  &__icon {
+    width: 1.6rem;
+    height: 1.6rem;
+    color: $color-primary;
+  }
+}
+
+@media (max-width: $bp-large) {
+  .listings {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    &__filters {
+      position: static;
+      order: 2;
+      display: none;
+    }
+
+    &__filter-toggle {
+      display: flex;
+      margin-bottom: 1.5rem;
+    }
+
+    &__filters-content {
+      display: none;
+      padding: 2rem;
+      border-radius: 1.2rem;
+
+      &--active {
+        display: block;
+        animation: slideDown 0.3s ease;
+      }
+    }
+
+    &__grid {
+      grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+      order: 1;
+    }
+  }
+}
+
+@media (max-width: $bp-medium) {
+  .listings {
+    gap: 1.5rem;
+
+    &__results-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    &__sort {
+      width: 100%;
+
+      select {
+        flex: 1;
+        width: 100%;
+      }
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .listing-card {
+    &__img-wrap {
+      height: 22rem;
+    }
+
+    &__body {
+      padding: 1.5rem;
+    }
+
+    &__price {
+      font-size: 2rem;
+    }
+
+    &__meta {
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    &__meta-item {
+      font-size: 1.3rem;
+      padding: 0.3rem 0.6rem;
+    }
+  }
+}
+
+@media (max-width: $bp-small) {
+  .listings {
+    &__filters {
+      padding: 1.5rem;
+    }
+
+    &__filter-toggle {
+      padding: 1rem 1.4rem;
+      font-size: 1.4rem;
+    }
+
+    &__count {
+      font-size: 1.3rem;
+    }
+
+    &__sort {
+      font-size: 1.3rem;
+
+      select {
+        font-size: 1.3rem;
+        padding: 0.7rem 1rem;
+      }
+    }
+  }
+
+  .listing-card {
+    &__img-wrap {
+      height: 20rem;
+    }
+
+    &__tag {
+      font-size: 1.1rem;
+      padding: 0.4rem 0.8rem;
+    }
+
+    &__body {
+      padding: 1.2rem;
+      gap: 0.6rem;
+    }
+
+    &__price {
+      font-size: 1.8rem;
+    }
+
+    &__type {
+      font-size: 1.4rem;
+    }
+
+    &__location {
+      font-size: 1.3rem;
+    }
+
+    &__meta {
+      font-size: 1.3rem;
+      padding-top: 1rem;
+    }
+
+    &__meta-item {
+      font-size: 1.2rem;
+      padding: 0.3rem 0.5rem;
+    }
+
+    &__icon {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -1,0 +1,11 @@
+<svg width="320" height="96" viewBox="0 0 320 96" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BetLink logo</title>
+  <desc id="desc">A house and link mark beside the BetLink wordmark.</desc>
+  <rect x="8" y="12" width="72" height="72" rx="18" fill="#0B5351"/>
+  <path d="M23 47.5L44 30L65 47.5" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M30 45V66H58V45" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M38 58C38 53.58 41.58 50 46 50H50" stroke="#F4B740" stroke-width="5" stroke-linecap="round"/>
+  <path d="M50 58C50 62.42 46.42 66 42 66H38" stroke="#F4B740" stroke-width="5" stroke-linecap="round"/>
+  <text x="96" y="51" fill="#17202A" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="800" letter-spacing="0">BetLink</text>
+  <text x="98" y="72" fill="#667085" font-family="Inter, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0">Rent direct. Skip the broker fee.</text>
+</svg>

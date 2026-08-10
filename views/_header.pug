@@ -1,0 +1,29 @@
+header.header
+  a(href='/')
+    img.header__logo(src='/img/logos/betoch-wordmark.svg' alt='BETOCH logo')
+  // Hamburger Menu Button
+  button#hamburger-btn.header__hamburger(aria-label='Toggle menu')
+    span.header__hamburger-line
+    span.header__hamburger-line
+    span.header__hamburger-line
+  nav#main-nav.header__nav
+    a.header__nav--btn.header__nav--browse(href='/property-listings')
+      svg.header__nav--icon
+        use(xlink:href='/css/icons-sprite.svg#icon-search')
+      |           Browse Listings
+      a.header__nav--btn.header__nav--listing(href='/post-listing')
+        svg.header__nav--icon
+          use(xlink:href='/css/icons-sprite.svg#icon-home')
+        |           Add Listing
+      
+    span.header__nav--divider
+    if user 
+      a.header__nav--btn.header__nav--browse(href='/dashboard')
+        svg.header__nav--icon
+          use(xlink:href='/css/icons-sprite.svg#icon-user')
+        |           #{user.name.split(' ')[0]}
+      span.header__nav--divider
+      a#logout.header__nav--btn.header__nav--signup Logout
+    else 
+      a.header__nav--btn.header__nav--login(href='/login') Login
+      a.header__nav--btn.header__nav--signup(href='/signup') Sign Up

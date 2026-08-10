@@ -1,0 +1,8 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title">
+  <title id="title">BetLink icon</title>
+  <rect width="64" height="64" rx="16" fill="#0B5351"/>
+  <path d="M15 32L32 18L49 32" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M20 30V48H44V30" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M27 41C27 37.69 29.69 35 33 35H36" stroke="#F4B740" stroke-width="4" stroke-linecap="round"/>
+  <path d="M37 41C37 44.31 34.31 47 31 47H28" stroke="#F4B740" stroke-width="4" stroke-linecap="round"/>
+</svg>

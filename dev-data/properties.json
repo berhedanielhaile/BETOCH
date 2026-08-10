@@ -1,0 +1,979 @@
+[
+  {
+    "type": "apartment",
+    "title": "Modern Studio in Downtown Manhattan",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 01",
+      "kebele": "Kebele 01"
+    },
+    "rent": 15400,
+    "deposit": 30800,
+    "bedroom": 0,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "gym",
+      "rooftop",
+      "doorman",
+      "laundry"
+    ],
+    "petPolicy": "not-allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Beautiful modern studio apartment in the heart of downtown Manhattan. Features floor-to-ceiling windows, modern kitchen with stainless steel appliances, and stunning city views. Building amenities include 24-hour doorman, rooftop terrace, fitness center, and in-unit laundry. Perfect for young professionals.",
+    "photos": [
+      "property-1-exterior.jpg",
+      "property-1-living.jpg",
+      "property-1-kitchen.jpg",
+      "property-1-backyard.jpg"
+    ],
+    "video": "",
+    "landlord": "landlord1",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "house",
+    "title": "Spacious 3-Bedroom Family Home",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 02",
+      "kebele": "Kebele 02"
+    },
+    "rent": 24750,
+    "deposit": 49500,
+    "bedroom": 3,
+    "bathroom": 2,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "backyard",
+      "garage",
+      "basement",
+      "fireplace"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Charming 3-bedroom house in a quiet Brooklyn neighborhood. Features hardwood floors, updated kitchen, spacious backyard perfect for entertaining, and attached garage. Close to schools, parks, and public transportation. Ideal for families.",
+    "photos": [
+      "property-2-exterior.jpg",
+      "property-2-living.jpg",
+      "property-2-kitchen.jpg",
+      "property-2-backyard.jpg"
+    ],
+    "landlord": "landlord3",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "condominium",
+    "title": "Luxury 2-Bedroom Condo with River Views",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 03",
+      "kebele": "Kebele 03"
+    },
+    "rent": 19250,
+    "deposit": 38500,
+    "bedroom": 2,
+    "bathroom": 2,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "pool",
+      "gym",
+      "concierge",
+      "parking"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Stunning luxury condo with breathtaking East River views. Features open-concept living, gourmet kitchen with granite countertops, master suite with walk-in closet, and private balcony. Building amenities include pool, fitness center, 24-hour concierge, and parking.",
+    "photos": [
+      "property-3-exterior.jpg",
+      "property-3-living.jpg",
+      "property-3-kitchen.jpg",
+      "property-3-backyard.jpg"
+    ],
+    "landlord": "landlord5",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "room-shared",
+    "title": "Private Room in Shared Apartment",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 04",
+      "kebele": "Kebele 04"
+    },
+    "rent": 6600,
+    "deposit": 13200,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "wifi",
+      "shared kitchen",
+      "laundry"
+    ],
+    "petPolicy": "not-allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Cozy private room in a 3-bedroom shared apartment in Greenwich Village. Room comes fully furnished with desk and closet. Shared spaces include modern kitchen, living room, and bathroom. Great location near subway, restaurants, and nightlife.",
+    "photos": [
+      "property-4-exterior.jpg",
+      "property-4-living.jpg",
+      "property-4-kitchen.jpg",
+      "property-4-backyard.jpg"
+    ],
+    "landlord": "landlord7",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "Cozy 1-Bedroom Near Central Park",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 05",
+      "kebele": "Kebele 05"
+    },
+    "rent": 17600,
+    "deposit": 35200,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "doorman",
+      "elevator",
+      "laundry"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "description": "Charming 1-bedroom apartment just steps from Central Park. Features exposed brick walls, updated bathroom, and ample closet space. Building has doorman and elevator. Perfect location for exploring the city.",
+    "photos": [
+      "property-5-exterior.jpg",
+      "property-5-living.jpg",
+      "property-5-kitchen.jpg",
+      "property-5-backyard.jpg"
+    ],
+    "landlord": "landlord9",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "studio",
+    "title": "Sunny Studio in Williamsburg",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Kolfe",
+      "woreda": "Woreda 06",
+      "kebele": "Kebele 06"
+    },
+    "rent": 12100,
+    "deposit": 24200,
+    "bedroom": 0,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "rooftop",
+      "bike storage",
+      "laundry"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Bright and airy studio in trendy Williamsburg. Features large windows, modern kitchen, and Murphy bed for space efficiency. Building has rooftop deck with Manhattan views, bike storage, and laundry. Surrounded by cafes, bars, and boutiques.",
+    "photos": [
+      "property-6-exterior.jpg",
+      "property-6-living.jpg",
+      "property-6-kitchen.jpg",
+      "property-6-backyard.jpg"
+    ],
+    "landlord": "landlord11",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "house",
+    "title": "Victorian Brownstone with Garden",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 07",
+      "kebele": "Kebele 07"
+    },
+    "rent": 30250,
+    "deposit": 60500,
+    "bedroom": 4,
+    "bathroom": 3,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "garden",
+      "fireplace",
+      "basement",
+      "deck"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "description": "Stunning Victorian brownstone in Park Slope with private garden. Original details preserved including ornate fireplaces and hardwood floors. Modern updates include central AC and updated kitchen. Four bedrooms, three bathrooms, finished basement, and outdoor deck.",
+    "photos": [
+      "property-7-exterior.jpg",
+      "property-7-living.jpg",
+      "property-7-kitchen.jpg",
+      "property-7-backyard.jpg"
+    ],
+    "landlord": "landlord13",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "2-Bedroom with Park Views",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 08",
+      "kebele": "Kebele 08"
+    },
+    "rent": 23100,
+    "deposit": 46200,
+    "bedroom": 2,
+    "bathroom": 2,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "doorman",
+      "gym",
+      "parking"
+    ],
+    "petPolicy": "not-allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Elegant 2-bedroom apartment overlooking Central Park. Features spacious living room with park views, modern kitchen, master suite with ensuite bath, and second bedroom perfect for home office. Full-service building with gym and parking.",
+    "photos": [
+      "property-8-exterior.jpg",
+      "property-8-living.jpg",
+      "property-8-kitchen.jpg",
+      "property-8-backyard.jpg"
+    ],
+    "landlord": "landlord15",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "room-shared",
+    "title": "Room in Artist Loft",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 09",
+      "kebele": "Kebele 09"
+    },
+    "rent": 8250,
+    "deposit": 16500,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": false,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "high ceilings",
+      "shared studio",
+      "laundry"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Private room in converted warehouse loft in DUMBO. 15-foot ceilings, exposed brick, and tons of natural light. Shared space includes large common area and artist studio. Perfect for creative professionals. Walking distance to Brooklyn Bridge Park.",
+    "photos": [
+      "property-9-exterior.jpg",
+      "property-9-living.jpg",
+      "property-9-kitchen.jpg",
+      "property-9-backyard.jpg"
+    ],
+    "landlord": "landlord17",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "condominium",
+    "title": "Penthouse with Private Terrace",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 10",
+      "kebele": "Kebele 10"
+    },
+    "rent": 46750,
+    "deposit": 93500,
+    "bedroom": 3,
+    "bathroom": 3,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "terrace",
+      "gym",
+      "doorman",
+      "parking",
+      "spa"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "description": "Spectacular penthouse with private rooftop terrace and 360-degree city views. Features chef's kitchen, master suite with spa bathroom, home office, and entertainment space. Building amenities include full-service gym, spa, and 24-hour doorman.",
+    "photos": [
+      "property-10-exterior.jpg",
+      "property-10-living.jpg",
+      "property-10-kitchen.jpg",
+      "property-10-backyard.jpg"
+    ],
+    "landlord": "landlord19",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "Budget-Friendly 1-Bedroom",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Lideta",
+      "woreda": "Woreda 11",
+      "kebele": "Kebele 01"
+    },
+    "rent": 9900,
+    "deposit": 19800,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "laundry",
+      "parking"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "description": "Clean and simple 1-bedroom apartment in Astoria. Recently renovated with fresh paint and updated fixtures. Good closet space and eat-in kitchen. Building has laundry and parking. Close to subway and local shops.",
+    "photos": [
+      "property-11-exterior.jpg",
+      "property-11-living.jpg",
+      "property-11-kitchen.jpg",
+      "property-11-backyard.jpg"
+    ],
+    "landlord": "landlord1",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "house",
+    "title": "Beach House with Ocean View",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Akaki Kality",
+      "woreda": "Woreda 12",
+      "kebele": "Kebele 02"
+    },
+    "rent": 20900,
+    "deposit": 41800,
+    "bedroom": 3,
+    "bathroom": 2,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "deck",
+      "beach access",
+      "backyard",
+      "bbq"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Charming beach house with stunning ocean views. Features open floor plan, modern kitchen, large deck for entertaining, and direct beach access. Fully furnished with coastal decor. Perfect summer getaway or year-round living.",
+    "photos": [
+      "property-12-exterior.jpg",
+      "property-12-living.jpg",
+      "property-12-kitchen.jpg",
+      "property-12-backyard.jpg"
+    ],
+    "landlord": "landlord3",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "studio",
+    "title": "Micro Studio in Hell's Kitchen",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Addis Ketema",
+      "woreda": "Woreda 13",
+      "kebele": "Kebele 03"
+    },
+    "rent": 10725,
+    "deposit": 21450,
+    "bedroom": 0,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "doorman",
+      "laundry",
+      "gym"
+    ],
+    "petPolicy": "not-allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Efficient micro-studio in prime Hell's Kitchen location. Clever design maximizes space with murphy bed, built-in storage, and compact kitchen. Building amenities include doorman, gym, and laundry. Walking distance to Times Square and Hudson Yards.",
+    "photos": [
+      "property-13-exterior.jpg",
+      "property-13-living.jpg",
+      "property-13-kitchen.jpg",
+      "property-13-backyard.jpg"
+    ],
+    "landlord": "landlord5",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "3-Bedroom Family Apartment",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Yeka",
+      "woreda": "Woreda 14",
+      "kebele": "Kebele 04"
+    },
+    "rent": 13750,
+    "deposit": 27500,
+    "bedroom": 3,
+    "bathroom": 2,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "backyard",
+      "parking",
+      "laundry"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "description": "Spacious 3-bedroom apartment in family-friendly Bronx neighborhood. Large living room, eat-in kitchen, and backyard access. Building has parking and laundry. Close to schools, parks, and public transportation.",
+    "photos": [
+      "property-14-exterior.jpg",
+      "property-14-living.jpg",
+      "property-14-kitchen.jpg",
+      "property-14-backyard.jpg"
+    ],
+    "landlord": "landlord7",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "condominium",
+    "title": "Waterfront 2-Bedroom",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 15",
+      "kebele": "Kebele 05"
+    },
+    "rent": 20900,
+    "deposit": 41800,
+    "bedroom": 2,
+    "bathroom": 2,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "waterfront",
+      "gym",
+      "pool",
+      "parking"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Beautiful waterfront condo in Brooklyn Heights with Manhattan skyline views. Features floor-to-ceiling windows, modern kitchen, and private balcony. Building amenities include pool, gym, and parking. Promenade and parks nearby.",
+    "photos": [
+      "property-15-exterior.jpg",
+      "property-15-living.jpg",
+      "property-15-kitchen.jpg",
+      "property-15-backyard.jpg"
+    ],
+    "landlord": "landlord9",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "room-shared",
+    "title": "Room in Graduate Student Housing",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 01",
+      "kebele": "Kebele 06"
+    },
+    "rent": 6050,
+    "deposit": 12100,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "study room",
+      "wifi",
+      "laundry"
+    ],
+    "petPolicy": "not-allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Private room in shared apartment near Columbia University. Quiet building with other graduate students. Room includes desk and bed. Shared kitchen and bathroom. Includes access to study room. Perfect for students.",
+    "photos": [
+      "property-16-exterior.jpg",
+      "property-16-living.jpg",
+      "property-16-kitchen.jpg",
+      "property-16-backyard.jpg"
+    ],
+    "landlord": "landlord11",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "house",
+    "title": "Country House with Acreage",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 02",
+      "kebele": "Kebele 07"
+    },
+    "rent": 23100,
+    "deposit": 46200,
+    "bedroom": 4,
+    "bathroom": 2,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "large yard",
+      "garage",
+      "shed",
+      "fruit trees"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "description": "Spacious house on large lot in quiet Queens neighborhood. Features updated kitchen, hardwood floors, and large backyard with mature fruit trees. Attached garage and storage shed. Great for families who want outdoor space.",
+    "photos": [
+      "property-17-exterior.jpg",
+      "property-17-living.jpg",
+      "property-17-kitchen.jpg",
+      "property-17-backyard.jpg"
+    ],
+    "landlord": "landlord13",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "Duplex with Private Entrance",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 03",
+      "kebele": "Kebele 08"
+    },
+    "rent": 17600,
+    "deposit": 35200,
+    "bedroom": 2,
+    "bathroom": 2,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "private entrance",
+      "backyard",
+      "washer/dryer"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Unique duplex apartment with private entrance in Carroll Gardens. Two levels with bedrooms upstairs and living space downstairs. Private backyard and in-unit washer/dryer. Recently renovated with modern finishes.",
+    "photos": [
+      "property-18-exterior.jpg",
+      "property-18-living.jpg",
+      "property-18-kitchen.jpg",
+      "property-18-backyard.jpg"
+    ],
+    "landlord": "landlord15",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "studio",
+    "title": "Artist Studio with High Ceilings",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 04",
+      "kebele": "Kebele 09"
+    },
+    "rent": 13200,
+    "deposit": 26400,
+    "bedroom": 0,
+    "bathroom": 1,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "high ceilings",
+      "north facing",
+      "freight elevator"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "description": "Raw studio space in SoHo with 14-foot ceilings and north-facing windows. Perfect for artists or designers. Building has freight elevator for moving large items. Bathroom and kitchenette included. Unfinished canvas ready for your vision.",
+    "photos": [
+      "property-19-exterior.jpg",
+      "property-19-living.jpg",
+      "property-19-kitchen.jpg",
+      "property-19-backyard.jpg"
+    ],
+    "landlord": "landlord17",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "condominium",
+    "title": "Family-Friendly 3-Bedroom",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 05",
+      "kebele": "Kebele 10"
+    },
+    "rent": 30250,
+    "deposit": 60500,
+    "bedroom": 3,
+    "bathroom": 2,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "doorman",
+      "playground",
+      "gym",
+      "parking"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "description": "Spacious 3-bedroom condo on Upper East Side. Family-friendly building with playground and doorman. Apartment features large living room, eat-in kitchen, and three good-sized bedrooms. Close to museums, parks, and excellent schools.",
+    "photos": [
+      "property-20-exterior.jpg",
+      "property-20-living.jpg",
+      "property-20-kitchen.jpg",
+      "property-20-backyard.jpg"
+    ],
+    "landlord": "landlord19",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "Garden Apartment",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Kolfe",
+      "woreda": "Woreda 06",
+      "kebele": "Kebele 01"
+    },
+    "rent": 14300,
+    "deposit": 28600,
+    "bedroom": 2,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "private garden",
+      "washer/dryer"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Charming garden apartment in Cobble Hill. Features private garden space perfect for morning coffee or evening relaxation. In-unit washer/dryer, modern kitchen, and two spacious bedrooms. Tree-lined street with brownstones.",
+    "photos": [
+      "property-21-exterior.jpg",
+      "property-21-living.jpg",
+      "property-21-kitchen.jpg",
+      "property-21-backyard.jpg"
+    ],
+    "landlord": "landlord1",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "room-shared",
+    "title": "Room in Professional Share",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 07",
+      "kebele": "Kebele 02"
+    },
+    "rent": 7700,
+    "deposit": 15400,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": false
+    },
+    "amenities": [
+      "cleaning service",
+      "wifi",
+      "shared kitchen"
+    ],
+    "petPolicy": "not-allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Private room in professional 3-bedroom share in Midtown. Roommates are young professionals in finance and tech. Weekly cleaning service included. Modern kitchen with high-end appliances. Building has gym and doorman.",
+    "photos": [
+      "property-22-exterior.jpg",
+      "property-22-living.jpg",
+      "property-22-kitchen.jpg",
+      "property-22-backyard.jpg"
+    ],
+    "landlord": "landlord3",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "house",
+    "title": "Tudor-Style Home",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Gulele",
+      "woreda": "Woreda 08",
+      "kebele": "Kebele 03"
+    },
+    "rent": 19800,
+    "deposit": 39600,
+    "bedroom": 3,
+    "bathroom": 2,
+    "furnished": false,
+    "utilities": {
+      "electricity": false,
+      "water": true,
+      "internet": false,
+      "gas": true
+    },
+    "amenities": [
+      "garage",
+      "basement",
+      "fireplace",
+      "deck"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "description": "Beautiful Tudor-style home in Forest Hills. Original architectural details including wood beams and stone fireplace. Updated kitchen and bathrooms. Finished basement and attached garage. Large backyard with deck. Near parks and train.",
+    "photos": [
+      "property-23-exterior.jpg",
+      "property-23-living.jpg",
+      "property-23-kitchen.jpg",
+      "property-23-backyard.jpg"
+    ],
+    "landlord": "landlord5",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "apartment",
+    "title": "Loft-Style 1-Bedroom",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 09",
+      "kebele": "Kebele 04"
+    },
+    "rent": 18700,
+    "deposit": 37400,
+    "bedroom": 1,
+    "bathroom": 1,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "high ceilings",
+      "exposed brick",
+      "doorman"
+    ],
+    "petPolicy": "negotiable",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Stunning loft-style 1-bedroom in Tribeca. Features 12-foot ceilings, exposed brick walls, and oversized windows. Open layout with custom built-ins. Building has 24-hour doorman. Steps from Hudson River Park and excellent restaurants.",
+    "photos": [
+      "property-24-exterior.jpg",
+      "property-24-living.jpg",
+      "property-24-kitchen.jpg",
+      "property-24-backyard.jpg"
+    ],
+    "landlord": "landlord7",
+    "available": true,
+    "status": "approved"
+  },
+  {
+    "type": "condominium",
+    "title": "Modern 2-Bedroom with Smart Home",
+    "location": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 10",
+      "kebele": "Kebele 05"
+    },
+    "rent": 22000,
+    "deposit": 44000,
+    "bedroom": 2,
+    "bathroom": 2,
+    "furnished": true,
+    "utilities": {
+      "electricity": true,
+      "water": true,
+      "internet": true,
+      "gas": true
+    },
+    "amenities": [
+      "smart home",
+      "gym",
+      "rooftop",
+      "parking"
+    ],
+    "petPolicy": "allowed",
+    "minStay": "unknown",
+    "maxStay": "unknown",
+    "description": "Cutting-edge smart home condo in Brooklyn Heights. Features voice-controlled lighting, temperature, and security. Modern kitchen with smart appliances. Building amenities include gym, rooftop deck, and parking. Near Brooklyn Bridge Park.",
+    "photos": [
+      "property-25-exterior.jpg",
+      "property-25-living.jpg",
+      "property-25-kitchen.jpg",
+      "property-25-backyard.jpg"
+    ],
+    "landlord": "landlord9",
+    "available": true,
+    "status": "approved"
+  }
+]

@@ -1,0 +1,100 @@
+extends base
+block content
+  main.page-main
+    nav.breadcrumb(aria-label='Breadcrumb')
+      a.breadcrumb__link(href='/') Home
+      span.breadcrumb__sep /
+      a.breadcrumb__link(href='/property-listings') Listings
+      span.breadcrumb__sep /
+      span.breadcrumb__current  #{property.type} #{property.location.subcity}
+
+    .listing-detail
+      div
+        .listing-detail__gallery
+          .listing-detail__gallery-main
+            img(src=`/img/properties/${property.photos[1] || property.photos[0] || 'property-1-main.jpg'}` alt='Living room view' onerror="this.src='/img/properties/property-1-main.jpg'")
+          .listing-detail__gallery-thumb
+            img(src=`/img/properties/${property.photos[2] || property.photos[0] || 'property-1-main.jpg'}` alt='Kitchen' onerror="this.src='/img/properties/property-1-main.jpg'")
+          .listing-detail__gallery-thumb
+            img(src=`/img/properties/${property.photos[3] || property.photos[0] || 'property-1-main.jpg'}` alt='Backyard' onerror="this.src='/img/properties/property-1-main.jpg'")
+
+        article.listing-detail__content
+          .listing-detail__header
+            div
+              h1.listing-detail__title #{property.bedroom * 1 >= 1 ? `${property.bedroom} ${property.bedroom * 1 === 1 ? `Bedroom`: 'bedrooms'},`: ''}  #{property.type} in #{property.location.subcity}
+              p.listing-detail__location #{property.location.subcity} #{property.location.city}
+            p.listing-detail__price
+              |  #{property.rent} birr
+              span / month
+
+          .listing-detail__stats
+            .listing-detail__stat
+              svg.listing-detail__stat-icon
+                use(xlink:href='/css/icons-sprite.svg#icon-bed')
+              | #{property.bedroom} Bedrooms
+            .listing-detail__stat
+              svg.listing-detail__stat-icon
+                use(xlink:href='/css/icons-sprite.svg#icon-bath')
+              | #{property.bathroom}
+            if property.available
+              .listing-detail__stat Available now
+
+          h2.listing-detail__section-title About this property
+          - const paragraphs=property.description.split('.')
+          each p in paragraphs 
+            p.listing-detail__description 
+              | #{p}
+
+          h2.listing-detail__section-title Amenities
+          ul.listing-detail__amenities
+            each amenity in property.amenities
+              li=amenity
+
+      aside.listing-detail__sidebar(data-property-id=property._id data-user-name=(user ? user.name : '') data-has-request=(enquiry ? 'true' : 'false'))
+        .listing-detail__agent
+          if property.landlord.photo
+            img(src=`/img/properties/${property.photos[2] || property.photos[0] || 'property-1-main.jpg'}` alt='landlord\'s photo' onerror="this.src='/img/properties/property-1-main.jpg'")
+          else 
+            .listing-detail__agent-avatar=property.landlord.name.split(' ').map(el=>el[0]).join('').toUpperCase()          
+          div
+            p.listing-detail__agent-name=`${property.landlord.name.split(' ')[0]}.${property.landlord.name.split(' ')[1][0].toUpperCase()}`
+            p.listing-detail__agent-role Verified landlord
+        .listing-detail__contact-actions
+          if user && user.role !== 'landlord'
+            if enquiry && enquiry.status === 'accepted'
+              .listing-detail__accepted-message
+                .listing-detail__accepted-header
+                  svg.listing-detail__accepted-icon(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                    path(d='M22 11.08V12a10 10 0 1 1-5.93-9.14')
+                    polyline(points='22 4 12 14.01 9 11.01')
+                  span Request accepted
+                .listing-detail__contact-info
+                  span.listing-detail__contact-label Preferred contact:
+                  span.listing-detail__contact-method #{enquiry.contactPreference ? enquiry.contactPreference.charAt(0).toUpperCase() + enquiry.contactPreference.slice(1) : 'Phone'}
+                .listing-detail__contact-actions
+                  if enquiry.contactPreference === 'telegram'
+                    a.listing-detail__contact-btn(href=`https://t.me/${enquiry.contactValue}` target='_blank' rel='noopener noreferrer')
+                      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                        path(d='M22 2L11 13')
+                        path(d='M22 2l-7 20-4-9-9-4 20-7z')
+                      span Open Telegram
+                  else if enquiry.contactPreference === 'whatsapp'
+                    a.listing-detail__contact-btn(href=`https://wa.me/${enquiry.contactValue}` target='_blank' rel='noopener noreferrer')
+                      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                        path(d='M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z')
+                      span Open WhatsApp
+                  else if enquiry.contactValue
+                    a.listing-detail__contact-btn(href=`tel:${enquiry.contactValue}`)
+                      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+                        path(d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z')
+                      span Call landlord
+            else if enquiry && enquiry.status === 'declined'
+              .listing-detail__status-pill Request declined
+            else if enquiry
+              a#request-viewing-btn.btn.btn--primary.btn--block(href='#' disabled data-enquiry-status=enquiry.status) Request sent
+            else
+              a#request-viewing-btn.btn.btn--primary.btn--block(href='#' data-enquiry-status='') Request viewing
+          else
+            a#request-viewing-btn.btn.btn--primary.btn--block(href='#' data-enquiry-status='') Request viewing
+        p#enquiry-status.listing-detail__status(style='display:none')
+        a.btn.btn--secondary.btn--block(href='/property-listings') Back to listings

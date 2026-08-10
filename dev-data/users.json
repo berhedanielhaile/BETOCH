@@ -1,0 +1,354 @@
+[
+  {
+    "name": "Abebe Bikila",
+    "email": "abebe.bikila@example.com",
+    "phone": "+251911234567",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Experienced landlord with 10+ years in property management in Addis Ababa. I take pride in maintaining high-quality rentals.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 01",
+      "kebele": "Kebele 01",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Tirunesh Dibaba",
+    "email": "tirunesh.dibaba@example.com",
+    "phone": "+251912345678",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Young professional looking for a clean, modern apartment in Bole area.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 02",
+      "kebele": "Kebele 03",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Haile Gebrselassie",
+    "email": "haile.gebrselassie@example.com",
+    "phone": "+251913456789",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Property investor with a portfolio of 15+ rental units across Addis Ababa.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 05",
+      "kebele": "Kebele 02",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Almaz Ayana",
+    "email": "almaz.ayana@example.com",
+    "phone": "+251914567890",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Graduate student seeking affordable housing near Arat Kilo campus.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 03",
+      "kebele": "Kebele 01",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Dawit Fikadu",
+    "email": "dawit.fikadu@example.com",
+    "phone": "+251915678901",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Family-oriented landlord who understands the needs of Ethiopian families.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Gulele",
+      "woreda": "Woreda 08",
+      "kebele": "Kebele 04",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Kidan Tesfaye",
+    "email": "kidan.tesfaye@example.com",
+    "phone": "+251916789012",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Remote worker looking for a quiet space with good internet in Kazanchis.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Kolfe Keranio",
+      "woreda": "Woreda 10",
+      "kebele": "Kebele 02",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Belete Mekonnen",
+    "email": "belete.mekonnen@example.com",
+    "phone": "+251917890123",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Retired teacher renting out my family home in Lideta. Responsible and responsive.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Lideta",
+      "woreda": "Woreda 04",
+      "kebele": "Kebele 01",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Hanna Solomon",
+    "email": "hanna.solomon@example.com",
+    "phone": "+251918901234",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Marketing executive seeking a modern apartment with amenities in Bole.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 06",
+      "kebele": "Kebele 05",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Kaleb Tadesse",
+    "email": "kaleb.tadesse@example.com",
+    "phone": "+251919012345",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Real estate developer with luxury properties in prime Addis Ababa locations.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Yeka",
+      "woreda": "Woreda 12",
+      "kebele": "Kebele 03",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Sena Gebremariam",
+    "email": "sena.gebremariam@example.com",
+    "phone": "+251920123456",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Nurse working night shifts, need a peaceful place to rest in Megenagna.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Yeka",
+      "woreda": "Woreda 09",
+      "kebele": "Kebele 04",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Yohannes Alemu",
+    "email": "yohannes.alemu@example.com",
+    "phone": "+251921234567",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Young professional landlord with newly renovated properties in Piassa.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Arada",
+      "woreda": "Woreda 02",
+      "kebele": "Kebele 02",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Ruth Negussie",
+    "email": "ruth.negussie@example.com",
+    "phone": "+251922345678",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Artist looking for a creative space with good lighting in Old Airport.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 04",
+      "kebele": "Kebele 06",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Mikael Asfaw",
+    "email": "mikael.asfaw@example.com",
+    "phone": "+251923456789",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Property manager for a large real estate company in Addis Ababa.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Akaki Kality",
+      "woreda": "Woreda 15",
+      "kebele": "Kebele 01",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Bethelhem Tadesse",
+    "email": "bethelhem.tadesse@example.com",
+    "phone": "+251924567890",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Software developer looking for a pet-friendly apartment in Sar Bet.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Nifas Silk",
+      "woreda": "Woreda 07",
+      "kebele": "Kebele 02",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Abraham Tekle",
+    "email": "abraham.tekle@example.com",
+    "phone": "+251925678901",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Investor specializing in multi-family buildings in Addis Ababa.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 06",
+      "kebele": "Kebele 03",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Meron Kassa",
+    "email": "meron.kassa@example.com",
+    "phone": "+251926789012",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Teacher seeking a quiet neighborhood close to schools in Ayat.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Yeka",
+      "woreda": "Woreda 11",
+      "kebele": "Kebele 05",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Girma Bekele",
+    "email": "girma.bekele@example.com",
+    "phone": "+251927890123",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Handyman landlord who maintains properties personally in Meskel Flower.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Nifas Silk",
+      "woreda": "Woreda 08",
+      "kebele": "Kebele 01",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Zewditu Abebe",
+    "email": "zewditu.abebe@example.com",
+    "phone": "+251928901234",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Recent college graduate starting first job in Addis Ababa.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Kolfe Keranio",
+      "woreda": "Woreda 09",
+      "kebele": "Kebele 03",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Ephrem Getachew",
+    "email": "ephrem.getachew@example.com",
+    "phone": "+251929012345",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Architect renting out my designed properties in CMC.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Akaki Kality",
+      "woreda": "Woreda 14",
+      "kebele": "Kebele 02",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Sosina Mengistu",
+    "email": "sosina.mengistu@example.com",
+    "phone": "+251930123456",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Freelance designer seeking a modern, inspiring space in Bole Medhanialem.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Bole",
+      "woreda": "Woreda 03",
+      "kebele": "Kebele 04",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Fikre Tolossa",
+    "email": "fikre.tolossa@example.com",
+    "phone": "+251931234567",
+    "role": "landlord",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Experienced property owner with diverse portfolio in Addis Ababa.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Gulele",
+      "woreda": "Woreda 07",
+      "kebele": "Kebele 02",
+      "zipCode": "1000"
+    }
+  },
+  {
+    "name": "Marta Haile",
+    "email": "marta.haile@example.com",
+    "phone": "+251932345678",
+    "role": "tenant",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "bio": "Healthcare professional seeking convenient location near Black Lion Hospital.",
+    "address": {
+      "city": "Addis Ababa",
+      "subcity": "Kirkos",
+      "woreda": "Woreda 04",
+      "kebele": "Kebele 01",
+      "zipCode": "1000"
+    }
+  }
+]

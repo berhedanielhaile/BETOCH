@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="css/favicon.svg" />
+    <title>Owner Dashboard | Betlink</title>
+  </head>
+  <body class="container container--page">
+    <header class="header">
+      <a href="homepage.html">
+        <img
+          class="header__logo"
+          src="./img/logos/betoch-wordmark.svg"
+          alt="BETOCH logo"
+        />
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button
+        class="header__hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle menu"
+      >
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+
+      <nav class="header__nav" id="main-nav">
+        <a href="dashboard.html" class="header__nav--btn header__nav--browse">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-user"></use>
+          </svg>
+          Dashboard
+        </a>
+        <a
+          href="post-listing.html"
+          class="header__nav--btn header__nav--listing"
+        >
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-home"></use>
+          </svg>
+          Add Listing
+        </a>
+        <span class="header__nav--divider"></span>
+        <a href="listings.html" class="header__nav--btn header__nav--login"
+          >Browse</a
+        >
+        <a href="login.html" class="header__nav--btn header__nav--signup"
+          >Logout</a
+        >
+      </nav>
+    </header>
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">Owner dashboard</h1>
+        <p class="page-hero__subtitle">
+          Manage your properties, track enquiries, and keep listings up to date.
+        </p>
+      </div>
+    </section>
+
+    <main class="page-main">
+      <div class="dashboard">
+        <aside class="dashboard__sidebar">
+          <ul class="dashboard__nav">
+            <li class="dashboard__nav-item">
+              <a href="dashboard.html" class="dashboard__nav-link--active"
+                >Overview</a
+              >
+            </li>
+            <li class="dashboard__nav-item">
+              <a href="post-listing.html">Post new listing</a>
+            </li>
+            <li class="dashboard__nav-item">
+              <a href="listings.html">My listings</a>
+            </li>
+            <li class="dashboard__nav-item">
+              <a href="#">Enquiries</a>
+            </li>
+            <li class="dashboard__nav-item">
+              <a href="#">Account settings</a>
+            </li>
+          </ul>
+        </aside>
+
+        <div>
+          <div class="dashboard__welcome">
+            <h2>Good morning, Daniel</h2>
+            <p>Here's what's happening with your properties today.</p>
+          </div>
+
+          <div class="dashboard__stats">
+            <div class="dashboard__stat-card">
+              <p class="dashboard__stat-value">4</p>
+              <p class="dashboard__stat-label">Active listings</p>
+            </div>
+            <div class="dashboard__stat-card">
+              <p class="dashboard__stat-value">12</p>
+              <p class="dashboard__stat-label">Total views</p>
+            </div>
+            <div class="dashboard__stat-card">
+              <p class="dashboard__stat-value">3</p>
+              <p class="dashboard__stat-label">New enquiries</p>
+            </div>
+          </div>
+
+          <div class="dashboard__panel">
+            <div class="dashboard__panel-header">
+              <h3 class="dashboard__panel-title">Your listings</h3>
+              <a href="post-listing.html" class="btn btn--primary btn--small"
+                >+ New listing</a
+              >
+            </div>
+            <div class="dashboard__table-wrap">
+              <table class="dashboard__table">
+                <thead>
+                  <tr>
+                    <th>Property</th>
+                    <th>Location</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th>Views</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <a href="listing-detail.html">3 Bed Condominium</a>
+                    </td>
+                    <td>Kasanchis</td>
+                    <td>£663/mo</td>
+                    <td><span class="badge badge--active">Active</span></td>
+                    <td>48</td>
+                    <td class="dashboard__actions">
+                      <a
+                        href="listing-detail.html"
+                        class="btn btn--outline btn--small"
+                        >View</a
+                      >
+                      <a href="#" class="btn btn--secondary btn--small">Edit</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <a href="listing-detail.html">Apartment, floor 2</a>
+                    </td>
+                    <td>Gerji</td>
+                    <td>£1175/mo</td>
+                    <td><span class="badge badge--active">Active</span></td>
+                    <td>31</td>
+                    <td class="dashboard__actions">
+                      <a
+                        href="listing-detail.html"
+                        class="btn btn--outline btn--small"
+                        >View</a
+                      >
+                      <a href="#" class="btn btn--secondary btn--small">Edit</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="listing-detail.html">Studio</a></td>
+                    <td>Bole-Arabsa</td>
+                    <td>£670/mo</td>
+                    <td><span class="badge badge--pending">Pending</span></td>
+                    <td>0</td>
+                    <td class="dashboard__actions">
+                      <a
+                        href="listing-detail.html"
+                        class="btn btn--outline btn--small"
+                        >View</a
+                      >
+                      <a href="#" class="btn btn--secondary btn--small">Edit</a>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><a href="listing-detail.html">Room shared</a></td>
+                    <td>Kolfe</td>
+                    <td>£400/mo</td>
+                    <td><span class="badge badge--draft">Draft</span></td>
+                    <td>—</td>
+                    <td class="dashboard__actions">
+                      <a
+                        href="post-listing.html"
+                        class="btn btn--primary btn--small"
+                        >Finish</a
+                      >
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="dashboard__panel">
+            <div class="dashboard__panel-header">
+              <h3 class="dashboard__panel-title">Recent enquiries</h3>
+            </div>
+            <div class="dashboard__table-wrap">
+              <table class="dashboard__table">
+                <thead>
+                  <tr>
+                    <th>Tenant</th>
+                    <th>Property</th>
+                    <th>Date</th>
+                    <th>Message</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sara T.</td>
+                    <td>Kasanchis Condominium</td>
+                    <td>Jun 19, 2026</td>
+                    <td>Interested in a viewing this weekend.</td>
+                  </tr>
+                  <tr>
+                    <td>Abebe K.</td>
+                    <td>Apartment, Gerji</td>
+                    <td>Jun 18, 2026</td>
+                    <td>Is the property still available?</td>
+                  </tr>
+                  <tr>
+                    <td>Hanna M.</td>
+                    <td>Kasanchis Condominium</td>
+                    <td>Jun 17, 2026</td>
+                    <td>Can I schedule a virtual tour?</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="section-footer">
+      <div class="footer__content">
+        <div class="footer__logo">
+          <img
+            class="footer-logo"
+            src="./img/logos/betoch-wordmark.svg"
+            alt="BETOCH"
+          />
+        </div>
+      </div>
+      <div class="footer__meta">
+        <ul class="footer__list">
+          <li class="footer__item">© 2024 - 2026 BETOCH plc.</li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger-btn");
+      const nav = document.getElementById("main-nav");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

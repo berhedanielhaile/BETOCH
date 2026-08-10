@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="css/favicon.svg" />
+    <title>Sign Up | Betlink</title>
+  </head>
+  <body class="container container--page">
+    <header class="header">
+      <a href="homepage.html">
+        <img class="header__logo" src="./img/logos/betoch-wordmark.svg" alt="BETOCH logo" />
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button class="header__hamburger" id="hamburger-btn" aria-label="Toggle menu">
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+
+      <nav class="header__nav" id="main-nav">
+        <a href="listings.html" class="header__nav--btn header__nav--browse">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+          </svg>
+          Browse Listings
+        </a>
+        <a href="post-listing.html" class="header__nav--btn header__nav--listing">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-home"></use>
+          </svg>
+          Add Listing
+        </a>
+        <span class="header__nav--divider"></span>
+        <a href="login.html" class="header__nav--btn header__nav--login">Login</a>
+        <a href="signup.html" class="header__nav--btn header__nav--signup">Sign Up</a>
+      </nav>
+    </header>
+
+    <section class="auth">
+      <div class="auth__card">
+        <a href="homepage.html">
+          <img class="auth__logo" src="./img/logos/betoch-wordmark.svg" alt="BetLink logo" />
+        </a>
+
+        <nav class="auth__tabs" aria-label="Authentication">
+          <a href="login.html" class="auth__tab">Login</a>
+          <a href="signup.html" class="auth__tab auth__tab--active">Sign up</a>
+        </nav>
+
+        <h1 class="auth__title">Join BETOCH</h1>
+        <p class="auth__subtitle">Create a free account to list properties or find your next home.</p>
+
+        <form action="dashboard.html">
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="first-name">First name</label>
+              <input type="text" id="first-name" class="form__input" placeholder="Daniel" required />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="last-name">Last name</label>
+              <input type="text" id="last-name" class="form__input" placeholder="Mekonnen" required />
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="email">Email address</label>
+            <input type="email" id="email" class="form__input" placeholder="you@example.com" required />
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="phone">Phone number</label>
+            <div class="form__phone-field" aria-label="Phone number input">
+              <select id="phone-country" class="form__phone-select" aria-label="Country code">
+                <option value="+251" selected>🇪🇹 +251</option>
+                <option value="+1">🇺🇸 +1</option>
+                <option value="+44">🇬🇧 +44</option>
+                <option value="+49">🇩🇪 +49</option>
+                <option value="+33">🇫🇷 +33</option>
+                <option value="+254">🇰🇪 +254</option>
+                <option value="+256">🇺🇬 +256</option>
+                <option value="+255">🇹🇿 +255</option>
+                <option value="+27">🇿🇦 +27</option>
+                <option value="+234">🇳🇬 +234</option>
+                <option value="+20">🇪🇬 +20</option>
+                <option value="+91">🇮🇳 +91</option>
+                <option value="+86">🇨🇳 +86</option>
+                <option value="+971">🇦🇪 +971</option>
+                <option value="+966">🇸🇦 +966</option>
+              </select>
+              <input
+                type="text"
+                id="phone"
+                class="form__input form__input--phone"
+                inputmode="numeric"
+                pattern="[0-9]*"
+                maxlength="9"
+                placeholder="912345678"
+              />
+            </div>
+          </div>
+          <div class="form__group">
+            <label class="form__label" for="role">I am a</label>
+            <select id="role" class="form__select" required>
+              <option value="">Select role</option>
+              <option value="landlord">Landlord / Owner</option>
+              <option value="tenant">Tenant</option>
+            </select>
+          </div>
+          <div class="form__row">
+            <div class="form__group">
+              <label class="form__label" for="password">Password</label>
+              <input type="password" id="password" class="form__input" placeholder="Min. 8 characters" required />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="confirm-password">Confirm password</label>
+              <input type="password" id="confirm-password" class="form__input" placeholder="Repeat password" required />
+            </div>
+          </div>
+          <div class="form__group form__checkbox">
+            <input type="checkbox" id="terms" required />
+            <label for="terms">I agree to the Terms &amp; Conditions and Privacy Policy</label>
+          </div>
+          <button type="submit" class="btn btn--primary btn--block">Create account</button>
+        </form>
+
+        <p class="auth__footer-text">Already have an account? <a href="login.html">Sign in</a></p>
+      </div>
+    </section>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger-btn');
+      const nav = document.getElementById('main-nav');
+
+      hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        nav.classList.toggle('active');
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener('click', (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove('active');
+          nav.classList.remove('active');
+        }
+      });
+
+      // Phone digit-box auto-advance
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,81 @@
+.container--page {
+  grid-template-rows: min-content 1fr min-content;
+  min-height: 100vh;
+}
+
+.page-main {
+  grid-column: full-start / full-end;
+  padding: 4rem 6rem 6rem;
+  background-color: $color-bg;
+  flex: 1;       // stretch inside flex-column body → footer always at bottom
+  min-height: 0; // allow shrinking inside grid rows
+}
+
+.page-hero {
+  grid-column: full-start / full-end;
+  padding: 4rem 6rem;
+  background: linear-gradient(
+      rgba($color-primary-dark, 0.75),
+      rgba($color-primary, 0.55)
+    ),
+    url("../img/gal-3.jpeg") center / cover no-repeat;
+
+  &__inner {
+    max-width: 90rem;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-size: 4rem;
+    font-weight: 500;
+    font-style: italic;
+    color: $color-surface;
+    margin-bottom: 0.8rem;
+  }
+
+  &__subtitle {
+    font-size: 1.6rem;
+    color: rgba($color-surface, 0.9);
+    max-width: 55rem;
+  }
+}
+
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: $color-muted;
+
+  &__link {
+    color: $color-primary;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__sep {
+    color: $color-line;
+  }
+
+  &__current {
+    color: $color-text;
+  }
+}
+
+@media (max-width: $bp-medium) {
+  .page-main {
+    padding: 3rem 2rem 4rem;
+  }
+
+  .page-hero {
+    padding: 3rem 2rem;
+
+    &__title {
+      font-size: 3rem;
+    }
+  }
+}

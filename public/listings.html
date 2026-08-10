@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="css/favicon.svg" />
+    <title>Browse Listings | Betlink</title>
+  </head>
+  <body class="container container--page">
+    <header class="header">
+      <a href="homepage.html">
+        <img
+          class="header__logo"
+          src="./img/logos/betoch-wordmark.svg"
+          alt="BETOCH logo"
+        />
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button
+        class="header__hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle menu"
+      >
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+
+      <nav class="header__nav" id="main-nav">
+        <a href="listings.html" class="header__nav--btn header__nav--browse">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+          </svg>
+          Browse Listings
+        </a>
+        <a
+          href="post-listing.html"
+          class="header__nav--btn header__nav--listing"
+        >
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-home"></use>
+          </svg>
+          Add Listing
+        </a>
+        <span class="header__nav--divider"></span>
+        <a href="login.html" class="header__nav--btn header__nav--login"
+          >Login</a
+        >
+        <a href="signup.html" class="header__nav--btn header__nav--signup"
+          >Sign Up</a
+        >
+      </nav>
+    </header>
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">Find your next home</h1>
+        <p class="page-hero__subtitle">
+          Browse verified rental properties across Addis Ababa — no admin fees,
+          no ghost listings.
+        </p>
+      </div>
+    </section>
+
+    <main class="page-main">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html" class="breadcrumb__link">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">Listings</span>
+      </nav>
+
+      <div class="listings">
+        <aside class="listings__filters">
+          <h2 class="listings__filters-title">Filter results</h2>
+          <form>
+            <div class="form__group">
+              <label class="form__label" for="location">Location</label>
+              <input
+                type="text"
+                id="location"
+                class="form__input"
+                placeholder="e.g. Bole, Kasanchis"
+              />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="type">Property type</label>
+              <select id="type" class="form__select">
+                <option value="">All types</option>
+                <option>Apartment</option>
+                <option>Condominium</option>
+                <option>Studio</option>
+                <option>Room shared</option>
+              </select>
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="min-price">Min price (£)</label>
+              <input
+                type="number"
+                id="min-price"
+                class="form__input"
+                placeholder="400"
+              />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="max-price">Max price (£)</label>
+              <input
+                type="number"
+                id="max-price"
+                class="form__input"
+                placeholder="1500"
+              />
+            </div>
+            <div class="form__group">
+              <label class="form__label" for="bedrooms">Bedrooms</label>
+              <select id="bedrooms" class="form__select">
+                <option value="">Any</option>
+                <option>1+</option>
+                <option>2+</option>
+                <option>3+</option>
+                <option>4+</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn--primary btn--block">
+              Apply filters
+            </button>
+          </form>
+        </aside>
+
+        <div>
+          <div class="listings__results-header">
+            <p class="listings__count">Showing 6 properties in Addis Ababa</p>
+            <div class="listings__sort">
+              <label for="sort">Sort by</label>
+              <select id="sort">
+                <option>Newest first</option>
+                <option>Price: low to high</option>
+                <option>Price: high to low</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="listings__grid">
+            <a href="listing-detail.html" class="listing-card">
+              <div class="listing-card__img-wrap">
+                <img
+                  src="./img/home-img-1.jpg"
+                  alt="Condominium in Kasanchis"
+                  class="listing-card__img"
+                />
+                <span class="listing-card__tag">condominium</span>
+              </div>
+              <div class="listing-card__body">
+                <p class="listing-card__price">£663 <span>/ month</span></p>
+                <p class="listing-card__type">Condominium</p>
+                <p class="listing-card__location">Kasanchis</p>
+                <div class="listing-card__meta">
+                  <span class="listing-card__meta-item">
+                    3
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                    </svg>
+                  </span>
+                  <span class="listing-card__meta-item">
+                    3
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <a href="listing-detail.html" class="listing-card">
+              <div class="listing-card__img-wrap">
+                <img
+                  src="./img/gal-3.jpeg"
+                  alt="Apartment in Gerji"
+                  class="listing-card__img"
+                />
+                <span class="listing-card__tag">apartment</span>
+              </div>
+              <div class="listing-card__body">
+                <p class="listing-card__price">£1175 <span>/ month</span></p>
+                <p class="listing-card__type">Apartment, floor 2</p>
+                <p class="listing-card__location">Gerji</p>
+                <div class="listing-card__meta">
+                  <span class="listing-card__meta-item">
+                    4
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                    </svg>
+                  </span>
+                  <span class="listing-card__meta-item">
+                    2
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <a href="listing-detail.html" class="listing-card">
+              <div class="listing-card__img-wrap">
+                <img
+                  src="./img/home-img-3.jpg"
+                  alt="Studio in Bole Arabsa"
+                  class="listing-card__img"
+                />
+                <span class="listing-card__tag">studio</span>
+              </div>
+              <div class="listing-card__body">
+                <p class="listing-card__price">£670 <span>/ month</span></p>
+                <p class="listing-card__type">Studio</p>
+                <p class="listing-card__location">Addis, Bole-Arabsa</p>
+                <div class="listing-card__meta">
+                  <span class="listing-card__meta-item">
+                    2
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                    </svg>
+                  </span>
+                  <span class="listing-card__meta-item">
+                    1
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <a href="listing-detail.html" class="listing-card">
+              <div class="listing-card__img-wrap">
+                <img
+                  src="./img/home-img-4.jpg"
+                  alt="Shared room in Kolfe"
+                  class="listing-card__img"
+                />
+                <span class="listing-card__tag">room shared</span>
+              </div>
+              <div class="listing-card__body">
+                <p class="listing-card__price">£400 <span>/ month</span></p>
+                <p class="listing-card__type">Room shared</p>
+                <p class="listing-card__location">Addis, Kolfe</p>
+                <div class="listing-card__meta">
+                  <span class="listing-card__meta-item">
+                    1
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                    </svg>
+                  </span>
+                  <span class="listing-card__meta-item">
+                    1
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <a href="listing-detail.html" class="listing-card">
+              <div class="listing-card__img-wrap">
+                <img
+                  src="./img/gal-2.jpeg"
+                  alt="Condominium in Megenagna"
+                  class="listing-card__img"
+                />
+                <span class="listing-card__tag">condominium</span>
+              </div>
+              <div class="listing-card__body">
+                <p class="listing-card__price">£900 <span>/ month</span></p>
+                <p class="listing-card__type">Condominium</p>
+                <p class="listing-card__location">Addis, Megenagna</p>
+                <div class="listing-card__meta">
+                  <span class="listing-card__meta-item">
+                    3
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                    </svg>
+                  </span>
+                  <span class="listing-card__meta-item">
+                    2
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+
+            <a href="listing-detail.html" class="listing-card">
+              <div class="listing-card__img-wrap">
+                <img
+                  src="./img/home-img-1.jpg"
+                  alt="Apartment in Sar Bet"
+                  class="listing-card__img"
+                />
+                <span class="listing-card__tag">apartment</span>
+              </div>
+              <div class="listing-card__body">
+                <p class="listing-card__price">£820 <span>/ month</span></p>
+                <p class="listing-card__type">Apartment</p>
+                <p class="listing-card__location">Sar Bet</p>
+                <div class="listing-card__meta">
+                  <span class="listing-card__meta-item">
+                    2
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                    </svg>
+                  </span>
+                  <span class="listing-card__meta-item">
+                    2
+                    <svg class="listing-card__icon">
+                      <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger-btn");
+      const nav = document.getElementById("main-nav");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+    </script>
+
+    <footer class="section-footer">
+      <div class="footer__content">
+        <div class="footer__logo">
+          <img
+            class="footer-logo"
+            src="./img/logos/betoch-wordmark.svg"
+            alt="BETOCH"
+          />
+        </div>
+        <nav class="footer__links" aria-label="Footer navigation">
+          <ul class="footer__list">
+            <li class="footer__item footer__item--title">
+              <span class="footer__title-text">For Tenants</span>
+            </li>
+            <li class="footer__item">
+              <a href="listings.html" class="footer__link"
+                >Search Houses for Rent</a
+              >
+            </li>
+          </ul>
+          <ul class="footer__list">
+            <li class="footer__item footer__item--title">
+              <span class="footer__title-text">Landlord Services</span>
+            </li>
+            <li class="footer__item">
+              <a href="post-listing.html" class="footer__link"
+                >Property Advertising</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer__meta">
+        <ul class="footer__list">
+          <li class="footer__item">© 2024 - 2026 BETOCH plc.</li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

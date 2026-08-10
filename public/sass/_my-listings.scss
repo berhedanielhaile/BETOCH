@@ -1,0 +1,157 @@
+// ── My Listings Page ──────────────────────────────────────────────────────────
+
+.my-listings-page {
+  max-width: 130rem;
+  margin: 0 auto;
+}
+
+// ── Toolbar ───────────────────────────────────────────────────────────────────
+.my-listings-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+
+  &__count {
+    font-size: 1.5rem;
+    color: $color-muted;
+
+    strong {
+      font-size: 2rem;
+      font-weight: 700;
+      color: $color-primary-dark;
+    }
+  }
+}
+
+// ── Grid ──────────────────────────────────────────────────────────────────────
+.listings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+  gap: 2.4rem;
+}
+
+.listing-card {
+  &__status-badge {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.2rem;
+
+    .badge {
+      backdrop-filter: blur(8px);
+      font-size: 1.1rem;
+      padding: 0.4rem 1.1rem;
+
+      &--inactive {
+        background: rgba(180, 35, 24, 0.12);
+        color: $color-danger;
+      }
+    }
+  }
+
+  &__link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    position: relative;
+    z-index: 2;
+
+    .btn {
+      flex: 1;
+      justify-content: center;
+
+      svg {
+        width: 1.4rem;
+        height: 1.4rem;
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}
+
+// ── Empty State ───────────────────────────────────────────────────────────────
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8rem 2rem;
+  min-height: 40rem;
+
+  &__icon {
+    width: 9rem;
+    height: 9rem;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba($color-primary, 0.1) 0%, rgba($color-primary-dark, 0.08) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+
+    svg {
+      width: 4rem;
+      height: 4rem;
+      stroke: $color-primary;
+    }
+  }
+
+  &__title {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: $color-ink;
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    font-size: 1.5rem;
+    color: $color-muted;
+    max-width: 46rem;
+    line-height: 1.7;
+    margin-bottom: 3rem;
+  }
+}
+
+// ── Hero breadcrumb ───────────────────────────────────────────────────────────
+.page-hero__breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.35rem;
+  color: rgba($color-surface, 0.7);
+  margin-bottom: 1.2rem;
+}
+
+.page-hero__breadcrumb-link {
+  color: rgba($color-surface, 0.85);
+  text-decoration: none;
+  transition: color 0.2s;
+
+  &:hover {
+    color: $color-surface;
+  }
+}
+
+.page-hero__breadcrumb-sep {
+  opacity: 0.5;
+}
+
+// ── Responsive ───────────────────────────────────────────────────────────────
+@media (max-width: $bp-small) {
+  .listings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .my-listings-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

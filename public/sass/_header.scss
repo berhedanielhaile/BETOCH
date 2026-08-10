@@ -1,0 +1,318 @@
+// ── Mobile-first header defaults ───────────────────────────────────
+.header {
+  grid-column: full-start / full-end;
+  background-color: $color-surface;
+  padding: 1rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba($color-primary-dark, 0.08);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+
+  &__logo {
+    width: 10rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  // Hamburger — visible by default on mobile
+  &__hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    transition: all 0.3s ease;
+
+    &-line {
+      width: 2.4rem;
+      height: 0.25rem;
+      background-color: $color-primary-dark;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    &.active {
+      .header__hamburger-line:nth-child(1) {
+        transform: rotate(45deg) translate(0.8rem, 0.8rem);
+      }
+      .header__hamburger-line:nth-child(2) {
+        opacity: 0;
+      }
+      .header__hamburger-line:nth-child(3) {
+        transform: rotate(-45deg) translate(0.8rem, -0.8rem);
+      }
+    }
+  }
+
+  // Nav — slide-out drawer by default on mobile
+  &__nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    height: 100vh;
+    width: 26rem;
+    max-width: 85vw;
+    background-color: $color-surface;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    padding: 7rem 1.5rem 1.5rem;
+    gap: 1.5rem;
+    box-shadow: -4px 0 20px rgba($color-primary-dark, 0.15);
+    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    z-index: 999;
+    overflow-y: auto;
+
+    &.active {
+      right: 0;
+    }
+
+    &--icon {
+      width: 2rem;
+      height: 2rem;
+      margin-right: 0.8rem;
+    }
+
+    &--btn {
+      font-size: 1.5rem;
+      font-family: $font-primary;
+      font-weight: 600;
+      border: none;
+      color: $color-surface;
+      padding: 1.2rem 1.6rem;
+      border-radius: $radius-md;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba($color-primary, 0.2);
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transform: translate(-50%, -50%);
+        transition:
+          width 0.6s,
+          height 0.6s;
+      }
+
+      &:hover::before {
+        width: 300px;
+        height: 300px;
+      }
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba($color-primary, 0.35);
+      }
+
+      &:active {
+        transform: translateY(0);
+      }
+    }
+
+    &--browse {
+      background: linear-gradient(135deg, $color-primary, darken($color-primary, 8%));
+
+      &:hover {
+        background: linear-gradient(135deg, darken($color-primary, 5%), darken($color-primary, 12%));
+      }
+    }
+
+    &--listing {
+      background: linear-gradient(135deg, $color-accent-clay, darken($color-accent-clay, 8%));
+
+      &:hover {
+        background: linear-gradient(135deg, darken($color-accent-clay, 5%), darken($color-accent-clay, 12%));
+      }
+    }
+
+    &--divider {
+      width: 100%;
+      height: 1px;
+      background-color: $color-line;
+      margin: 0.5rem 0;
+    }
+
+    &--login {
+      background: transparent;
+      color: $color-primary-dark;
+      border: 2px solid $color-primary;
+      box-shadow: none;
+      text-align: center;
+
+      &:hover {
+        background: $color-primary;
+        color: $color-surface;
+        box-shadow: 0 4px 12px rgba($color-primary, 0.3);
+      }
+    }
+
+    &--signup {
+      background: linear-gradient(135deg, $color-primary-dark, lighten($color-primary-dark, 8%));
+      text-align: center;
+
+      &:hover {
+        background: linear-gradient(135deg, lighten($color-primary-dark, 5%), lighten($color-primary-dark, 12%));
+      }
+    }
+  }
+}
+
+// ── 600px ──────────────────────────────────────────────────────────
+@media (min-width: $bp-small) {
+  .header {
+    padding: 1.2rem 2rem;
+
+    &__logo {
+      width: 12rem;
+    }
+
+    &__hamburger {
+      &-line {
+        width: 2.8rem;
+        height: 0.3rem;
+      }
+    }
+
+    &__nav {
+      width: 28rem;
+      padding: 8rem 2rem 2rem;
+
+      &--btn {
+        padding: 1.4rem 2rem;
+        font-size: 1.6rem;
+      }
+    }
+  }
+}
+
+// ── 800px — switch to inline nav ───────────────────────────────────
+@media (min-width: $bp-medium) {
+  .header {
+    padding: 1.5rem 2rem;
+
+    &__hamburger {
+      display: none;
+    }
+
+    &__nav {
+      position: static;
+      height: auto;
+      width: auto;
+      max-width: none;
+      background-color: transparent;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 0;
+      gap: 1.2rem;
+      box-shadow: none;
+      overflow-y: visible;
+
+      &--btn {
+        width: auto;
+        justify-content: center;
+        padding: 1.1rem 2rem;
+        font-size: 1.5rem;
+        min-width: 12rem;
+        border-radius: 10px;
+      }
+
+      &--divider {
+        width: 1px;
+        height: 3rem;
+        margin: 0 0.5rem;
+      }
+
+      &--icon {
+        width: 1.6rem;
+        height: 1.6rem;
+        margin-right: 0.5rem;
+      }
+
+      &--login,
+      &--signup {
+        text-align: center;
+      }
+    }
+
+    &__logo {
+      width: 14rem;
+    }
+  }
+}
+
+// ── 1000px ─────────────────────────────────────────────────────────
+@media (min-width: $bp-large) {
+  .header {
+    padding: 1.5rem 3rem;
+
+    &__logo {
+      width: 16rem;
+    }
+
+    &__nav {
+      gap: 1.5rem;
+
+      &--btn {
+        padding: 1.1rem 2rem;
+        font-size: 1.5rem;
+      }
+
+      &--icon {
+        width: 1.8rem;
+        height: 1.8rem;
+        margin-right: 0.6rem;
+      }
+    }
+  }
+}
+
+// ── 1200px+ ────────────────────────────────────────────────────────
+@media (min-width: $bp-largest) {
+  .header {
+    padding: 2rem 4rem;
+
+    &__logo {
+      width: 18rem;
+    }
+
+    &__nav {
+      gap: 2rem;
+
+      &--btn {
+        padding: 1.1rem 2rem;
+        font-size: 1.5rem;
+      }
+
+      &--icon {
+        width: 2rem;
+        height: 2rem;
+        margin-right: 0.8rem;
+      }
+    }
+  }
+}

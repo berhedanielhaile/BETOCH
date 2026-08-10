@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="css/favicon.svg" />
+    <title>Post a Listing | Betlink</title>
+  </head>
+  <body class="container container--page">
+    <header class="header">
+      <a href="homepage.html">
+        <img
+          class="header__logo"
+          src="./img/logos/betoch-wordmark.svg"
+          alt="BETOCH logo"
+        />
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button
+        class="header__hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle menu"
+      >
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+
+      <nav class="header__nav" id="main-nav">
+        <a href="listings.html" class="header__nav--btn header__nav--browse">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+          </svg>
+          Browse Listings
+        </a>
+        <a
+          href="post-listing.html"
+          class="header__nav--btn header__nav--listing"
+        >
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-home"></use>
+          </svg>
+          Add Listing
+        </a>
+        <span class="header__nav--divider"></span>
+        <a href="login.html" class="header__nav--btn header__nav--login"
+          >Login</a
+        >
+        <a href="signup.html" class="header__nav--btn header__nav--signup"
+          >Sign Up</a
+        >
+      </nav>
+    </header>
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <h1 class="page-hero__title">Post your rental property</h1>
+        <p class="page-hero__subtitle">
+          100% free advertising. No hidden fees. Reach thousands of verified
+          tenants across Addis Ababa.
+        </p>
+      </div>
+    </section>
+
+    <main class="page-main">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html" class="breadcrumb__link">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <a href="dashboard.html" class="breadcrumb__link">Dashboard</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">Post listing</span>
+      </nav>
+
+      <div class="post-listing">
+        <div class="post-listing__intro">
+          <h2>Tell us about your property</h2>
+          <p>
+            Fill in the details below. You can save as a draft and publish when
+            you're ready.
+          </p>
+        </div>
+
+        <form class="post-listing__form" action="dashboard.html">
+          <section class="post-listing__section">
+            <h3 class="post-listing__section-title">Basic details</h3>
+            <p class="post-listing__section-desc">
+              Start with the property type, location, and monthly rent.
+            </p>
+
+            <div class="form__group">
+              <label class="form__label" for="title">Listing title</label>
+              <input
+                type="text"
+                id="title"
+                class="form__input"
+                placeholder="e.g. 3 Bed Condominium in Kasanchis"
+                required
+              />
+            </div>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="property-type"
+                  >Property type</label
+                >
+                <select id="property-type" class="form__select" required>
+                  <option value="">Select type</option>
+                  <option>Apartment</option>
+                  <option>Condominium</option>
+                  <option>Studio</option>
+                  <option>Room shared</option>
+                  <option>House</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="rent">Monthly rent (ETB)</label>
+                <input
+                  type="number"
+                  id="rent"
+                  class="form__input"
+                  placeholder="15000"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="city">City</label>
+                <input
+                  type="text"
+                  id="city"
+                  class="form__input"
+                  value="Addis Ababa"
+                  required
+                />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="subcity">Subcity</label>
+                <select id="subcity" class="form__select" required>
+                  <option value="">Select subcity</option>
+                  <option value="Arada">Arada</option>
+                  <option value="Akaki Kality">Akaki Kality</option>
+                  <option value="Bole">Bole</option>
+                  <option value="Gulele">Gulele</option>
+                  <option value="Kirkos">Kirkos</option>
+                  <option value="Kolfe Keranio">Kolfe Keranio</option>
+                  <option value="Lideta">Lideta</option>
+                  <option value="Nifas Silk">Nifas Silk</option>
+                  <option value="Yeka">Yeka</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="woreda">Woreda</label>
+                <input
+                  type="text"
+                  id="woreda"
+                  class="form__input"
+                  placeholder="e.g. Woreda 01"
+                  required
+                />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="kebele">Kebele</label>
+                <input
+                  type="text"
+                  id="kebele"
+                  class="form__input"
+                  placeholder="e.g. Kebele 01"
+                  required
+                />
+              </div>
+            </div>
+          </section>
+
+          <section class="post-listing__section">
+            <h3 class="post-listing__section-title">Property specs</h3>
+            <p class="post-listing__section-desc">
+              Help tenants understand the size and layout.
+            </p>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="bedrooms">Bedrooms</label>
+                <select id="bedrooms" class="form__select" required>
+                  <option value="">Select</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5+</option>
+                </select>
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="bathrooms">Bathrooms</label>
+                <select id="bathrooms" class="form__select" required>
+                  <option value="">Select</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4+</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form__group">
+              <label class="form__label" for="description">Description</label>
+              <textarea
+                id="description"
+                class="form__textarea"
+                placeholder="Describe the property, neighbourhood, and what makes it special..."
+                required
+              ></textarea>
+              <p class="form__hint">Minimum 50 characters recommended.</p>
+            </div>
+          </section>
+
+          <section class="post-listing__section">
+            <h3 class="post-listing__section-title">Photos</h3>
+            <p class="post-listing__section-desc">
+              Upload clear photos of each room. Listings with 5+ photos get 3×
+              more views.
+            </p>
+
+            <div class="post-listing__upload">
+              <svg class="post-listing__upload-icon">
+                <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+              </svg>
+              <p class="post-listing__upload-text">
+                Drag &amp; drop photos here, or click to browse
+              </p>
+              <p class="post-listing__upload-hint">
+                JPG or PNG, up to 10 MB each. Max 12 photos.
+              </p>
+            </div>
+          </section>
+
+          <section class="post-listing__section">
+            <h3 class="post-listing__section-title">Video (Optional)</h3>
+            <p class="post-listing__section-desc">
+              Add a video tour to showcase your property. Maximum 30 seconds.
+            </p>
+
+            <div class="post-listing__upload">
+              <svg class="post-listing__upload-icon">
+                <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+              </svg>
+              <p class="post-listing__upload-text">
+                Drag &amp; drop video here, or click to browse
+              </p>
+              <p class="post-listing__upload-hint">
+                MP4, WebM, or MOV. Max 30 seconds, up to 50 MB.
+              </p>
+            </div>
+          </section>
+
+          <section class="post-listing__section">
+            <h3 class="post-listing__section-title">Amenities</h3>
+            <p class="post-listing__section-desc">
+              Select everything that's included with the rental.
+            </p>
+
+            <div class="post-listing__amenities-grid">
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="parking" />
+                Secure parking
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="security" />
+                24-hour security
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="balcony" />
+                Balcony
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="water" />
+                Water included
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="elevator" />
+                Elevator
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="generator" />
+                Backup generator
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="furnished" />
+                Furnished
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="wifi" />
+                Wi-Fi included
+              </label>
+              <label class="form__checkbox">
+                <input type="checkbox" name="amenity" value="pets" />
+                Pets allowed
+              </label>
+            </div>
+          </section>
+
+          <section class="post-listing__section">
+            <h3 class="post-listing__section-title">Contact details</h3>
+            <p class="post-listing__section-desc">
+              Tenants will use this to reach you about viewings.
+            </p>
+
+            <div class="form__row">
+              <div class="form__group">
+                <label class="form__label" for="contact-name"
+                  >Contact name</label
+                >
+                <input
+                  type="text"
+                  id="contact-name"
+                  class="form__input"
+                  placeholder="Your full name"
+                  required
+                />
+              </div>
+              <div class="form__group">
+                <label class="form__label" for="contact-phone"
+                  >Phone number</label
+                >
+                <div class="form__input-group">
+                  <!-- <span class="form__input-prefix">+251</span> -->
+                  <input
+                    type="tel"
+                    id="contact-phone"
+                    class="form__input"
+                    placeholder="911234567"
+                    pattern="[0-9]{9}"
+                    maxlength="9"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <div class="post-listing__actions">
+            <button type="button" class="btn btn--outline">
+              Save as draft
+            </button>
+            <button type="submit" class="btn btn--primary">
+              Publish listing
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+
+    <footer class="section-footer">
+      <div class="footer__content">
+        <div class="footer__logo">
+          <img
+            class="footer-logo"
+            src="./img/logos/betoch-wordmark.svg"
+            alt="BETOCH"
+          />
+        </div>
+      </div>
+      <div class="footer__meta">
+        <ul class="footer__list">
+          <li class="footer__item">© 2024 - 2026 BETOCH plc.</li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger-btn");
+      const nav = document.getElementById("main-nav");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

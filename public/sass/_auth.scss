@@ -1,0 +1,98 @@
+.auth {
+  grid-column: full-start / full-end;
+  min-height: calc(100vh - 8rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 2rem;
+  background:
+    linear-gradient(rgba($color-primary-dark, 0.6), rgba($color-primary, 0.4)),
+    url("../img/gal-3.jpeg") center / cover no-repeat;
+
+  &__card {
+    @extend .card;
+    width: 100%;
+    max-width: 46rem;
+    padding: 4rem;
+  }
+
+  &__logo {
+    display: block;
+    width: 16rem;
+    margin: 0 auto 2rem;
+  }
+
+  &__title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    font-style: italic;
+    text-align: center;
+    color: $color-primary-dark;
+    margin-bottom: 0.6rem;
+  }
+
+  &__subtitle {
+    font-size: 1.5rem;
+    text-align: center;
+    color: $color-muted;
+    margin-bottom: 3rem;
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    font-size: 1.3rem;
+    color: $color-muted;
+
+    &::before,
+    &::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background-color: $color-line;
+    }
+  }
+
+  &__footer-text {
+    text-align: center;
+    font-size: 1.4rem;
+    color: $color-muted;
+    margin-top: 2rem;
+
+    a {
+      color: $color-primary;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__tabs {
+    display: flex;
+    margin-bottom: 2.4rem;
+    border-bottom: 1px solid $color-line;
+  }
+
+  &__tab {
+    flex: 1;
+    padding: 1rem;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    color: $color-muted;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+
+    &--active,
+    &:hover {
+      color: $color-primary;
+      border-bottom-color: $color-primary;
+    }
+  }
+}

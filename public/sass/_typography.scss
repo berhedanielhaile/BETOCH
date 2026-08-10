@@ -1,0 +1,97 @@
+// ── Mobile-first typography defaults ───────────────────────────────
+.heading {
+  &__primary {
+    font-size: 2.8rem;
+    text-align: center;
+    font-weight: 300;
+    text-transform: capitalize;
+    text-decoration: wavy;
+    color: $color-bg;
+    font-style: italic;
+    font-family: $font-primary;
+    padding-top: 1rem;
+  }
+
+  &__secondary {
+    font-size: 2.2rem;
+    text-align: center;
+    font-weight: 500;
+    text-transform: capitalize;
+    text-decoration: wavy;
+    color: $color-ink;
+    font-style: italic;
+    font-family: $font-primary;
+    padding-top: 1rem;
+  }
+
+  &__teritiary {
+    font-size: 1.6rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-decoration: wavy;
+    color: $color-ink;
+    font-family: $font-primary;
+    padding-top: 1rem;
+  }
+
+  &__forth {
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-decoration: wavy;
+    color: $color-accent-blue;
+    font-family: $font-primary;
+  }
+}
+
+// ── 600px ──────────────────────────────────────────────────────────
+@media (min-width: $bp-small) {
+  .heading {
+    &__primary {
+      font-size: 3.6rem;
+    }
+
+    &__secondary {
+      font-size: 2.6rem;
+    }
+  }
+}
+
+// ── 800px ──────────────────────────────────────────────────────────
+@media (min-width: $bp-medium) {
+  .heading {
+    &__primary {
+      font-size: 4.8rem;
+      padding-top: 2rem;
+    }
+
+    &__secondary {
+      font-size: 3.2rem;
+      padding-top: 2rem;
+    }
+
+    &__teritiary {
+      padding-top: 2rem;
+    }
+  }
+}
+
+// ── 1000px+ ────────────────────────────────────────────────────────
+@media (min-width: $bp-large) {
+  .heading {
+    &__primary {
+      font-size: 6rem;
+      padding-top: 4rem;
+    }
+
+    &__secondary {
+      font-size: 4rem;
+      padding-top: 4rem;
+    }
+
+    &__teritiary {
+      font-size: 1.8rem;
+      padding-top: 4rem;
+    }
+  }
+}

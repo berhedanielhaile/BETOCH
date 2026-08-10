@@ -1,0 +1,9 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BETOCH location symbol</title>
+  <desc id="desc">A map pin with a traditional Ethiopian house inside.</desc>
+  <path d="M64 117S101 87 101 52C101 30.46 84.54 14 64 14C43.46 14 27 30.46 27 52C27 87 64 117 64 117Z" fill="#123C31"/>
+  <path d="M42 56C47 39 54 31 64 31C74 31 81 39 86 56H42Z" fill="#E6A93D"/>
+  <path d="M47 56H81V78H47V56Z" fill="#F7F1E6"/>
+  <path d="M59 78V68C59 64.69 61.69 62 65 62C68.31 62 71 64.69 71 68V78H59Z" fill="#123C31"/>
+  <path d="M42 56H86" stroke="#123C31" stroke-width="4" stroke-linecap="round"/>
+</svg>

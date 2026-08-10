@@ -1,0 +1,72 @@
+extends base 
+block content 
+  section.auth
+    .auth__card
+      a(href='homepage.html')
+        img.auth__logo(src='./img/logos/betoch-wordmark.svg' alt='BetLink logo')
+      nav.auth__tabs(aria-label='Authentication')
+        a.auth__tab(href='login.html') Login
+        a.auth__tab.auth__tab--active(href='/signup') Sign up
+      h1.auth__title Join BETOCH
+      p.auth__subtitle
+        | Create a free account to list properties or find your next home.
+      form#signup
+        .form__row
+          .form__group
+            label.form__label(for='first-name') First name
+            input#first-name.form__input(type='text' placeholder='Daniel' required='')
+          .form__group
+            label.form__label(for='last-name') Last name
+            input#last-name.form__input(type='text' placeholder='Mekonnen' required='')
+        .form__group
+          label.form__label(for='email') Email address
+          input#email.form__input(type='email' placeholder='you@example.com' required='')
+        .form__group
+          label.form__label(for='phone') Phone number
+          .form__phone-field(aria-label='Phone number input')
+            select#phone-country.form__phone-select(aria-label='Country code')
+              option(value='+251' selected) 🇪🇹 +251
+              option(value='+1') 🇺🇸 +1
+              option(value='+44') 🇬🇧 +44
+              option(value='+49') 🇩🇪 +49
+              option(value='+33') 🇫🇷 +33
+              option(value='+254') 🇰🇪 +254
+              option(value='+256') 🇺🇬 +256
+              option(value='+255') 🇹🇿 +255
+              option(value='+27') 🇿🇦 +27
+              option(value='+234') 🇳🇬 +234
+              option(value='+20') 🇪🇬 +20
+              option(value='+91') 🇮🇳 +91
+              option(value='+86') 🇨🇳 +86
+              option(value='+971') 🇦🇪 +971
+              option(value='+966') 🇸🇦 +966
+            input#phone.form__input.form__input--phone(
+              type='text'
+              inputmode='numeric'
+              pattern='[0-9]*'
+              maxlength='9'
+              placeholder='912345678'
+            )
+        .form__group
+          label.form__label(for='role') I am a
+          select#role.form__select(required='')
+            option(value='') Select role
+            option(value='landlord') Landlord / Owner
+            option(value='tenant') Tenant
+        .form__row
+          .form__group
+            label.form__label(for='password') Password
+            input#password.form__input(type='password' placeholder='Min. 8 characters' required='')
+          .form__group
+            label.form__label(for='confirm-password') Confirm password
+            input#confirm-password.form__input(type='password' placeholder='Repeat password' required='')
+        .form__group.form__checkbox
+          input#terms(type='checkbox' required='')
+          label(for='terms') I agree to the Terms &amp; Conditions and Privacy Policy
+        button.btn.btn--primary.btn--block(type='submit')
+          | Create account
+      p.auth__footer-text
+        | Already have an account? 
+        a(href='login.html') Sign in
+
+

@@ -1,0 +1,27 @@
+extends base 
+block content 
+  section.auth
+    .auth__card
+      a(href='/homepage')
+        img.auth__logo(src='/img/logos/betoch-wordmark.svg' alt='Betoch logo')
+      nav.auth__tabs(aria-label='Authentication')
+        a.auth__tab.auth__tab--active(href='/login') Login
+        a.auth__tab(href='/signup') Sign up
+      h1.auth__title Welcome back
+      p.auth__subtitle
+        | Sign in to manage your listings and connect with tenants.
+      form#login(type='submit')
+        .form__group
+          label.form__label(for='email') Email address
+          input#email.form__input(type='email' placeholder='you@example.com' required='')
+        .form__group
+          label.form__label(for='password') Password
+          input#password.form__input(type='password' placeholder='Enter your password' required='')
+        .form__group.form__checkbox
+          input#remember(type='checkbox')
+          label(for='remember') Keep me signed in
+        button.btn.btn--primary.btn--block(type='submit')
+          | Sign in
+      p.auth__footer-text
+        | Don&apos;t have an account?
+        a(href='/signup') Create one free

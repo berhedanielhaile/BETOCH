@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Josefin+Sans:300,400,400i|Nunito:300,300i"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="shortcut icon" href="css/favicon.svg" />
+    <title>3 Bed Condominium in Kasanchis | Betlink</title>
+  </head>
+  <body class="container container--page">
+    <header class="header">
+      <a href="homepage.html">
+        <img
+          class="header__logo"
+          src="./img/logos/betoch-wordmark.svg"
+          alt="BETOCH logo"
+        />
+      </a>
+
+      <!-- Hamburger Menu Button -->
+      <button
+        class="header__hamburger"
+        id="hamburger-btn"
+        aria-label="Toggle menu"
+      >
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+        <span class="header__hamburger-line"></span>
+      </button>
+
+      <nav class="header__nav" id="main-nav">
+        <a href="listings.html" class="header__nav--btn header__nav--browse">
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-search"></use>
+          </svg>
+          Browse Listings
+        </a>
+        <a
+          href="post-listing.html"
+          class="header__nav--btn header__nav--listing"
+        >
+          <svg class="header__nav--icon">
+            <use xlink:href="./css/icons-sprite.svg#icon-home"></use>
+          </svg>
+          Add Listing
+        </a>
+        <span class="header__nav--divider"></span>
+        <a href="login.html" class="header__nav--btn header__nav--login"
+          >Login</a
+        >
+        <a href="signup.html" class="header__nav--btn header__nav--signup"
+          >Sign Up</a
+        >
+      </nav>
+    </header>
+
+    <main class="page-main">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="homepage.html" class="breadcrumb__link">Home</a>
+        <span class="breadcrumb__sep">/</span>
+        <a href="listings.html" class="breadcrumb__link">Listings</a>
+        <span class="breadcrumb__sep">/</span>
+        <span class="breadcrumb__current">Kasanchis Condominium</span>
+      </nav>
+
+      <div class="listing-detail">
+        <div>
+          <div class="listing-detail__gallery">
+            <div class="listing-detail__gallery-main">
+              <img src="./img/home-img-1.jpg" alt="Living room view" />
+            </div>
+            <div class="listing-detail__gallery-thumb">
+              <img src="./img/gal-3.jpeg" alt="Kitchen" />
+            </div>
+            <div class="listing-detail__gallery-thumb">
+              <img src="./img/gal-2.jpeg" alt="Bedroom" />
+            </div>
+          </div>
+
+          <article class="listing-detail__content">
+            <div class="listing-detail__header">
+              <div>
+                <h1 class="listing-detail__title">
+                  3 Bed Condominium in Kasanchis
+                </h1>
+                <p class="listing-detail__location">Kasanchis, Addis Ababa</p>
+              </div>
+              <p class="listing-detail__price">£663 <span>/ month</span></p>
+            </div>
+
+            <div class="listing-detail__stats">
+              <div class="listing-detail__stat">
+                <svg class="listing-detail__stat-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bed"></use>
+                </svg>
+                3 Bedrooms
+              </div>
+              <div class="listing-detail__stat">
+                <svg class="listing-detail__stat-icon">
+                  <use xlink:href="./css/icons-sprite.svg#icon-bath"></use>
+                </svg>
+                3 Bathrooms
+              </div>
+              <div class="listing-detail__stat">Available now</div>
+            </div>
+
+            <h2 class="listing-detail__section-title">About this property</h2>
+            <p class="listing-detail__description">
+              Bright and spacious condominium in the heart of Kasanchis.
+              Recently renovated with modern finishes, secure parking, and
+              24-hour security. Walking distance to shops, restaurants, and
+              public transport. Ideal for families or professionals seeking a
+              quiet, well-connected neighbourhood.
+            </p>
+
+            <h2 class="listing-detail__section-title">Amenities</h2>
+            <ul class="listing-detail__amenities">
+              <li>Secure parking</li>
+              <li>24-hour security</li>
+              <li>Balcony</li>
+              <li>Water included</li>
+              <li>Elevator access</li>
+              <li>Backup generator</li>
+            </ul>
+          </article>
+        </div>
+
+        <aside class="listing-detail__sidebar">
+          <div class="listing-detail__agent">
+            <div class="listing-detail__agent-avatar">DM</div>
+            <div>
+              <p class="listing-detail__agent-name">Daniel M.</p>
+              <p class="listing-detail__agent-role">Verified landlord</p>
+            </div>
+          </div>
+          <div class="listing-detail__contact-actions">
+            <a href="#" class="btn btn--primary btn--block">Request viewing</a>
+            <a href="#" class="btn btn--outline btn--block">Send message</a>
+            <a href="listings.html" class="btn btn--secondary btn--block"
+              >Back to listings</a
+            >
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <footer class="section-footer">
+      <div class="footer__content">
+        <div class="footer__logo">
+          <img
+            class="footer-logo"
+            src="./img/logos/betoch-wordmark.svg"
+            alt="BETOCH"
+          />
+        </div>
+      </div>
+      <div class="footer__meta">
+        <ul class="footer__list">
+          <li class="footer__item">© 2024 - 2026 BETOCH plc.</li>
+        </ul>
+      </div>
+    </footer>
+
+    <script>
+      // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger-btn");
+      const nav = document.getElementById("main-nav");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        nav.classList.toggle("active");
+      });
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+          hamburger.classList.remove("active");
+          nav.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>

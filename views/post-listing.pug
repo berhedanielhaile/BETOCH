@@ -1,0 +1,165 @@
+extends base
+block content 
+  section.page-hero
+    .page-hero__inner
+      h1.page-hero__title Post your rental property
+      p.page-hero__subtitle
+        | 100% free advertising. No hidden fees. Reach thousands of verified
+        | tenants across Addis Ababa.
+  main.page-main
+    nav.breadcrumb(aria-label='Breadcrumb')
+      a.breadcrumb__link(href='/homepage') Home
+      span.breadcrumb__sep /
+      a.breadcrumb__link(href='/dashboard') Dashboard
+      span.breadcrumb__sep /
+      span.breadcrumb__current Post listing
+    .post-listing
+      .post-listing__intro
+        h2 Tell us about your property
+        p
+          | Fill in the details below. You can save as a draft and publish when
+          | you&apos;re ready.
+      form#post.post-listing__form(type='submit')
+        section.post-listing__section
+          h3.post-listing__section-title Basic details
+          p.post-listing__section-desc
+            | Start with the property type, location, and monthly rent.
+          .form__group
+            label.form__label(for='title') Listing title
+            input#title.form__input(type='text', name='title' placeholder='e.g. 3 Bed Condominium in Kasanchis' required='')
+          .form__row
+            .form__group
+              label.form__label(for='property-type') Property type
+              select#property-type.form__select(required='',name='type')
+                option(value='') Select type
+                option Apartment
+                option Condominium
+                option Studio
+                option Room shared
+                option House
+            .form__group
+              label.form__label(for='rent') Monthly rent (ETB)
+              input#rent.form__input(type='number' placeholder='15000' required='', name='rent')
+          .form__row
+            .form__group
+              label.form__label(for='city') City
+              input#city.form__input(type='text' value='Addis Ababa' required='',name='city')
+            .form__group
+              label.form__label(for='subcity') Subcity
+              select#subcity.form__select(required='')
+                option(value='') Select subcity
+                option(value='Arada') Arada
+                option(value='Akaki Kality') Akaki Kality
+                option(value='Bole') Bole
+                option(value='Gulele') Gulele
+                option(value='Kirkos') Kirkos
+                option(value='Kolfe Keranio') Kolfe Keranio
+                option(value='Lideta') Lideta
+                option(value='Nifas Silk') Nifas Silk
+                option(value='Yeka') Yeka
+          .form__row
+            .form__group
+              label.form__label(for='woreda') Woreda
+              input#woreda.form__input(type='text' placeholder='e.g. Woreda 01' required='')
+            .form__group
+              label.form__label(for='kebele') Kebele
+              input#kebele.form__input(type='text' placeholder='e.g. Kebele 01' required='')
+        section.post-listing__section
+          h3.post-listing__section-title Property specs
+          p.post-listing__section-desc
+            | Help tenants understand the size and layout.
+          .form__row
+            .form__group
+              label.form__label(for='bedrooms') Bedrooms
+              select#bedrooms.form__select(required='')
+                option(value='') Select
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5+
+            .form__group
+              label.form__label(for='bathrooms') Bathrooms
+              select#bathrooms.form__select(required='')
+                option(value='') Select
+                option 1
+                option 2
+                option 3
+                option 4+
+          .form__group
+            label.form__label(for='description') Description
+            textarea#description.form__textarea(placeholder='Describe the property, neighbourhood, and what makes it special...' required='')
+            p.form__hint Minimum 50 characters recommended.
+        section.post-listing__section
+          h3.post-listing__section-title Photos
+          p.post-listing__section-desc
+            | Upload clear photos of each room. Listings with 5+ photos get 3&times;
+            | more views.
+          .post-listing__upload
+            svg.post-listing__upload-icon
+              use(xlink:href='./css/icons-sprite.svg#icon-search')
+            p.post-listing__upload-text
+              | Drag &amp; drop photos here, or click to browse
+            p.post-listing__upload-hint
+              | JPG or PNG, up to 10 MB each. Max 12 photos.
+        section.post-listing__section
+          h3.post-listing__section-title Video (Optional)
+          p.post-listing__section-desc
+            | Add a video tour to showcase your property. Maximum 30 seconds.
+          .post-listing__upload
+            svg.post-listing__upload-icon
+              use(xlink:href='./css/icons-sprite.svg#icon-search')
+            p.post-listing__upload-text
+              | Drag &amp; drop video here, or click to browse
+            p.post-listing__upload-hint
+              | MP4, WebM, or MOV. Max 30 seconds, up to 50 MB.
+        section.post-listing__section
+          h3.post-listing__section-title Amenities
+          p.post-listing__section-desc
+            | Select everything that&apos;s included with the rental.
+          .post-listing__amenities-grid
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='parking')
+              |                 Secure parking
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='security')
+              |                 24-hour security
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='balcony')
+              |                 Balcony
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='water')
+              |                 Water included
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='elevator')
+              |                 Elevator
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='generator')
+              |                 Backup generator
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='furnished')
+              |                 Furnished
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='wifi')
+              |                 Wi-Fi included
+            label.form__checkbox
+              input(type='checkbox' name='amenity' value='pets')
+              |                 Pets allowed
+        section.post-listing__section
+          h3.post-listing__section-title Contact details
+          p.post-listing__section-desc
+            | Tenants will use this to reach you about viewings.
+          .form__row
+            .form__group
+              label.form__label(for='contact-name') Contact name
+              input#contact-name.form__input(type='text' placeholder='Your full name' required='' value=`${user.name}`)
+            .form__group
+              label.form__label(for='contact-phone') Phone number
+              .form__input-group
+                // <span class="form__input-prefix">+251</span>
+                input#contact-phone.form__input(type='tel' placeholder='911234567' pattern='[0-9]{9}' maxlength='9' required='' value=`${user.phoneNumber? user.phoneNumber: ''}`)
+        .post-listing__actions
+          button.btn.btn--outline(type='button')
+            | Save as draft
+          button.btn.btn--primary(type='submit')
+            | Publish listing

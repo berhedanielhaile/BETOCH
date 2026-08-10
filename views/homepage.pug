@@ -1,0 +1,170 @@
+extends base
+block content 
+  section.section-hero
+    .hero
+      .hero__badge &#x1F3E0; No Middleman &bull; No Brokerage Fees
+      h1.heading__primary Rent Direct, Save More
+      p.hero__description
+        | Connect directly with landlords and tenants. Skip the middleman, avoid
+        | brokerage fees, and keep more money in your pocket. The smarter,
+        | fairer way to rent in Ethiopia.
+      .hero__search
+        form#search-form.hero__search--form(type='submit')
+          svg.hero__location--icon
+            use(xlink:href='./css/icons-sprite.svg#icon-location')
+          input#search-input.hero__search--input(type='text' name='location.subcity' placeholder='Enter a location to search (e.g., Bole, kirkos, Gerji)')
+          button.hero__search--btn(type='submit')
+            svg.hero__search--icon
+              use(xlink:href='./css/icons-sprite.svg#icon-search')
+        p.hero__search--description
+          | &#x1F389; Join 24,000+ Ethiopians renting smarter with BETOCH
+  section.section-how
+    h2.heading__secondary
+      | Make renting fairer, safer and cheaper for everyone
+    .how
+      h3.heading__teritiary.how__heading
+        | Built for Landlords &amp; Tenants
+      .how__landlords
+        .how__landlords--text
+          h4.heading__forth For Landlords
+          h3.heading__teritiary.heading__teritiary--landlords
+            | Post Your Rental Property - No Commission
+          p.how__description
+            | List your property directly to thousands of verified tenants. No
+            | middleman taking a cut, no commission fees, no hidden charges. You
+            | stay in control and keep 100% of your rental income.
+          ul.how__list
+            li 100% Free Advertising - No Commission
+            li No Hidden Fees or Brokerage Charges
+            li Direct Contact with Tenants
+            li No Credit Card Required to Start
+          a.how__button(href='/post-listing') Post Property Free
+        .how__landlords--img
+          img(src='./img/image-landlords.jpg' alt='Landlord posting property')
+      .how__tenants
+        .how__tenants--img
+          img(src='/img/image-tenants.jpg' alt='Tenant searching for home')
+        .how__tenants--text
+          h4.heading__forth For Tenants
+          h3.heading__teritiary.heading__teritiary--tenants
+            | Find Your Next Home - Zero Brokerage Fees
+          p.how__description
+            | Browse verified listings and connect directly with landlords. No
+            | broker fees, no admin charges, no middleman markup. Save thousands
+            | of birr on every rental.
+          ul.how__list
+            li Zero Brokerage &amp; Admin Fees
+            li Direct Communication with Landlords
+            li Only Active, Verified Listings
+            li Save Money on Every Rental
+          a.how__button(href='/property-listings') Search Properties
+  section.section-features
+    .features__header
+      div
+        h3.heading__teritiary.feature__teritiary
+          | Featured Properties
+        h2.heading__secondary.feature__secondary
+          | Available properties near you
+    .feature__container
+      button#scroll-left.features__overlay-btn.features__overlay-btn--left(aria-label='Scroll left')
+        svg.features__scroll-icon
+          use(xlink:href='/css/icons-sprite.svg#icon-chevron-left')
+      #feature-scroll.feature
+        each property,i in properties
+          a.feature__card(href=`/${property.slug}` style='text-decoration: none;')
+            img.feature__card--img(src=`/img/properties/${property.photos[1] || property.photos[0] || 'property-1-main.jpg'}` alt=`${property.title}` onerror="this.src='/img/properties/property-1-main.jpg'")
+            .feature__card--details
+              .feature__card--price-box
+                span.feature__card--currency ETB
+                span.feature__card--price=property.rent
+                span.feature__card--period /mo
+              .feature__card--description= property.title
+              .feature__card--location
+                svg.feature__card--location-icon
+                  use(xlink:href='/css/icons-sprite.svg#icon-location')
+                |            #{property.location.subcity}, #{property.location.city}
+              .feature__card--home
+                span.feature__card--numbedroom=property.bedroom
+                svg.feature__card--icon
+                  use(xlink:href='/css/icons-sprite.svg#icon-bed')
+                span.feature__card--numshower=property.bathroom
+                svg.feature__card--icon
+                  use(xlink:href='/css/icons-sprite.svg#icon-bath')
+        button#scroll-right.features__overlay-btn.features__overlay-btn--right(aria-label='Scroll right')
+          svg.features__scroll-icon
+            use(xlink:href='./css/icons-sprite.svg#icon-chevron-right')
+  section.section-testimonials
+    .testimonials__header
+      h3.heading__teritiary.testimonials__teritiary
+        | What Our Users Say
+      h2.heading__secondary.testimonials__secondary
+        | Real Stories from Real People
+      p.testimonials__intro
+        | Thousands of Ethiopians are already saving money and time by renting
+        | directly through BETOCH
+    .testimonials__container
+      button#testimonials-scroll-left.testimonials__overlay-btn.testimonials__overlay-btn--left(aria-label='Scroll testimonials left')
+        svg.features__scroll-icon
+          use(xlink:href='./css/icons-sprite.svg#icon-chevron-left')
+      #testimonials-scroll.testimonials-scroll
+        .testimonial__card.testimonial__card--landlord
+          .testimonial__rating &starf;&starf;&starf;&starf;&starf;
+          p.testimonial__text
+            | I saved over 50,000 birr in broker fees by listing my apartment
+            | directly on BETOCH. Found a great tenant in just 2 weeks. No
+            | middleman, no hassle!
+          .testimonial__author
+            .testimonial__avatar.testimonial__avatar--clay AM
+            .testimonial__info
+              p.testimonial__name Abebe Mulugeta
+              p.testimonial__role Landlord, Bole
+        .testimonial__card.testimonial__card--tenant
+          .testimonial__rating &starf;&starf;&starf;&starf;&starf;
+          p.testimonial__text
+            | Finally, a platform where I can talk directly to landlords! No more
+            | paying brokers thousands of birr. BETOCH made finding my apartment
+            | so easy and affordable.
+          .testimonial__author
+            .testimonial__avatar.testimonial__avatar--blue ST
+            .testimonial__info
+              p.testimonial__name Sara Tadesse
+              p.testimonial__role Tenant, Gerji
+        .testimonial__card.testimonial__card--landlord
+          .testimonial__rating &starf;&starf;&starf;&starf;&starf;
+          p.testimonial__text
+            | As a property owner with multiple units, BETOCH has been a
+            | game-changer. I manage everything myself now and keep 100% of my
+            | rental income. Highly recommended!
+          .testimonial__author
+            .testimonial__avatar.testimonial__avatar--teal DK
+            .testimonial__info
+              p.testimonial__name Daniel Kebede
+              p.testimonial__role Landlord, Kazanchis
+      button#testimonials-scroll-right.testimonials__overlay-btn.testimonials__overlay-btn--right(aria-label='Scroll testimonials right')
+        svg.features__scroll-icon
+          use(xlink:href='./css/icons-sprite.svg#icon-chevron-right')
+  section.section-stats
+    .stats__container
+      .stats__grid
+        .stats__item
+          .stats__number 24K+
+          .stats__label Active Users
+        .stats__item
+          .stats__number 5K+
+          .stats__label Properties Listed
+        .stats__item
+          .stats__number 2M+
+          .stats__label Birr Saved
+        .stats__item
+          .stats__number 98%
+          .stats__label Satisfaction Rate
+  section.section-cta
+    .cta__container
+      h2.cta__title Ready to Start Saving?
+      p.cta__description
+        | Join thousands of Ethiopians who are already renting smarter. No brokerage fees, no middleman, just direct connections.
+      .cta__buttons
+        a.cta__button.cta__button--primary(href='/property-listings') Browse Properties
+        a.cta__button.cta__button--secondary(href='/post-listing') List Your Property
+
+

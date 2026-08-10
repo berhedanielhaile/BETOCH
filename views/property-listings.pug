@@ -1,0 +1,80 @@
+extends base
+block content 
+  section.page-hero
+    .page-hero__inner
+      h1.page-hero__title Find your next home
+      p.page-hero__subtitle
+        | Browse verified rental properties across Addis Ababa &mdash; no admin fees,
+        | no ghost listings.
+  main.page-main
+    nav.breadcrumb(aria-label='Breadcrumb')
+      a.breadcrumb__link(href='/') Home
+      span.breadcrumb__sep /
+      span.breadcrumb__current Listings
+    .listings
+      aside.listings__filters
+        button.listings__filter-toggle(type='button' id='filter-toggle')
+          span Filter Results
+          svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round')
+            polygon(points='22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3')
+        .listings__filters-content(id='filters-content')
+          h2.listings__filters-title Filter results
+          form#filterProperties(type='submit')
+            .form__group
+              label.form__label(for='location') Location
+              input#location.form__input(name='location' type='text' placeholder='e.g. Bole, Kasanchis')
+            .form__group
+              label.form__label(for='type') Property type
+              select#type.form__select(name='type')
+                option(value='') All types
+                option Apartment
+                option Condominium
+                option Studio
+                option Room shared
+            .form__group
+              label.form__label(for='min-price') Min price (&pound;)
+              input#min-price.form__input(name='min-price' type='number' placeholder='400')
+            .form__group
+              label.form__label(for='max-price') Max price (&pound;)
+              input#max-price.form__input(name='max-price' type='number' placeholder='1500')
+            .form__group
+              label.form__label(for='bedrooms') Bedrooms
+              select#bedrooms.form__select(name='bedrooms')
+                option(value='') Any
+                option 1+
+                option 2+
+                option 3+
+                option 4+
+            button.btn.btn--primary.btn--block(type='submit')
+              | Apply filters
+      div
+        .listings__results-header
+          p.listings__count Showing #{properties.length} properties in Addis Ababa
+          span#filter-spinner(style='display:none') Loading...
+          .listings__sort
+            label(for='sort') Sort by
+            select#sort(name='sort')
+              option(value='-createdAt') Newest first
+              option(value='rent') Price: low to high
+              option(value='-rent') Price: high to low
+        .listings__grid
+          each property,i in properties 
+            a.listing-card(href=`/${property.slug}`)
+              .listing-card__img-wrap
+                img.listing-card__img(src=`/img/properties/${property.photos[1] || property.photos[0] || 'property-1-main.jpg'}` alt=property.title onerror="this.src='/img/properties/property-1-main.jpg'")
+                span.listing-card__tag=property.type
+              .listing-card__body
+                p.listing-card__price
+                  | &pound; #{property.rent} 
+                  span / month
+                p.listing-card__type=property.type
+                p.listing-card__location=`${property.location.subcity}, ${property.location.city}`
+                .listing-card__meta
+                  span.listing-card__meta-item
+                    | #{property.bedroom}
+                    svg.listing-card__icon
+                      use(xlink:href='/css/icons-sprite.svg#icon-bed')
+                  span.listing-card__meta-item
+                    | #{property.bathroom}
+                    svg.listing-card__icon
+                      use(xlink:href='/css/icons-sprite.svg#icon-bath')

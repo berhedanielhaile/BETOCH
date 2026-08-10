@@ -1,0 +1,11 @@
+<svg width="128" height="128" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">BETOCH key symbol</title>
+  <desc id="desc">Traditional house roof with a key for direct renting.</desc>
+  <rect x="14" y="18" width="100" height="92" rx="24" fill="#F7F1E6"/>
+  <path d="M28 58C35 35 48 24 64 24C80 24 93 35 100 58H28Z" fill="#123C31"/>
+  <path d="M36 58H92V96H36V58Z" fill="#8B4A2F"/>
+  <path d="M49 96V78C49 70.82 54.82 65 62 65C69.18 65 75 70.82 75 78V96H49Z" fill="#F7F1E6"/>
+  <circle cx="81" cy="80" r="9" stroke="#E6A93D" stroke-width="6"/>
+  <path d="M88 80H104M98 80V88M93 80V86" stroke="#E6A93D" stroke-width="6" stroke-linecap="round"/>
+  <path d="M28 58H100" stroke="#E6A93D" stroke-width="5" stroke-linecap="round"/>
+</svg>

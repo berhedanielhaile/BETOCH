@@ -1,0 +1,250 @@
+/* BetLink brand colors */
+// COLOR VARIABLES
+$color-primary-dark: #062f2f;
+$color-primary: #00a896;
+$color-primary-light: #dff7ef;
+
+$color-accent-gold: #f4b740;
+$color-accent-clay: #d65a31;
+$color-accent-blue: #2f80ed;
+
+$color-ink: #17202a;
+$color-text: #24313f;
+$color-muted: #667085;
+$color-line: #d8e2e7;
+$color-bg: #f7faf9;
+$color-surface: #ffffff;
+
+$color-success: #247a4d;
+$color-warning: #a15c00;
+$color-danger: #b42318;
+
+$shadow-soft: 0 12px 30px rgba(23, 32, 42, 0.1);
+$radius-sm: 6px;
+$radius-md: 8px;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+//bp
+$bp-largest: 75em; //1200px -
+$bp-large: 62.5em; //1000px
+$bp-medium: 50em; //800px
+$bp-small: 37.5em; //600px
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  min-height: 100%;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-family: $font-primary;
+  font-weight: 300;
+  line-height: 1.6;
+  color: $color-text;
+}
+
+.page-main {
+  flex: 1;
+}
+
+// ── Mobile-first defaults ──────────────────────────────────────────
+.container {
+  display: grid;
+  grid-auto-rows: min-content;
+  grid-template-columns:
+    [full-start] minmax(1.5rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 1fr) [col-end])
+    [center-end] minmax(1.5rem, 1fr) [full-end];
+}
+
+.section-hero {
+  padding: 3rem 1.5rem;
+  grid-column: full-start / full-end;
+  background:
+    linear-gradient(135deg, rgba(6, 47, 47, 0.85) 0%, rgba(0, 168, 150, 0.75) 50%, rgba(0, 168, 150, 0.6) 100%),
+    url('../img/gal-3.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 35vh;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.section-how {
+  padding: 3rem 1.5rem;
+  grid-column: full-start / full-end;
+  background-color: $color-bg;
+}
+
+.section-features {
+  padding: 6rem 1.5rem;
+  margin: 0;
+  grid-column: full-start / full-end;
+  background: linear-gradient(180deg, $color-surface 0%, #f8fbfb 100%);
+}
+
+.section-testimonials {
+  padding: 6rem 1.5rem;
+  grid-column: full-start / full-end;
+  background: linear-gradient(180deg, #f8fbfb 0%, $color-surface 100%);
+}
+
+.section-stats {
+  padding: 6rem 1.5rem;
+  grid-column: full-start / full-end;
+  background: linear-gradient(135deg, $color-primary-dark 0%, #0a3d3d 100%);
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 30% 50%, rgba($color-primary, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+  }
+}
+
+.section-cta {
+  padding: 8rem 1.5rem;
+  grid-column: full-start / full-end;
+  background: linear-gradient(135deg, $color-primary 0%, #007f72 100%);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
+
+.section-footer {
+  grid-column: full-start / full-end;
+  padding: 5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, $color-primary-dark 0%, #0a3d3d 100%);
+}
+
+// ── 600px  (small → medium) ────────────────────────────────────────
+@media (min-width: $bp-small) {
+  .container {
+    grid-template-columns:
+      [full-start] minmax(2rem, 1fr)
+      [center-start] repeat(8, [col-start] minmax(min-content, 8rem) [col-end])
+      [center-end] minmax(2rem, 1fr) [full-end];
+  }
+
+  .section-hero {
+    padding: 4rem 2rem;
+    min-height: 35vh;
+  }
+
+  .section-how,
+  .section-features,
+  .section-testimonials,
+  .section-footer {
+    padding: 4rem 2rem;
+  }
+
+  .section-features {
+    margin: 0;
+  }
+}
+
+// ── 800px  (medium → large) ────────────────────────────────────────
+@media (min-width: $bp-medium) {
+  .section-features {
+    margin: 0;
+    padding: 6rem 2rem;
+  }
+
+  .section-testimonials {
+    padding: 6rem 3rem;
+  }
+}
+
+// ── 1000px (large → largest) ───────────────────────────────────────
+@media (min-width: $bp-large) {
+  .container {
+    grid-template-columns:
+      [full-start] minmax(4rem, 1fr)
+      [center-start] repeat(8, [col-start] minmax(min-content, 12rem) [col-end])
+      [center-end] minmax(4rem, 1fr) [full-end];
+  }
+
+  .section-hero,
+  .section-how,
+  .section-features,
+  .section-testimonials,
+  .section-footer {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+// ── 1200px+ (largest — full desktop) ───────────────────────────────
+@media (min-width: $bp-largest) {
+  .container {
+    grid-template-columns:
+      [full-start] minmax(6rem, 1fr)
+      [center-start] repeat(8, [col-start] minmax(min-content, 14rem) [col-end])
+      [center-end] minmax(6rem, 1fr) [full-end];
+  }
+
+  .section-hero {
+    padding: 5rem;
+    min-height: 40vh;
+  }
+
+  .section-how {
+    padding: 5rem;
+  }
+
+  .section-features {
+    padding: 6rem;
+    margin: 0;
+  }
+
+  .section-testimonials {
+    padding: 6rem 5rem;
+  }
+
+  .section-footer {
+    padding: 5rem;
+  }
+}

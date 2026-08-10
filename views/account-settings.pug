@@ -1,0 +1,82 @@
+extends base
+block content 
+  section.page-hero
+    .page-hero__inner
+      h1.page-hero__title Account Settings
+      p.page-hero__subtitle Manage your profile, security and notification preferences.
+  main.page-main
+    .dashboard
+      aside.dashboard__sidebar
+        ul.dashboard__nav
+          li.dashboard__nav-item
+            a(href='/dashboard') Overview
+          if user.role === 'landlord'
+            li.dashboard__nav-item
+              a(href='/post-listing') Post new listing
+            li.dashboard__nav-item
+              a(href='/my-listings') My listings
+            li.dashboard__nav-item
+              a(href='/enquiries') Enquiries
+          li.dashboard__nav-item
+            a.dashboard__nav-link--active(href='/account-settings') Account settings
+      div
+        .dashboard__panel
+          .dashboard__panel-header
+            h3.dashboard__panel-title Profile Information
+          form
+            .form__group
+              label.form__label Full Name
+              input.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)
+            .form__group
+              label.form__label Email Address
+              input.form__input(type='email' name='email' value=user.email placeholder='your@email.com' autocomplete='email' required)
+            .form__group
+              label.form__label Phone Number
+              input.form__input(type='tel' name='phoneNumber' value=user.phoneNumber placeholder='+251 9X XXX XXXX' autocomplete='tel')
+            .form__group
+              button.btn.btn--primary(type='submit' formaction='/api/v1/user/updateMe') Save Changes
+
+        .dashboard__panel
+          .dashboard__panel-header
+            h3.dashboard__panel-title Security
+          form
+            .form__group
+              label.form__label Current Password
+              input.form__input(type='password' name='passwordCurrent' placeholder='Enter current password' autocomplete='current-password' required)
+            .form__group
+              label.form__label New Password
+              input.form__input(type='password' name='password' placeholder='Enter new password' autocomplete='new-password' required)
+            .form__group
+              label.form__label Confirm Password
+              input.form__input(type='password' name='passwordConfirm' placeholder='Confirm new password' autocomplete='new-password' required)
+            .form__group
+              button.btn.btn--primary(type='submit' formaction='/api/v1/user/updatePassword') Update Password
+
+        .dashboard__panel
+          .dashboard__panel-header
+            h3.dashboard__panel-title Notifications
+          form
+            .form__checkbox
+              input(type='checkbox' name='notifEnquiries' id='notifEnquiries' checked)
+              label(for='notifEnquiries') Email me when I receive new property enquiries
+            .form__checkbox
+              input(type='checkbox' name='notifAccount' id='notifAccount' checked)
+              label(for='notifAccount') Email me when my profile or password is updated
+            .form__group
+              button.btn.btn--primary(type='submit' formaction='/api/v1/user/updateMe') Save Preferences
+
+        .dashboard__panel(style='background: #fef2f2; border: 1px solid rgba(239, 68, 68, 0.2);')
+          .dashboard__panel-header
+            h3.dashboard__panel-title(style='color: #dc2626;') Danger Zone
+          p(style='margin-bottom: 2rem; color: $color-muted;') Deleting your account will remove all your listings, enquiries, and personal data. This action cannot be undone.
+          button.btn.btn--danger(type='button' id='delete-account-btn') Delete Account
+
+  script.
+    const deleteBtn = document.getElementById('delete-account-btn');
+    if (deleteBtn) {
+      deleteBtn.addEventListener('click', () => {
+        if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+          window.location.href = '/api/v1/user/deleteMe';
+        }
+      });
+    }
