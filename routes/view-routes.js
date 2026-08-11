@@ -20,7 +20,6 @@ router.use(isLoggedIn);
 router.get('/login', showloginForm);
 router.get('/signup', showsignupForm);
 router.get('/', getHomePage);
-router.get('/browseProperties', getPropertyListings);
 router.get('/property-listings', getPropertyListings);
 
 router.get('/dashboard', showUserDashboard);

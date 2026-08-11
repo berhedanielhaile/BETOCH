@@ -1,4 +1,39 @@
+# Dependencies
 node_modules/
-*.env
-.DS_Store/
+package-lock.json
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Cache
 .cache/
+.cache/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build output
+public/css/style.comp.css
+public/css/style.prefix.css
+
+# Temporary files
+*.tmp
+*.temp
