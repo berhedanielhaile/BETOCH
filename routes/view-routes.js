@@ -28,6 +28,7 @@ router.get('/my-listings', showMyListings);
 router.get('/enquiries', showEnquiriesPage);
 router.get('/account-settings', showAccountSettings);
 
-router.get(`/:slug`, getPropertyDetails);
+// Property slug route - must be last to avoid matching other routes
+router.get('/:slug([^/]+)', getPropertyDetails);
 
 module.exports = router;

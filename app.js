@@ -94,9 +94,9 @@ app.use('/api/v1/enquiries', enquiryRouter);
 
 //error handling middleware
 app.use((req, res, next) => {
-  // Ignore Chrome DevTools requests to reduce error logs
-  if (req.path.includes('.well-known')) {
-    return res.status(404).json({ status: 'fail', message: 'Not found' });
+  // Ignore Chrome DevTools and other automated requests to reduce error logs
+  if (req.path.includes('.well-known') || req.path.includes('bundle.js.map')) {
+    return res.status(404).end();
   }
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
