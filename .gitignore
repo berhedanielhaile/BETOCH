@@ -33,6 +33,7 @@ yarn-error.log*
 # Build output
 public/css/style.comp.css
 public/css/style.prefix.css
+public/js/bundle.js.map
 
 # Temporary files
 *.tmp

@@ -5,7 +5,7 @@ const AppError = require('../utils/AppError');
 
 exports.getHomePage = catchAsync(async (req, res, next) => {
   const properties = await Property.find();
-  if (!properties) return next(new AppError('there is no proprties for the specified catagories', 404));
+  if (!properties || properties.length === 0) return next(new AppError('No properties found', 404));
   res.status(200).render('homepage', {
     title: 'Rent Direct, Save More | No Middleman, No Brokerage Fees',
     properties,
@@ -13,7 +13,7 @@ exports.getHomePage = catchAsync(async (req, res, next) => {
 });
 exports.getPropertyListings = catchAsync(async (req, res, next) => {
   const properties = await Property.find();
-  if (!properties) return next(new AppError('there is no proprties for the specified catagories', 404));
+  if (!properties || properties.length === 0) return next(new AppError('No properties found', 404));
   res.status(200).render('property-listings', {
     title: 'Browse Properties',
     properties,
@@ -21,7 +21,7 @@ exports.getPropertyListings = catchAsync(async (req, res, next) => {
 });
 exports.getPropertyDetails = catchAsync(async (req, res, next) => {
   const property = await Property.findOne({ slug: req.params.slug }).populate('landlord');
-  if (!property) return next(new AppError('there is no property for the specified catagory', 404));
+  if (!property) return next(new AppError('Property not found', 404));
 
   let enquiry = null;
   if (req.user && req.user.role !== 'landlord') {
