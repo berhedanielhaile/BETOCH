@@ -8680,7 +8680,20 @@ const postProperty = async data => {
   }
 };
 exports.postProperty = postProperty;
-},{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"index.js":[function(require,module,exports) {
+},{"axios":"../../node_modules/axios/index.js","./alert":"alert.js"}],"updateUserData.js":[function(require,module,exports) {
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.updateUserData = void 0;
+/*eslint-disable*/
+const updateUserData = async data => {
+  const updatedUser = await axios.patch('/api/v1/user/updateMe', data);
+  console.log(updatedUser);
+};
+exports.updateUserData = updateUserData;
+},{}],"index.js":[function(require,module,exports) {
 "use strict";
 
 require("core-js/modules/es7.array.flat-map.js");
@@ -8699,6 +8712,9 @@ var _filterProperties = require("./filterProperties");
 require("./propertyDetail");
 require("./enquiries");
 var _postproperty = require("./postproperty");
+var _axios = _interopRequireDefault(require("axios"));
+var _updateUserData = require("./updateUserData");
+function _interopRequireDefault(e) { return e && e.__esModule ? e : { default: e }; }
 /* eslint-disable*/
 
 ////// DOM ELEMENTS
@@ -8724,6 +8740,7 @@ const searchBtn = document.getElementById('search-form');
 const searchInput = document.getElementById('search-input');
 const filterToggle = document.getElementById('filter-toggle');
 const filtersContent = document.getElementById('filters-content');
+const saveSettingsBtn = documnet.getElementById('userData');
 /////DElEGATION
 
 //menubar open and close
@@ -8851,6 +8868,21 @@ if (postForm) {
     (0, _postproperty.postProperty)(data);
   });
 }
+if (saveSettingsBtn) {
+  saveSettingsBtn.addEventListener('submit', async e => {
+    e.preventDefault();
+    const name = document.getElementById('userName').value;
+    const email = document.getElementById('userEmail').value;
+    const phoneNumber = document.getElementById('userPhone').value;
+    console.log('mk');
+    const data = {
+      name,
+      email,
+      phoneNumber
+    };
+    (0, _updateUserData.updateUserData)(data);
+  });
+}
 // Handle URL parameters on page load (for search from homepage)
 (0, _filterProperties.handleUrlParams)();
 
@@ -8915,7 +8947,7 @@ if (settingsNavLinks.length && settingsSections.length) {
   });
   onScroll();
 }
-},{"core-js/modules/es7.array.flat-map.js":"../../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.sort.js":"../../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es7.promise.finally.js":"../../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es7.symbol.async-iterator.js":"../../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es7.string.trim-left.js":"../../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right.js":"../../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/web.timers.js":"../../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate.js":"../../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable.js":"../../node_modules/core-js/modules/web.dom.iterable.js","./signup":"signup.js","./login":"login.js","./menuBar":"menuBar.js","./filterProperties":"filterProperties.js","./propertyDetail":"propertyDetail.js","./enquiries":"enquiries.js","./postproperty":"postproperty.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"core-js/modules/es7.array.flat-map.js":"../../node_modules/core-js/modules/es7.array.flat-map.js","core-js/modules/es6.array.sort.js":"../../node_modules/core-js/modules/es6.array.sort.js","core-js/modules/es7.promise.finally.js":"../../node_modules/core-js/modules/es7.promise.finally.js","core-js/modules/es7.symbol.async-iterator.js":"../../node_modules/core-js/modules/es7.symbol.async-iterator.js","core-js/modules/es7.string.trim-left.js":"../../node_modules/core-js/modules/es7.string.trim-left.js","core-js/modules/es7.string.trim-right.js":"../../node_modules/core-js/modules/es7.string.trim-right.js","core-js/modules/web.timers.js":"../../node_modules/core-js/modules/web.timers.js","core-js/modules/web.immediate.js":"../../node_modules/core-js/modules/web.immediate.js","core-js/modules/web.dom.iterable.js":"../../node_modules/core-js/modules/web.dom.iterable.js","./signup":"signup.js","./login":"login.js","./menuBar":"menuBar.js","./filterProperties":"filterProperties.js","./propertyDetail":"propertyDetail.js","./enquiries":"enquiries.js","./postproperty":"postproperty.js","axios":"../../node_modules/axios/index.js","./updateUserData":"updateUserData.js"}],"../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -8940,7 +8972,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49240" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "49268" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

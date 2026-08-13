@@ -1,10 +1,13 @@
+const multer = require('multer');
 const Property = require('../models/property-model');
 
 // const ApiFeatures = require('../utils/apiFeatures');
 // const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 const { deleteOne, updateOne, createOne, getOne, getAll } = require('./handler-factory');
-
+// exports.resizePhoto = catchAsync(async (req, res, next) => {
+//   const multerFilter = multer.filter;
+// });
 exports.getPropertyStats = catchAsync(async (req, res, next) => {
   const stats = await Property.aggregate([
     {

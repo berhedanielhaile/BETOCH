@@ -23,18 +23,18 @@ block content
         .dashboard__panel
           .dashboard__panel-header
             h3.dashboard__panel-title Profile Information
-          form
+          form#userData(type='submit')
             .form__group
               label.form__label Full Name
-              input.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)
+              input#userName.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)
             .form__group
               label.form__label Email Address
-              input.form__input(type='email' name='email' value=user.email placeholder='your@email.com' autocomplete='email' required)
+              input#userEmail.form__input(type='email' name='email' value=user.email placeholder='your@email.com' autocomplete='email' required)
             .form__group
               label.form__label Phone Number
-              input.form__input(type='tel' name='phoneNumber' value=user.phoneNumber placeholder='+251 9X XXX XXXX' autocomplete='tel')
+              input#userPhone.form__input(type='tel' name='phoneNumber' value=user.phoneNumber placeholder='+251 9X XXX XXXX' autocomplete='tel')
             .form__group
-              button.btn.btn--primary(type='submit' formaction='/api/v1/user/updateMe') Save Changes
+              button.btn.btn--primary(type='submit') Save Changes
 
         .dashboard__panel
           .dashboard__panel-header

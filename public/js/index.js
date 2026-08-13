@@ -8,6 +8,8 @@ import { applyFilters, buildFilteredFormData, handleUrlParams } from './filterPr
 import './propertyDetail';
 import './enquiries';
 import { postProperty } from './postproperty';
+import axios from 'axios';
+import { updateUserData } from './updateUserData';
 
 ////// DOM ELEMENTS
 const signupBtn = document.getElementById('signup');
@@ -39,6 +41,8 @@ const searchInput = document.getElementById('search-input');
 
 const filterToggle = document.getElementById('filter-toggle');
 const filtersContent = document.getElementById('filters-content');
+
+const saveSettingsBtn = documnet.getElementById('userData');
 /////DElEGATION
 
 //menubar open and close
@@ -169,6 +173,17 @@ if (postForm) {
     };
 
     postProperty(data);
+  });
+}
+if (saveSettingsBtn) {
+  saveSettingsBtn.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('userName').value;
+    const email = document.getElementById('userEmail').value;
+    const phoneNumber = document.getElementById('userPhone').value;
+    console.log('mk');
+    const data = { name, email, phoneNumber };
+    updateUserData(data);
   });
 }
 // Handle URL parameters on page load (for search from homepage)

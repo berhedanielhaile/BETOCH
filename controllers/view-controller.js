@@ -20,7 +20,13 @@ exports.getPropertyListings = catchAsync(async (req, res, next) => {
   });
 });
 exports.getPropertyDetails = catchAsync(async (req, res, next) => {
-  const property = await Property.findOne({ slug: req.params.slug }).populate('landlord');
+  // Skip property lookup if slug contains special characters or patterns
+  const slug = req.params.slug;
+  if (!slug || slug.includes('?') || slug.includes('&') || slug.includes('=')) {
+    return next(new AppError('Property not found', 404));
+  }
+  
+  const property = await Property.findOne({ slug }).populate('landlord');
   if (!property) return next(new AppError('Property not found', 404));
 
   let enquiry = null;
