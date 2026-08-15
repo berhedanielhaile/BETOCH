@@ -25,7 +25,7 @@ exports.getPropertyDetails = catchAsync(async (req, res, next) => {
   if (!slug || slug.includes('?') || slug.includes('&') || slug.includes('=')) {
     return next(new AppError('Property not found', 404));
   }
-  
+
   const property = await Property.findOne({ slug }).populate('landlord');
   if (!property) return next(new AppError('Property not found', 404));
 

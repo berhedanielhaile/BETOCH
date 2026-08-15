@@ -42,7 +42,7 @@ const searchInput = document.getElementById('search-input');
 const filterToggle = document.getElementById('filter-toggle');
 const filtersContent = document.getElementById('filters-content');
 
-const saveSettingsBtn = documnet.getElementById('userData');
+const saveSettingsBtn = document.getElementById('userData');
 /////DElEGATION
 
 //menubar open and close
