@@ -22,7 +22,7 @@ exports.updateOne = (Model) =>
         ),
       );
     const updatedDoc = await Model.findByIdAndUpdate(req.params.id, req.body, {
-      returnDocument: 'after',
+      new: true,
       runValidators: true,
     });
     if (!updatedDoc) return next(new AppError('There is no document with this id', 404));

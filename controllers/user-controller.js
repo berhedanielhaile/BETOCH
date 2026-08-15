@@ -11,15 +11,23 @@ const filterObj = (obj, ...allowedFields) => {
   return newObj;
 };
 exports.getMe = (req, res, next) => {
-  req.params.id = req.user.id;
+  req.params.id = req.user._id;
   next();
 };
 exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm)
     return next(new AppError('this route is not for password update,please use /updateMyPassword', 400));
+  
   const filteredBody = filterObj(req.body, 'name', 'email', 'phoneNumber', 'photo', 'bio', 'address');
 
-  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { returnDocument: 'after', runValidators: true });
+  const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, { 
+    new: true, 
+    runValidators: true 
+  });
+
+  if (!updatedUser) {
+    return next(new AppError('User not found', 404));
+  }
 
   res.status(200).json({
     status: 'success',
@@ -29,7 +37,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 });
 exports.deleteMe = catchAsync(async (req, res, next) => {
-  await User.findByIdAndUpdate(req.user.id, { active: false }, { returnDocument: 'after', runValidators: true });
+  await User.findByIdAndUpdate(req.user._id, { active: false }, { new: true, runValidators: true });
   res.status(204).json({
     status: 'success',
     data: null,
