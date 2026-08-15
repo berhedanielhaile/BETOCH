@@ -23,7 +23,7 @@ block content
         .dashboard__panel
           .dashboard__panel-header
             h3.dashboard__panel-title Profile Information
-          form#userData(type='submit')
+          form#userData(method='post' action='#')
             .form__group
               label.form__label Full Name
               input#userName.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)

@@ -30,9 +30,15 @@ const userSchema = new mongoose.Schema(
       sparse: true,
       validate: {
         validator: function (phone) {
-          return /^\+251\d{9}$/.test(phone);
+          if (!phone) return true; // Allow empty phone numbers
+          // Accept both formats: +251XXXXXXXXX or 251XXXXXXXXX or just 9 digits
+          const cleanPhone = phone.replace(/\D/g, ''); // Remove non-digits
+          if (cleanPhone.length === 9) return true; // Just 9 digits
+          if (cleanPhone.length === 12 && cleanPhone.startsWith('251')) return true; // 251XXXXXXXXX
+          if (cleanPhone.length === 13 && cleanPhone.startsWith('251')) return true; // +251XXXXXXXXX
+          return false;
         },
-        message: 'Phone number must start with +251 followed by 9 digits',
+        message: 'Phone number must be in format +251XXXXXXXXX or 251XXXXXXXXX or 9 digits',
       },
     },
     role: {

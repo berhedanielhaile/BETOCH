@@ -20,6 +20,11 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   
   const filteredBody = filterObj(req.body, 'name', 'email', 'phoneNumber', 'photo', 'bio', 'address');
 
+  // Handle empty phone number - remove it from update if empty
+  if (!filteredBody.phoneNumber || filteredBody.phoneNumber.trim() === '') {
+    delete filteredBody.phoneNumber;
+  }
+
   const updatedUser = await User.findByIdAndUpdate(req.user._id, filteredBody, { 
     new: true, 
     runValidators: true 
