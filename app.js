@@ -84,6 +84,14 @@ app.use(
 );
 //serving static files
 
+// Handle Chrome DevTools and other automated requests before routing
+app.use((req, res, next) => {
+  if (req.path.includes('.well-known') || req.path.includes('bundle.js.map')) {
+    return res.status(404).end();
+  }
+  next();
+});
+
 //(2 Routes
 
 app.use('/', viewRouter);
@@ -94,10 +102,6 @@ app.use('/api/v1/enquiries', enquiryRouter);
 
 //error handling middleware
 app.use((req, res, next) => {
-  // Ignore Chrome DevTools and other automated requests to reduce error logs
-  if (req.path.includes('.well-known') || req.path.includes('bundle.js.map')) {
-    return res.status(404).end();
-  }
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
 });
 
