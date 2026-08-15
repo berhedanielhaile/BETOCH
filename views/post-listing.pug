@@ -2,7 +2,7 @@ extends base
 block content 
   section.page-hero
     .page-hero__inner
-      h1.page-hero__title Post your rental property
+      h1.page-hero__title= property ? 'Edit your rental property' : 'Post your rental property'
       p.page-hero__subtitle
         | 100% free advertising. No hidden fees. Reach thousands of verified
         | tenants across Addis Ababa.
@@ -12,7 +12,7 @@ block content
       span.breadcrumb__sep /
       a.breadcrumb__link(href='/dashboard') Dashboard
       span.breadcrumb__sep /
-      span.breadcrumb__current Post listing
+      span.breadcrumb__current= property ? 'Edit listing' : 'Post listing'
     .post-listing
       .post-listing__intro
         h2 Tell us about your property
@@ -26,44 +26,44 @@ block content
             | Start with the property type, location, and monthly rent.
           .form__group
             label.form__label(for='title') Listing title
-            input#title.form__input(type='text', name='title' placeholder='e.g. 3 Bed Condominium in Kasanchis' required='')
+            input#title.form__input(type='text', name='title' placeholder='e.g. 3 Bed Condominium in Kasanchis' required='' value=property ? property.title : '')
           .form__row
             .form__group
               label.form__label(for='property-type') Property type
               select#property-type.form__select(required='',name='type')
                 option(value='') Select type
-                option Apartment
-                option Condominium
-                option Studio
-                option Room shared
-                option House
+                option(value='Apartment' selected=property && property.type === 'Apartment' ? 'selected' : '') Apartment
+                option(value='Condominium' selected=property && property.type === 'Condominium' ? 'selected' : '') Condominium
+                option(value='Studio' selected=property && property.type === 'Studio' ? 'selected' : '') Studio
+                option(value='Room shared' selected=property && property.type === 'Room shared' ? 'selected' : '') Room shared
+                option(value='House' selected=property && property.type === 'House' ? 'selected' : '') House
             .form__group
               label.form__label(for='rent') Monthly rent (ETB)
-              input#rent.form__input(type='number' placeholder='15000' required='', name='rent')
+              input#rent.form__input(type='number' placeholder='15000' required='', name='rent' value=property ? property.rent : '')
           .form__row
             .form__group
               label.form__label(for='city') City
-              input#city.form__input(type='text' value='Addis Ababa' required='',name='city')
+              input#city.form__input(type='text' value=property && property.location ? property.location.city : 'Addis Ababa' required='',name='city')
             .form__group
               label.form__label(for='subcity') Subcity
-              select#subcity.form__select(required='')
+              select#subcity.form__select(required='' name='subcity')
                 option(value='') Select subcity
-                option(value='Arada') Arada
-                option(value='Akaki Kality') Akaki Kality
-                option(value='Bole') Bole
-                option(value='Gulele') Gulele
-                option(value='Kirkos') Kirkos
-                option(value='Kolfe Keranio') Kolfe Keranio
-                option(value='Lideta') Lideta
-                option(value='Nifas Silk') Nifas Silk
-                option(value='Yeka') Yeka
+                option(value='Arada' selected=property && property.location && property.location.subcity === 'Arada' ? 'selected' : '') Arada
+                option(value='Akaki Kality' selected=property && property.location && property.location.subcity === 'Akaki Kality' ? 'selected' : '') Akaki Kality
+                option(value='Bole' selected=property && property.location && property.location.subcity === 'Bole' ? 'selected' : '') Bole
+                option(value='Gulele' selected=property && property.location && property.location.subcity === 'Gulele' ? 'selected' : '') Gulele
+                option(value='Kirkos' selected=property && property.location && property.location.subcity === 'Kirkos' ? 'selected' : '') Kirkos
+                option(value='Kolfe Keranio' selected=property && property.location && property.location.subcity === 'Kolfe Keranio' ? 'selected' : '') Kolfe Keranio
+                option(value='Lideta' selected=property && property.location && property.location.subcity === 'Lideta' ? 'selected' : '') Lideta
+                option(value='Nifas Silk' selected=property && property.location && property.location.subcity === 'Nifas Silk' ? 'selected' : '') Nifas Silk
+                option(value='Yeka' selected=property && property.location && property.location.subcity === 'Yeka' ? 'selected' : '') Yeka
           .form__row
             .form__group
               label.form__label(for='woreda') Woreda
-              input#woreda.form__input(type='text' placeholder='e.g. Woreda 01' required='')
+              input#woreda.form__input(type='text' placeholder='e.g. Woreda 01' required='' value=property && property.location ? property.location.woreda : '')
             .form__group
               label.form__label(for='kebele') Kebele
-              input#kebele.form__input(type='text' placeholder='e.g. Kebele 01' required='')
+              input#kebele.form__input(type='text' placeholder='e.g. Kebele 01' required='' value=property && property.location ? property.location.kebele : '')
         section.post-listing__section
           h3.post-listing__section-title Property specs
           p.post-listing__section-desc
@@ -71,24 +71,24 @@ block content
           .form__row
             .form__group
               label.form__label(for='bedrooms') Bedrooms
-              select#bedrooms.form__select(required='')
+              select#bedrooms.form__select(required='' name='bedroom')
                 option(value='') Select
-                option 1
-                option 2
-                option 3
-                option 4
-                option 5+
+                option(value='1' selected=property && property.bedroom === 1 ? 'selected' : '') 1
+                option(value='2' selected=property && property.bedroom === 2 ? 'selected' : '') 2
+                option(value='3' selected=property && property.bedroom === 3 ? 'selected' : '') 3
+                option(value='4' selected=property && property.bedroom === 4 ? 'selected' : '') 4
+                option(value='5' selected=property && property.bedroom === 5 ? 'selected' : '') 5+
             .form__group
               label.form__label(for='bathrooms') Bathrooms
-              select#bathrooms.form__select(required='')
+              select#bathrooms.form__select(required='' name='bathroom')
                 option(value='') Select
-                option 1
-                option 2
-                option 3
-                option 4+
+                option(value='1' selected=property && property.bathroom === 1 ? 'selected' : '') 1
+                option(value='2' selected=property && property.bathroom === 2 ? 'selected' : '') 2
+                option(value='3' selected=property && property.bathroom === 3 ? 'selected' : '') 3
+                option(value='4' selected=property && property.bathroom === 4 ? 'selected' : '') 4+
           .form__group
             label.form__label(for='description') Description
-            textarea#description.form__textarea(placeholder='Describe the property, neighbourhood, and what makes it special...' required='')
+            textarea#description.form__textarea(placeholder='Describe the property, neighbourhood, and what makes it special...' required='')=property ? property.description : ''
             p.form__hint Minimum 50 characters recommended.
         section.post-listing__section
           h3.post-listing__section-title Photos
@@ -119,31 +119,31 @@ block content
             | Select everything that&apos;s included with the rental.
           .post-listing__amenities-grid
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='parking')
+              input(type='checkbox' name='amenity' value='parking' checked=property && property.amenities && property.amenities.includes('parking') ? 'checked' : '')
               |                 Secure parking
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='security')
+              input(type='checkbox' name='amenity' value='security' checked=property && property.amenities && property.amenities.includes('security') ? 'checked' : '')
               |                 24-hour security
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='balcony')
+              input(type='checkbox' name='amenity' value='balcony' checked=property && property.amenities && property.amenities.includes('balcony') ? 'checked' : '')
               |                 Balcony
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='water')
+              input(type='checkbox' name='amenity' value='water' checked=property && property.amenities && property.amenities.includes('water') ? 'checked' : '')
               |                 Water included
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='elevator')
+              input(type='checkbox' name='amenity' value='elevator' checked=property && property.amenities && property.amenities.includes('elevator') ? 'checked' : '')
               |                 Elevator
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='generator')
+              input(type='checkbox' name='amenity' value='generator' checked=property && property.amenities && property.amenities.includes('generator') ? 'checked' : '')
               |                 Backup generator
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='furnished')
+              input(type='checkbox' name='amenity' value='furnished' checked=property && property.amenities && property.amenities.includes('furnished') ? 'checked' : '')
               |                 Furnished
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='wifi')
+              input(type='checkbox' name='amenity' value='wifi' checked=property && property.amenities && property.amenities.includes('wifi') ? 'checked' : '')
               |                 Wi-Fi included
             label.form__checkbox
-              input(type='checkbox' name='amenity' value='pets')
+              input(type='checkbox' name='amenity' value='pets' checked=property && property.amenities && property.amenities.includes('pets') ? 'checked' : '')
               |                 Pets allowed
         section.post-listing__section
           h3.post-listing__section-title Contact details
@@ -163,3 +163,41 @@ block content
             | Save as draft
           button.btn.btn--primary(type='submit')
             | Publish listing
+  script(type='module').
+    import { postProperty } from './js/postproperty.js';
+    
+    const form = document.getElementById('post');
+    const isEdit = #{isEdit ? 'true' : 'false'};
+    const propertyId = #{property ? `"${property._id}"` : 'null'};
+    
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData.entries());
+      
+      // Handle amenities as array
+      if (data.amenity) {
+        if (!Array.isArray(data.amenity)) {
+          data.amenity = [data.amenity];
+        }
+      } else {
+        data.amenity = [];
+      }
+      
+      // Handle location
+      data.location = {
+        city: data.city,
+        subcity: data.subcity,
+        woreda: data.woreda,
+        kebele: data.kebele
+      };
+      
+      // Clean up location fields from root
+      delete data.city;
+      delete data.subcity;
+      delete data.woreda;
+      delete data.kebele;
+      
+      await postProperty(data, isEdit === 'true', propertyId);
+    });

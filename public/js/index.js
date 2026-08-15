@@ -183,7 +183,7 @@ if (saveSettingsBtn) {
     const phoneNumber = document.getElementById('userPhone').value;
     console.log('mk');
     const data = { name, email, phoneNumber };
-    updateUserData(data);
+    await updateUserData(data);
   });
 }
 // Handle URL parameters on page load (for search from homepage)

@@ -26,7 +26,7 @@ exports.createEnquiry = catchAsync(async (req, res, next) => {
   });
 
   if (existingRequest) {
-    return next(new AppError('You already sent a request for this property', 409));
+    return next(new AppError('You have already sent an enquiry for this property. You can only send one enquiry per property.', 409));
   }
 
   const doc = await Enquiry.create({

@@ -33,9 +33,10 @@ router.get('/account-settings', showAccountSettings);
 // Only match paths that don't match known routes
 router.get('/:slug', (req, res, next) => {
   // List of known route paths that should not be treated as property slugs
-  const knownRoutes = ['login', 'signup', 'dashboard', 'post-listing', 'my-listings', 'enquiries', 'account-settings', 'property-listings'];
+  const knownRoutes = ['login', 'signup', 'dashboard', 'post-listing', 'my-listings', 'enquiries', 'account-settings', 'property-listings', 'bundle.js.map'];
   
-  if (knownRoutes.includes(req.params.slug)) {
+  // Check if this is a known route or contains query parameters
+  if (knownRoutes.includes(req.params.slug) || req.originalUrl.includes('?') || req.originalUrl.includes('.well-known')) {
     return next(new AppError('Route not found', 404));
   }
   

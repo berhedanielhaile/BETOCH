@@ -66,25 +66,15 @@ exports.showUserDashboard = catchAsync(async (req, res, next) => {
   if (role === 'landlord') {
     properties = await Property.find({ landlord: userId });
 
-    const agg = await Property.aggregate([
-      { $match: { landlord: userId } },
-      {
-        $group: {
-          _id: '$id',
-          numProperties: { $sum: 1 },
-          views: { $sum: '$views' },
-        },
-      },
-    ]);
+    // Calculate total views from all properties
+    totalViews = properties.reduce((sum, p) => sum + (p.views || 0), 0);
 
+    // Calculate stats by status
     const statuses = ['pending', 'approved', 'rejected', 'rented'];
     stats = statuses.reduce((acc, s) => {
-      const found = agg.find((a) => a._id === s);
-      acc[s] = found ? found.numProperties : 0;
+      acc[s] = properties.filter((p) => p.status === s).length;
       return acc;
     }, {});
-
-    totalViews = agg.reduce((sum, a) => sum + (a.views || 0), 0);
 
     const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
     newListings = await Property.countDocuments({ landlord: userId, createdAt: { $gte: since } });
@@ -94,8 +84,19 @@ exports.showUserDashboard = catchAsync(async (req, res, next) => {
 
     activeListings = properties.filter((p) => p.status === 'approved').length;
   } else {
+    // For tenants, show their enquiries and related stats
     enquiries = await Enquiry.find({ user: userId }).populate('property').sort({ createdAt: -1 });
-    newEnquiries = enquiries.filter((enq) => enq.createdAt >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000)).length;
+    
+    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000);
+    newEnquiries = await Enquiry.countDocuments({ user: userId, createdAt: { $gte: since } });
+    
+    // For tenants, show stats based on their enquiries
+    const allEnquiries = await Enquiry.find({ user: userId });
+    stats = {
+      pending: allEnquiries.filter((e) => e.status === 'pending').length,
+      approved: allEnquiries.filter((e) => e.status === 'accepted').length,
+      rejected: allEnquiries.filter((e) => e.status === 'declined').length,
+    };
   }
 
   res.status(200).render('dashboard', {
@@ -110,12 +111,24 @@ exports.showUserDashboard = catchAsync(async (req, res, next) => {
     enquiries,
   });
 });
-exports.showPostlistingForm = (req, res, next) => {
+exports.showPostlistingForm = catchAsync(async (req, res, next) => {
   if (!req.user) return next(new AppError('You must be logged in to post your listings', 401));
+  
+  let property = null;
+  if (req.query.edit) {
+    // If editing, fetch the property and ensure it belongs to the user
+    property = await Property.findOne({ _id: req.query.edit, landlord: req.user._id });
+    if (!property) {
+      return next(new AppError('Property not found or you do not have permission to edit it', 404));
+    }
+  }
+  
   res.status(200).render('post-listing', {
-    title: 'Post your property',
+    title: property ? 'Edit Property' : 'Post your property',
+    property,
+    isEdit: !!property,
   });
-};
+});
 
 exports.showMyListings = catchAsync(async (req, res, next) => {
   if (!req.user) return next(new AppError('You must be logged in to view your listings', 401));

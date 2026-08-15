@@ -1,5 +1,19 @@
 /*eslint-disable*/
+import axios from 'axios';
+
 export const updateUserData = async (data) => {
-  const updatedUser = await axios.patch('/api/v1/user/updateMe', data);
-  console.log(updatedUser);
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: '/api/v1/user/updateMe',
+      data,
+    });
+    if (res.data.status === 'success') {
+      console.log('User data updated successfully:', res.data.data.user);
+      return res.data.data.user;
+    }
+  } catch (err) {
+    console.error('Error updating user data:', err);
+    throw err;
+  }
 };
