@@ -19,7 +19,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     return next(new AppError('this route is not for password update,please use /updateMyPassword', 400));
   const filteredBody = filterObj(req.body, 'name', 'email', 'phoneNumber', 'photo', 'bio', 'address');
 
-  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { new: true, runValidators: true });
+  const updatedUser = await User.findByIdAndUpdate(req.user.id, filteredBody, { returnDocument: 'after', runValidators: true });
 
   res.status(200).json({
     status: 'success',
@@ -29,7 +29,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   });
 });
 exports.deleteMe = catchAsync(async (req, res, next) => {
-  await User.findByIdAndUpdate(req.user.id, { active: false }, { new: true, runValidators: true });
+  await User.findByIdAndUpdate(req.user.id, { active: false }, { returnDocument: 'after', runValidators: true });
   res.status(204).json({
     status: 'success',
     data: null,

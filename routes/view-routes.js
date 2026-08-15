@@ -12,6 +12,7 @@ const {
   showAccountSettings,
 } = require('../controllers/view-controller');
 const { isLoggedIn, protect } = require('../controllers/auth-controller');
+const AppError = require('../utils/AppError');
 
 const router = express.Router();
 
@@ -29,6 +30,16 @@ router.get('/enquiries', showEnquiriesPage);
 router.get('/account-settings', showAccountSettings);
 
 // Property slug route - must be last to avoid matching other routes
-router.get('/:slug', getPropertyDetails);
+// Only match paths that don't match known routes
+router.get('/:slug', (req, res, next) => {
+  // List of known route paths that should not be treated as property slugs
+  const knownRoutes = ['login', 'signup', 'dashboard', 'post-listing', 'my-listings', 'enquiries', 'account-settings', 'property-listings'];
+  
+  if (knownRoutes.includes(req.params.slug)) {
+    return next(new AppError('Route not found', 404));
+  }
+  
+  getPropertyDetails(req, res, next);
+});
 
 module.exports = router;
