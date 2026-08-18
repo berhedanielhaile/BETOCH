@@ -11,12 +11,48 @@ export const updateSettings = async (data, type) => {
       data,
     });
     if (res.data.status === 'success') {
-      showAlert('success', `${type} updated successfully!`);
+      showAlert('success', 'Profile updated successfully!');
+      return res.data.data.user;
+    }
+  } catch (err) {
+    console.error('Error updating settings:', err);
+    showAlert('error', err.response?.data?.message || 'Error updating profile!');
+    throw err;
+  }
+};
+
+export const updateUserData = async (data) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: '/api/v1/user/updateMe',
+      data,
+    });
+    if (res.data.status === 'success') {
+      showAlert('success', 'Profile updated successfully!');
       return res.data.data.user;
     }
   } catch (err) {
     console.error('Error updating user data:', err);
     showAlert('error', err.response?.data?.message || 'Error updating profile!');
+    throw err;
+  }
+};
+
+export const savePreferences = async (preferences) => {
+  try {
+    const res = await axios({
+      method: 'PATCH',
+      url: '/api/v1/user/updateMe',
+      data: preferences,
+    });
+    if (res.data.status === 'success') {
+      showAlert('success', 'Preferences saved successfully!');
+      return res.data.data.user;
+    }
+  } catch (err) {
+    console.error('Error saving preferences:', err);
+    showAlert('error', err.response?.data?.message || 'Error saving preferences!');
     throw err;
   }
 };

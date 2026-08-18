@@ -9,6 +9,7 @@ import './propertyDetail';
 import './enquiries';
 import { postProperty } from './postproperty';
 import axios from 'axios';
+import { updateUserData, updatePassword, deleteAccount } from './updateSettings';
 import { showAlert } from './alert';
 
 ////// DOM ELEMENTS

@@ -75,7 +75,7 @@ block content
           button.btn.btn--danger(type='button' id='delete-account-btn') Delete Account
 
   script(type='module').
-    import { updateUserData, updatePassword, deleteAccount } from './js/updateSettings.js';
+    import { updateUserData, updatePassword, savePreferences, deleteAccount } from './js/updateSettings.js';
     
     // User data form handler
     const userDataForm = document.getElementById('userDataForm');
@@ -124,9 +124,9 @@ block content
         const notifEnquiries = document.getElementById('notifEnquiries').checked;
         const notifAccount = document.getElementById('notifAccount').checked;
         
-        // Save preferences (currently using user update endpoint)
-        const data = { notifEnquiries, notifAccount };
-        await updateUserData(data);
+        // Save preferences using the new function
+        const preferences = { notifEnquiries, notifAccount };
+        await savePreferences(preferences);
       });
     }
     
