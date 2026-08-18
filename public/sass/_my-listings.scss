@@ -5,6 +5,22 @@
   margin: 0 auto;
 }
 
+// ── Back Button ──────────────────────────────────────────────────────────────
+.my-listings-header {
+  margin-bottom: 2rem;
+  
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    
+    svg {
+      width: 1.4rem;
+      height: 1.4rem;
+    }
+  }
+}
+
 // ── Toolbar ───────────────────────────────────────────────────────────────────
 .my-listings-toolbar {
   display: flex;
