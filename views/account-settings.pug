@@ -23,7 +23,7 @@ block content
         .dashboard__panel
           .dashboard__panel-header
             h3.dashboard__panel-title Profile Information
-          form#userData(method='post' action='#')
+          form#userDataForm(method='post' action='#')
             .form__group
               label.form__label Full Name
               input#userName.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)
@@ -34,36 +34,39 @@ block content
               label.form__label Phone Number
               input#userPhone.form__input(type='tel' name='phoneNumber' value=user.phoneNumber placeholder='+251 9X XXX XXXX' autocomplete='tel')
             .form__group
+              label.form__label Bio
+              textarea#userBio.form__textarea(name='bio' placeholder='Tell us about yourself...' rows='3')=user.bio || ''
+            .form__group
               button.btn.btn--primary(type='submit') Save Changes
 
         .dashboard__panel
           .dashboard__panel-header
             h3.dashboard__panel-title Security
-          form
+          form#updatePasswordForm(method='post' action='#')
             .form__group
               label.form__label Current Password
-              input.form__input(type='password' name='passwordCurrent' placeholder='Enter current password' autocomplete='current-password' required)
+              input#passwordCurrent.form__input(type='password' name='passwordCurrent' placeholder='Enter current password' autocomplete='current-password' required)
             .form__group
               label.form__label New Password
-              input.form__input(type='password' name='password' placeholder='Enter new password' autocomplete='new-password' required)
+              input#password.form__input(type='password' name='password' placeholder='Enter new password' autocomplete='new-password' required)
             .form__group
               label.form__label Confirm Password
-              input.form__input(type='password' name='passwordConfirm' placeholder='Confirm new password' autocomplete='new-password' required)
+              input#passwordConfirm.form__input(type='password' name='passwordConfirm' placeholder='Confirm new password' autocomplete='new-password' required)
             .form__group
-              button.btn.btn--primary(type='submit' formaction='/api/v1/user/updatePassword') Update Password
+              button.btn.btn--primary(type='submit') Update Password
 
         .dashboard__panel
           .dashboard__panel-header
             h3.dashboard__panel-title Notifications
-          form
+          form#notificationsForm(method='post' action='#')
             .form__checkbox
-              input(type='checkbox' name='notifEnquiries' id='notifEnquiries' checked)
+              input(type='checkbox' name='notifEnquiries' id='notifEnquiries' checked=user.notificationPreferences?.enquiries ?? true)
               label(for='notifEnquiries') Email me when I receive new property enquiries
             .form__checkbox
-              input(type='checkbox' name='notifAccount' id='notifAccount' checked)
+              input(type='checkbox' name='notifAccount' id='notifAccount' checked=user.notificationPreferences?.account ?? true)
               label(for='notifAccount') Email me when my profile or password is updated
             .form__group
-              button.btn.btn--primary(type='submit' formaction='/api/v1/user/updateMe') Save Preferences
+              button.btn.btn--primary(type='submit') Save Preferences
 
         .dashboard__panel(style='background: #fef2f2; border: 1px solid rgba(239, 68, 68, 0.2);')
           .dashboard__panel-header
@@ -71,12 +74,70 @@ block content
           p(style='margin-bottom: 2rem; color: $color-muted;') Deleting your account will remove all your listings, enquiries, and personal data. This action cannot be undone.
           button.btn.btn--danger(type='button' id='delete-account-btn') Delete Account
 
-  script.
+  script(type='module').
+    import { updateUserData, updatePassword, deleteAccount } from './js/updateSettings.js';
+    
+    // User data form handler
+    const userDataForm = document.getElementById('userDataForm');
+    if (userDataForm) {
+      userDataForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('userName').value;
+        const email = document.getElementById('userEmail').value;
+        const phoneNumber = document.getElementById('userPhone').value;
+        const bio = document.getElementById('userBio')?.value || '';
+        
+        // Format phone number to Ethiopian format
+        let formattedPhone = phoneNumber;
+        if (phoneNumber && !phoneNumber.startsWith('+251')) {
+          const cleanPhone = phoneNumber.replace(/\D/g, '');
+          if (cleanPhone.length === 9) {
+            formattedPhone = '+251' + cleanPhone;
+          } else if (cleanPhone.length === 12 && cleanPhone.startsWith('251')) {
+            formattedPhone = '+' + cleanPhone;
+          }
+        }
+        
+        const data = { name, email, phoneNumber: formattedPhone, bio };
+        await updateUserData(data);
+      });
+    }
+    
+    // Password update form handler
+    const passwordForm = document.getElementById('updatePasswordForm');
+    if (passwordForm) {
+      passwordForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const passwordCurrent = document.getElementById('passwordCurrent').value;
+        const password = document.getElementById('password').value;
+        const passwordConfirm = document.getElementById('passwordConfirm').value;
+        
+        await updatePassword({ passwordCurrent, password, passwordConfirm });
+      });
+    }
+    
+    // Notifications form handler
+    const notificationsForm = document.getElementById('notificationsForm');
+    if (notificationsForm) {
+      notificationsForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const notifEnquiries = document.getElementById('notifEnquiries').checked;
+        const notifAccount = document.getElementById('notifAccount').checked;
+        
+        // Save preferences (currently using user update endpoint)
+        const data = { notifEnquiries, notifAccount };
+        await updateUserData(data);
+      });
+    }
+    
+    // Delete account handler
     const deleteBtn = document.getElementById('delete-account-btn');
     if (deleteBtn) {
-      deleteBtn.addEventListener('click', () => {
+      deleteBtn.addEventListener('click', async () => {
         if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
-          window.location.href = '/api/v1/user/deleteMe';
+          if (confirm('This will permanently delete all your listings, enquiries, and personal data. Continue?')) {
+            await deleteAccount();
+          }
         }
       });
     }

@@ -109,6 +109,16 @@ const userSchema = new mongoose.Schema(
       select: false,
     },
     lockUntil: Date,
+    notificationPreferences: {
+      enquiries: {
+        type: Boolean,
+        default: true,
+      },
+      account: {
+        type: Boolean,
+        default: true,
+      },
+    },
   },
   {
     timestamps: true,

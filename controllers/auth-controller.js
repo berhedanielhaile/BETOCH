@@ -152,7 +152,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   createSendToken(user, 200, res);
 });
 exports.updatePassword = catchAsync(async (req, res, next) => {
-  const user = await User.findById(req.user.id).select('+password');
+  const user = await User.findById(req.user._id).select('+password');
   if (!user) return next(new AppError('User not found', 404));
   if (!req.body.password || !req.body.passwordConfirm || !req.body.passwordCurrent)
     return next(new AppError('Please provide current password, new password and passwordConfirm', 400));

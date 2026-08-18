@@ -5,7 +5,7 @@ const { deleteOne, updateOne, createOne, getOne, getAll } = require('./handler-f
 
 exports.setPropetyUserIds = catchAsync(async (req, res, next) => {
   if (!req.body.property) req.body.property = req.params.propertyId;
-  if (!req.body.user) req.body.user = req.user.id;
+  if (!req.body.user) req.body.user = req.user._id;
   const review = await Review.findOne({ user: req.body.user, property: req.body.property });
   if (review)
     return next(

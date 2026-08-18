@@ -9,7 +9,6 @@ import './propertyDetail';
 import './enquiries';
 import { postProperty } from './postproperty';
 import axios from 'axios';
-import { updateUserData } from './updateUserData';
 import { showAlert } from './alert';
 
 ////// DOM ELEMENTS
@@ -175,30 +174,7 @@ if (postForm) {
     postProperty(data);
   });
 }
-const saveSettingsForm = document.getElementById('userData');
-if (saveSettingsForm) {
-  saveSettingsForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('userName').value;
-    const email = document.getElementById('userEmail').value;
-    const phoneNumber = document.getElementById('userPhone').value;
-    
-    // Format phone number to Ethiopian format
-    let formattedPhone = phoneNumber;
-    if (phoneNumber && !phoneNumber.startsWith('+251')) {
-      // Remove all non-digits
-      const cleanPhone = phoneNumber.replace(/\D/g, '');
-      if (cleanPhone.length === 9) {
-        formattedPhone = '+251' + cleanPhone;
-      } else if (cleanPhone.length === 12 && cleanPhone.startsWith('251')) {
-        formattedPhone = '+' + cleanPhone;
-      }
-    }
-    
-    const data = { name, email, phoneNumber: formattedPhone };
-    await updateUserData(data);
-  });
-}
+
 // Handle URL parameters on page load (for search from homepage)
 handleUrlParams();
 
