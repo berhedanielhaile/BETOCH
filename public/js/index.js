@@ -9,7 +9,7 @@ import './propertyDetail';
 import './enquiries';
 import { postProperty } from './postproperty';
 import axios from 'axios';
-import { updateUserData, updatePassword, deleteAccount } from './updateSettings';
+import { updateUserData, updatePassword, savePreferences, deleteAccount } from './updateSettings';
 import { showAlert } from './alert';
 
 ////// DOM ELEMENTS
@@ -173,6 +173,88 @@ if (postForm) {
     };
 
     postProperty(data);
+  });
+}
+
+// Account settings form handlers
+const userDataForm = document.getElementById('userDataForm');
+if (userDataForm) {
+  userDataForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('userName').value;
+    const email = document.getElementById('userEmail').value;
+    const phoneNumber = document.getElementById('userPhone').value;
+    const bio = document.getElementById('userBio')?.value || '';
+    
+    // Format phone number to Ethiopian format
+    let formattedPhone = phoneNumber;
+    if (phoneNumber && !phoneNumber.startsWith('+251')) {
+      const cleanPhone = phoneNumber.replace(/\D/g, '');
+      if (cleanPhone.length === 9) {
+        formattedPhone = '+251' + cleanPhone;
+      } else if (cleanPhone.length === 12 && cleanPhone.startsWith('251')) {
+        formattedPhone = '+' + cleanPhone;
+      }
+    }
+    
+    const data = { name, email, phoneNumber: formattedPhone, bio };
+    await updateUserData(data);
+  });
+}
+
+const passwordForm = document.getElementById('updatePasswordForm');
+if (passwordForm) {
+  passwordForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const passwordCurrent = document.getElementById('passwordCurrent').value;
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    
+    await updatePassword({ passwordCurrent, password, passwordConfirm });
+  });
+}
+
+const notificationsForm = document.getElementById('notificationsForm');
+if (notificationsForm) {
+  // Set initial checkbox values based on user preferences
+  const notifEnquiriesCheckbox = document.getElementById('notifEnquiries');
+  const notifAccountCheckbox = document.getElementById('notifAccount');
+  
+  // Get user data from the page or make an API call to set initial values
+  // For now, we'll fetch the current user data to set the checkbox states
+  fetch('/api/v1/user/me')
+    .then(res => res.json())
+    .then(data => {
+      if (data.status === 'success' && data.data.user.notificationPreferences) {
+        notifEnquiriesCheckbox.checked = data.data.user.notificationPreferences.enquiries !== false;
+        notifAccountCheckbox.checked = data.data.user.notificationPreferences.account !== false;
+      }
+    })
+    .catch(err => {
+      console.log('Could not fetch user preferences:', err);
+      // Default to checked if we can't fetch
+      notifEnquiriesCheckbox.checked = true;
+      notifAccountCheckbox.checked = true;
+    });
+  
+  notificationsForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const notifEnquiries = document.getElementById('notifEnquiries').checked;
+    const notifAccount = document.getElementById('notifAccount').checked;
+    
+    const preferences = { notifEnquiries, notifAccount };
+    await savePreferences(preferences);
+  });
+}
+
+const deleteBtn = document.getElementById('delete-account-btn');
+if (deleteBtn) {
+  deleteBtn.addEventListener('click', async () => {
+    if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+      if (confirm('This will permanently delete all your listings, enquiries, and personal data. Continue?')) {
+        await deleteAccount();
+      }
+    }
   });
 }
 

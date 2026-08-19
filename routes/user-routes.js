@@ -33,6 +33,7 @@ router.use(protect);
 router.patch('/updateMyPassword', updatePassword);
 router.patch('/updateMe', updateMe);
 router.delete('/deleteMe', deleteMe);
+router.get('/me', getMe, getUser);
 router.get('/Me', getMe, getUser);
 
 router.use(restrictTo('admin'));
