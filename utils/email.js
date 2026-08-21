@@ -1,49 +1,44 @@
 const nodemailer = require('nodemailer');
+const pug = require('pug');
+const htmlToText = require('html-to-text');
 
 module.exports = class Email {
-  constructor(user, message) {
-    this.to = user.email;
-    this.name = user.name;
-    this.message = message;
+  constructor(user, url) {
+    this.user = user;
+    this.firstName = user.name.split(' ')[0];
+    this.url = url;
+    this.from = `<danny dannyyo`;
   }
 
   newTransporter() {
-    if (process.env.EMAIL_SERVICE === 'gmail' || process.env.EMAIL_HOST === 'smtp.gmail.com') {
+    if (process.env.NODE_ENV === 'production') {
       return nodemailer.createTransport({
-        service: 'gmail',
+        host: process.env.RESEND_EMAIL_HOST || process.env.EMAIL_HOST || 'smtp.resend.com',
+        port: Number(process.env.RESEND_EMAIL_PORT || process.env.EMAIL_PORT || 465),
+        secure: this.port === 465,
         auth: {
-          user: process.env.GMAIL_USER || process.env.EMAIL_USERNAME,
-          pass: process.env.GMAIL_PASS || process.env.EMAIL_PASSWORD,
+          user: process.env.RESEND_EMAIL_USERNAME || process.env.EMAIL_USERNAME,
+          pass: process.env.RESEND_API_KEY || process.env.EMAIL_PASSWORD,
         },
       });
     }
+  }
 
-    const host = process.env.RESEND_EMAIL_HOST || process.env.EMAIL_HOST || 'smtp.resend.com';
-    const port = Number(process.env.RESEND_EMAIL_PORT || process.env.EMAIL_PORT || 465);
-    const secure = port === 465;
-
-    return nodemailer.createTransport({
-      host,
-      port,
-      secure,
-      auth: {
-        user: process.env.RESEND_EMAIL_USERNAME || process.env.EMAIL_USERNAME,
-        pass: process.env.RESEND_API_KEY || process.env.EMAIL_PASSWORD,
-      },
+  async send(template, subject) {
+    const html = pug.renderFile(template, {
+      user: this.user,
+      subject,
     });
-  }
-
-  mailOptions() {
-    return {
-      from: process.env.EMAIL_FROM || `Betoch <${process.env.GMAIL_USER || process.env.EMAIL_USERNAME}>`,
-      to: this.to,
-      subject: 'Reset your password',
-      text: this.message,
+    const mailOptions = {
+      from: this.from,
+      to: this.user.email,
+      html,
+      text: htmlToText.toString(html),
     };
+    await this.newTransporter().sendMail(mailOptions);
   }
 
-  async sendEmail() {
-    const transporter = this.newTransporter();
-    return await transporter.sendMail(this.mailOptions());
+  async sendWelcome() {
+    await this.send('welcome', 'welcome to betoch where renting is simple');
   }
 };

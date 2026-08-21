@@ -2212,6 +2212,16 @@ body {
       text-decoration: none; }
       .auth__footer-text a:hover {
         text-decoration: underline; }
+  .auth__forgot {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 1.2rem; }
+    .auth__forgot a {
+      color: #00a896;
+      font-weight: 600;
+      text-decoration: none; }
+      .auth__forgot a:hover {
+        text-decoration: underline; }
   .auth__tabs {
     display: flex;
     margin-bottom: 2.4rem;

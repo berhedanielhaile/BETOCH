@@ -47,6 +47,16 @@ exports.signUp = catchAsync(async (req, res, next) => {
     photo: req.body.photo,
   });
   newUser.password = undefined;
+
+  // Send welcome email
+  try {
+    await new Email(newUser).sendEmail('welcome', {
+      subject: 'Welcome to Betoch!',
+    });
+  } catch (err) {
+    console.error('Welcome email failed:', err);
+  }
+
   createSendToken(newUser, 201, res);
 });
 exports.login = catchAsync(async (req, res, next) => {
@@ -131,19 +141,21 @@ exports.forgetPassword = catchAsync(async (req, res, next) => {
   const resetToken = await user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
 
-  const resetUrl = `${req.protocol}://${req.get('host')}/api/v1/user/resetPassword/${resetToken}`;
-  const message = `forget your password? submit a patch request with your new password and passwordConfirm to: ${resetUrl}. if you didn't forget your password ,please ignore this email`;
+  const resetUrl = `${req.protocol}://${req.get('host')}/reset-password/${resetToken}`;
   try {
-    await new Email(user, message).sendEmail();
+    await new Email(user).sendEmail('password-reset', {
+      subject: 'Reset your password - Betoch',
+      resetUrl,
+    });
   } catch (err) {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save();
-    next(new AppError('there was an error sending the email, Try again later!', 500));
+    return next(new AppError('there was an error sending the email, Try again later!', 500));
   }
   res.status(200).json({
     status: 'success',
-    message: 'Token send to email',
+    message: 'Token sent to email',
   });
 });
 exports.resetPassword = catchAsync(async (req, res, next) => {

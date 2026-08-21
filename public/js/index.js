@@ -462,3 +462,63 @@ if (settingsNavLinks.length && settingsSections.length) {
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 }
+
+// Forgot password form
+const forgotPasswordForm = document.getElementById('forgotPassword');
+if (forgotPasswordForm) {
+  forgotPasswordForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('email').value.trim();
+    if (!email) {
+      showAlert('error', 'Please enter your email address.');
+      return;
+    }
+    try {
+      const res = await axios.post('/api/v1/user/forgetPassword', { email });
+      if (res.data.status === 'success') {
+        showAlert('success', 'Password reset link sent! Check your email.');
+      }
+    } catch (err) {
+      showAlert('error', err.response?.data?.message || 'Error sending reset email.');
+    }
+  });
+}
+
+// Reset password form
+const resetPasswordForm = document.getElementById('resetPassword');
+if (resetPasswordForm) {
+  resetPasswordForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('passwordConfirm').value;
+    const resetToken = resetPasswordForm.dataset.resetToken;
+
+    if (!password || !passwordConfirm) {
+      showAlert('error', 'Please fill in both password fields.');
+      return;
+    }
+    if (password.length < 8) {
+      showAlert('error', 'Password must be at least 8 characters.');
+      return;
+    }
+    if (password !== passwordConfirm) {
+      showAlert('error', 'Passwords do not match.');
+      return;
+    }
+
+    try {
+      const res = await axios.patch(`/api/v1/user/resetPassword/${resetToken}`, {
+        password,
+        passwordConfirm,
+      });
+      if (res.data.status === 'success') {
+        showAlert('success', 'Password updated! Redirecting to login...');
+        setTimeout(() => {
+          location.assign('/login');
+        }, 1500);
+      }
+    } catch (err) {
+      showAlert('error', err.response?.data?.message || 'Error resetting password.');
+    }
+  });
+}

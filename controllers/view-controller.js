@@ -164,3 +164,14 @@ exports.showAccountSettings = (req, res, next) => {
     user: req.user,
   });
 };
+exports.showForgotPasswordForm = (req, res, next) => {
+  res.status(200).render('forgot-password', {
+    title: 'Forgot Password',
+  });
+};
+exports.showResetPasswordForm = (req, res, next) => {
+  res.status(200).render('reset-password', {
+    title: 'Reset Password',
+    resetToken: req.params.resetToken,
+  });
+};
