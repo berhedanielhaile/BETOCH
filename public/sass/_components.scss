@@ -221,6 +221,103 @@
   }
 }
 
+.form__file-upload {
+  position: relative;
+
+  &-input {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+  }
+
+  &-box {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding: 2.4rem;
+    border: 2px dashed $color-line;
+    border-radius: $radius-md;
+    background-color: rgba($color-primary-light, 0.25);
+    transition: border-color 0.2s, background-color 0.2s;
+    min-height: 16rem;
+
+    &:hover {
+      border-color: $color-primary;
+      background-color: rgba($color-primary-light, 0.45);
+    }
+  }
+
+  &-preview {
+    display: none;
+    position: absolute;
+    inset: 0;
+    padding: 0.8rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: $radius-md;
+      display: block;
+    }
+  }
+
+  &-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  &-icon {
+    width: 3.6rem;
+    height: 3.6rem;
+    color: $color-muted;
+  }
+
+  &-text {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: $color-text;
+    margin: 0;
+  }
+
+  &-hint {
+    font-size: 1.2rem;
+    color: $color-muted;
+    margin: 0;
+  }
+
+  &-remove {
+    position: absolute;
+    top: 0.8rem;
+    right: 0.8rem;
+    z-index: 3;
+    width: 2.4rem;
+    height: 2.4rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 50%;
+    background: rgba($color-danger, 0.9);
+    color: #fff;
+    font-size: 1.6rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0;
+  }
+}
+
 .alert {
   position: fixed;
   top: 2rem;
