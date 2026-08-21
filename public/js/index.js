@@ -186,15 +186,39 @@ if (postForm) {
     photoPreview.innerHTML = '';
     const files = photosInput.files;
     if (!files.length) return;
-    Array.from(files).forEach((file) => {
+    Array.from(files).forEach((file, index) => {
+      const wrapper = document.createElement('div');
+      wrapper.style.position = 'relative';
+      wrapper.style.width = '6rem';
+      wrapper.style.height = '6rem';
+
       const img = document.createElement('img');
       img.src = URL.createObjectURL(file);
-      img.style.width = '8rem';
-      img.style.height = '8rem';
+      img.style.width = '100%';
+      img.style.height = '100%';
       img.style.objectFit = 'cover';
       img.style.borderRadius = '0.5rem';
-      img.style.margin = '0.3rem';
-      photoPreview.appendChild(img);
+      img.style.border = '1px solid #ddd';
+      img.dataset.index = index;
+
+      const removeBtn = document.createElement('button');
+      removeBtn.type = 'button';
+      removeBtn.textContent = '×';
+      removeBtn.style.cssText = 'position:absolute;top:-6px;right:-6px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;';
+      removeBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const currentFiles = Array.from(photosInput.files);
+        currentFiles.splice(index, 1);
+        const dt = new DataTransfer();
+        currentFiles.forEach((f) => dt.items.add(f));
+        photosInput.files = dt.files;
+        updatePhotoPreview();
+      });
+
+      wrapper.appendChild(img);
+      wrapper.appendChild(removeBtn);
+      photoPreview.appendChild(wrapper);
     });
   };
 
@@ -203,13 +227,32 @@ if (postForm) {
     videoPreview.innerHTML = '';
     const file = videoInput.files[0];
     if (!file) return;
+    const wrapper = document.createElement('div');
+    wrapper.style.position = 'relative';
+    wrapper.style.width = '100%';
+    wrapper.style.maxWidth = '30rem';
+
     const video = document.createElement('video');
     video.src = URL.createObjectURL(file);
     video.controls = true;
     video.style.width = '100%';
-    video.style.maxWidth = '30rem';
     video.style.borderRadius = '0.5rem';
-    videoPreview.appendChild(video);
+    video.style.border = '1px solid #ddd';
+
+    const removeBtn = document.createElement('button');
+    removeBtn.type = 'button';
+    removeBtn.textContent = '×';
+    removeBtn.style.cssText = 'position:absolute;top:8px;right:8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:24px;height:24px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;';
+    removeBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      videoInput.value = '';
+      updateVideoPreview();
+    });
+
+    wrapper.appendChild(video);
+    wrapper.appendChild(removeBtn);
+    videoPreview.appendChild(wrapper);
   };
 
   uploadAreas.forEach((area) => {

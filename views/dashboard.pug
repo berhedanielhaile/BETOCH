@@ -68,7 +68,7 @@ block content
                         td #{prop.views || 0}
                         td.dashboard__actions
                           a.btn.btn--outline.btn--small(href=`/${prop.slug}`) View
-                          a.btn.btn--secondary.btn--small(href=`/post-listing`) Edit
+                          a.btn.btn--secondary.btn--small(href=`/post-listing?edit=${prop._id}`) Edit
                 else
                   tbody
                     tr

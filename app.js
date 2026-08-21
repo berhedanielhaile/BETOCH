@@ -7,6 +7,7 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
+const compression = require('compression');
 
 const userRouter = require('./routes/user-routes');
 const propertyRouter = require('./routes/property-routes');
@@ -91,7 +92,7 @@ app.use((req, res, next) => {
   }
   next();
 });
-
+app.use(compression());
 //(2 Routes
 
 app.use('/', viewRouter);
