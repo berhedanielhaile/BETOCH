@@ -113,6 +113,44 @@
     }
   }
 
+  &__existing-media {
+    margin-top: 1.5rem;
+
+    &-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: $color-text;
+      margin-bottom: 1rem;
+    }
+
+    &-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    &-item {
+      position: relative;
+      border-radius: $radius-md;
+      overflow: hidden;
+      border: 1px solid $color-line;
+
+      img,
+      video {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        display: block;
+      }
+
+      video {
+        width: 100%;
+        max-width: 30rem;
+        height: auto;
+      }
+    }
+  }
+
   &__amenities-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

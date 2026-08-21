@@ -283,8 +283,8 @@ body {
       height: 2rem;
       margin-right: 0.8rem; }
     .header__nav--avatar {
-      width: 1.6rem;
-      height: 1.6rem;
+      width: 2rem;
+      height: 2rem;
       border-radius: 50%;
       object-fit: cover;
       margin-right: 0.8rem;
@@ -2488,6 +2488,32 @@ body {
       width: 100%;
       max-width: 30rem;
       height: auto; }
+  .post-listing__existing-media {
+    margin-top: 1.5rem; }
+    .post-listing__existing-media-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #24313f;
+      margin-bottom: 1rem; }
+    .post-listing__existing-media-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem; }
+    .post-listing__existing-media-item {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid #d8e2e7; }
+      .post-listing__existing-media-item img,
+      .post-listing__existing-media-item video {
+        width: 10rem;
+        height: 10rem;
+        object-fit: cover;
+        display: block; }
+      .post-listing__existing-media-item video {
+        width: 100%;
+        max-width: 30rem;
+        height: auto; }
   .post-listing__amenities-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

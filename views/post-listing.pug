@@ -105,6 +105,13 @@ block content
               p.post-listing__upload-hint
                 | JPG or PNG, up to 10 MB each. Max 12 photos.
           .post-listing__preview#photo-preview
+          if property && property.photos && property.photos.length
+            .post-listing__existing-media
+              p.post-listing__existing-title Existing photos
+              .post-listing__existing-grid
+                each photo in property.photos
+                  .post-listing__existing-item
+                    img(src=`/img/properties/${photo}` alt='Property photo')
         section.post-listing__section
           h3.post-listing__section-title Video (Optional)
           p.post-listing__section-desc
@@ -119,6 +126,11 @@ block content
               p.post-listing__upload-hint
                 | MP4, WebM, or MOV. Max 30 seconds, up to 50 MB.
           .post-listing__preview#video-preview
+          if property && property.video
+            .post-listing__existing-media
+              p.post-listing__existing-title Existing video
+              .post-listing__existing-item
+                video(src=`/img/properties/videos/${property.video}` controls)
         section.post-listing__section
           h3.post-listing__section-title Amenities
           p.post-listing__section-desc
