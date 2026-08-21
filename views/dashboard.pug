@@ -22,11 +22,12 @@ block content
             a(href='/account-settings') Account settings
       div
         .dashboard__welcome
-          h2 hey, #{user.name}
-          if role === 'landlord'
-            p Manage your properties and enquiries from interested tenants.
-          else
-            p Track your sent enquiries and follow up on viewing requests.
+          .dashboard__user-details
+            h2 hey, #{user.name.split(' ')[0]}
+              if role === 'landlord'
+                p Manage your properties and enquiries from interested tenants.
+              else
+                p Track your sent enquiries and follow up on viewing requests.
 
         if role === 'landlord'
           .dashboard__stats

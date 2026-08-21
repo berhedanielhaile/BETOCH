@@ -2,6 +2,7 @@ const User = require('../models/user-model');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 const { deleteOne, updateOne, getOne, getAll } = require('./handler-factory');
+const sharp = require('sharp');
 
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
@@ -10,39 +11,63 @@ const filterObj = (obj, ...allowedFields) => {
   });
   return newObj;
 };
-exports.getMe = (req, res, next) => {
-  req.params.id = req.user._id;
-  next();
-};
+exports.getMe = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user._id);
+  if (!user) return next(new AppError('User not found', 404));
+  res.status(200).json({
+    status: 'success',
+    data: {
+      user: user,
+    },
+  });
+});
 exports.updateMe = catchAsync(async (req, res, next) => {
   if (req.body.password || req.body.passwordConfirm)
     return next(new AppError('this route is not for password update,please use /updateMyPassword', 400));
-  
-  const filteredBody = filterObj(req.body, 'name', 'email', 'phoneNumber', 'photo', 'bio', 'address', 'notificationPreferences', 'notifEnquiries', 'notifAccount');
 
-  // Handle empty phone number - remove it from update if empty
+  const filteredBody = filterObj(
+    req.body,
+    'name',
+    'email',
+    'phoneNumber',
+    'photo',
+    'bio',
+    'address',
+    'notificationPreferences',
+    'notifEnquiries',
+    'notifAccount',
+  );
+
   if (!filteredBody.phoneNumber || filteredBody.phoneNumber.trim() === '') {
     delete filteredBody.phoneNumber;
   }
 
-  // Handle empty bio - remove it from update if empty
   if (!filteredBody.bio || filteredBody.bio.trim() === '') {
     delete filteredBody.bio;
   }
 
-  // Handle notification preferences - transform checkbox values to nested object
-  if (req.body.notifEnquiries !== undefined || req.body.notifAccount !== undefined) {
-    // Convert string 'true'/'false' to boolean if needed
-    const enquiriesValue = typeof req.body.notifEnquiries === 'string' 
-      ? req.body.notifEnquiries === 'true' 
-      : req.body.notifEnquiries;
-    const accountValue = typeof req.body.notifAccount === 'string' 
-      ? req.body.notifAccount === 'true' 
-      : req.body.notifAccount;
+  // Handle photo upload
+  if (req.file) {
+    const filename = `user-${req.user._id}-${Date.now()}.jpeg`;
     
+    await sharp(req.file.buffer)
+      .resize(500, 500)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`public/img/users/${filename}`);
+    
+    filteredBody.photo = filename;
+  }
+
+  if (req.body.notifEnquiries !== undefined || req.body.notifAccount !== undefined) {
+    const enquiriesValue =
+      typeof req.body.notifEnquiries === 'string' ? req.body.notifEnquiries === 'true' : req.body.notifEnquiries;
+    const accountValue =
+      typeof req.body.notifAccount === 'string' ? req.body.notifAccount === 'true' : req.body.notifAccount;
+
     filteredBody.notificationPreferences = {
-      enquiries: enquiriesValue !== undefined ? enquiriesValue : req.user.notificationPreferences?.enquiries ?? true,
-      account: accountValue !== undefined ? accountValue : req.user.notificationPreferences?.account ?? true,
+      enquiries: enquiriesValue !== undefined ? enquiriesValue : (req.user.notificationPreferences?.enquiries ?? true),
+      account: accountValue !== undefined ? accountValue : (req.user.notificationPreferences?.account ?? true),
     };
     delete filteredBody.notifEnquiries;
     delete filteredBody.notifAccount;

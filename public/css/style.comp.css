@@ -2258,6 +2258,28 @@ body {
     .dashboard__welcome p {
       font-size: 1.5rem;
       color: #667085; }
+  .dashboard__user-info {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem; }
+  .dashboard__user-avatar {
+    position: relative; }
+  .dashboard__user-photo {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #00a896;
+    box-shadow: 0 4px 12px rgba(0, 168, 150, 0.2); }
+  .dashboard__user-details h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #17202a;
+    margin-bottom: 0.5rem; }
+  .dashboard__user-details p {
+    font-size: 1.5rem;
+    color: #667085; }
   .dashboard__stats {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -2439,6 +2461,16 @@ body {
 .my-listings-page {
   max-width: 130rem;
   margin: 0 auto; }
+
+.my-listings-header {
+  margin-bottom: 2rem; }
+  .my-listings-header .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem; }
+    .my-listings-header .btn svg {
+      width: 1.4rem;
+      height: 1.4rem; }
 
 .my-listings-toolbar {
   display: flex;
@@ -2781,6 +2813,49 @@ body {
   .enquiries-toolbar {
     flex-direction: column;
     align-items: flex-start; } }
+
+.form__profile-photo {
+  margin-bottom: 2rem;
+  text-align: center; }
+
+.form__profile-photo-wrapper {
+  position: relative;
+  width: 12rem;
+  height: 12rem;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.3s; }
+  .form__profile-photo-wrapper:hover .form__profile-photo-overlay {
+    opacity: 1; }
+
+.form__profile-photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 3px solid #00a896; }
+
+.form__profile-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: #ffffff; }
+
+.form__profile-photo-icon {
+  color: #ffffff; }
+
+.form__profile-photo-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff; }
 
 .dashboard__panel {
   transition: box-shadow 0.3s ease, transform 0.2s ease; }
