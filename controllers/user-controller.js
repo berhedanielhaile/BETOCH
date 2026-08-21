@@ -1,9 +1,28 @@
+const sharp = require('sharp');
+const multer = require('multer');
 const User = require('../models/user-model');
 const AppError = require('../utils/AppError');
 const catchAsync = require('../utils/catchAsync');
 const { deleteOne, updateOne, getOne, getAll } = require('./handler-factory');
-const sharp = require('sharp');
 
+const multerStorage = multer.memoryStorage();
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else {
+    cb(new AppError('not an image, please enter the correct data type!', 400), false);
+  }
+};
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+exports.uploadUserPhoto = upload.single('photo');
+exports.resizeUserPhoto = async (req, res, next) => {
+  if (!req.file) return next();
+  await sharp(req.file.buffer).resize(500, 500).toFormat('jpeg').jpeg({ quality: 90 }).toFile('public/img/users');
+  next();
+};
 const filterObj = (obj, ...allowedFields) => {
   const newObj = {};
   Object.keys(obj).forEach((el) => {

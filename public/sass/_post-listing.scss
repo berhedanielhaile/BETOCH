@@ -84,6 +84,35 @@
     color: $color-muted;
   }
 
+  &__file-input {
+    display: none;
+  }
+
+  &__preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1.5rem;
+
+    img,
+    video {
+      border-radius: $radius-md;
+      object-fit: cover;
+      border: 1px solid $color-line;
+    }
+
+    img {
+      width: 8rem;
+      height: 8rem;
+    }
+
+    video {
+      width: 100%;
+      max-width: 30rem;
+      height: auto;
+    }
+  }
+
   &__amenities-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);

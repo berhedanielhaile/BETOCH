@@ -24,22 +24,17 @@ block content
           .dashboard__panel-header
             h3.dashboard__panel-title Profile Information
           form#userDataForm(method='post' action='#' enctype='multipart/form-data')
-            .form__group
-              label.form__label Profile Photo
-              .form__profile-photo
-                .form__profile-photo-wrapper
-                  if user.photo
-                    img.form__profile-photo-image(src=`/img/users/${user.photo}` alt='Profile photo')
-                  else
+             .form__group
+               label.form__label Profile Photo
+               .form__profile-photo-row
+                 .form__profile-photo-wrapper
+                   if user.photo
+                     img.form__profile-photo-image(src=`/img/users/${user.photo}` alt='Profile photo')
+                   else
                      img.form__profile-photo-image(src='/img/users/default.jpg' alt='Default avatar')
-                  .form__profile-photo-overlay
-                    span.form__profile-photo-icon
-                      svg(xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' width='20' height='20')
-                        path(d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4')
-                        polyline(points='17 8 12 3 7 8')
-                        line(x1='12' y1='3' x2='12' y2='15')
-                    span.form__profile-photo-text Change
-                input#photo.form__file-input(type='file' name='photo' accept='image/*' style='display: none;')
+                 button.form__profile-photo-change(type='button')
+                   | Change
+               input#photo.form__file-input(type='file' name='photo' accept='image/*' style='display: none;')
             .form__group
               label.form__label Full Name
               input#userName.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)

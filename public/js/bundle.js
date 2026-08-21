@@ -9000,25 +9000,34 @@ const userDataForm = document.getElementById('userDataForm');
 if (userDataForm) {
   // Profile photo click handler
   const profilePhotoWrapper = document.querySelector('.form__profile-photo-wrapper');
+  const photoChangeBtn = document.querySelector('.form__profile-photo-change');
   const photoInput = document.getElementById('photo');
+
+  const triggerPhotoUpload = () => {
+    if (photoInput) photoInput.click();
+  };
+
   if (profilePhotoWrapper && photoInput) {
-    profilePhotoWrapper.addEventListener('click', () => {
-      photoInput.click();
-    });
-    photoInput.addEventListener('change', function (e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function (e) {
-          const profileImage = document.querySelector('.form__profile-photo-image');
-          if (profileImage) {
-            profileImage.src = e.target.result;
-          }
-        };
-        reader.readAsDataURL(file);
-      }
-    });
+    profilePhotoWrapper.addEventListener('click', triggerPhotoUpload);
   }
+
+  if (photoChangeBtn && photoInput) {
+    photoChangeBtn.addEventListener('click', triggerPhotoUpload);
+  }
+
+  photoInput.addEventListener('change', function (e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function (e) {
+        const profileImage = document.querySelector('.form__profile-photo-image');
+        if (profileImage) {
+          profileImage.src = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  });
   userDataForm.addEventListener('submit', async e => {
     var _document$getElementB;
     e.preventDefault();
