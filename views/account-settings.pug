@@ -24,17 +24,17 @@ block content
           .dashboard__panel-header
             h3.dashboard__panel-title Profile Information
           form#userDataForm(method='post' action='#' enctype='multipart/form-data')
-             .form__group
-               label.form__label Profile Photo
-               .form__profile-photo-row
-                 .form__profile-photo-wrapper
-                   if user.photo
-                     img.form__profile-photo-image(src=`/img/users/${user.photo}` alt='Profile photo')
-                   else
-                     img.form__profile-photo-image(src='/img/users/default.jpg' alt='Default avatar')
-                 button.form__profile-photo-change(type='button')
-                   | Change
-               input#photo.form__file-input(type='file' name='photo' accept='image/*' style='display: none;')
+            .form__group
+              label.form__label Profile Photo
+              .form__profile-photo-row
+                .form__profile-photo-wrapper
+                  if user.photo
+                    img.form__profile-photo-image(src=`/img/users/${user.photo}` alt='Profile photo')
+                  else
+                    img.form__profile-photo-image(src='/img/users/default.jpg' alt='Default avatar')
+                button.form__profile-photo-change(type='button')
+                  | Change
+              input#photo.form__file-input(type='file' name='photo' accept='image/*' style='display: none;')
             .form__group
               label.form__label Full Name
               input#userName.form__input(type='text' name='name' value=user.name placeholder='Your full name' autocomplete='name' required)
