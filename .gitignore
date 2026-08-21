@@ -14,7 +14,7 @@ package-lock.json
 
 # Cache
 .cache/
-.cache/
+.parcel-cache/
 
 # Logs
 logs
@@ -29,6 +29,9 @@ yarn-error.log*
 *.swp
 *.swo
 *~
+
+# Kilo worktrees and config
+.kilo/
 
 # Build output
 public/css/style.comp.css

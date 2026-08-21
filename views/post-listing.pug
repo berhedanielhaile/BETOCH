@@ -32,11 +32,11 @@ block content
               label.form__label(for='property-type') Property type
               select#property-type.form__select(required='',name='type')
                 option(value='') Select type
-                option(value='Apartment' selected=property && property.type === 'Apartment') Apartment
-                option(value='Condominium' selected=property && property.type === 'Condominium') Condominium
-                option(value='Studio' selected=property && property.type === 'Studio') Studio
-                option(value='Room shared' selected=property && property.type === 'Room shared') Room shared
-                option(value='House' selected=property && property.type === 'House') House
+                option(value='apartment' selected=property && property.type === 'apartment') Apartment
+                option(value='condominium' selected=property && property.type === 'condominium') Condominium
+                option(value='studio' selected=property && property.type === 'studio') Studio
+                option(value='room shared' selected=property && property.type === 'room shared') Room shared
+                option(value='house' selected=property && property.type === 'house') House
             .form__group
               label.form__label(for='rent') Monthly rent (ETB)
               input#rent.form__input(type='number' placeholder='15000' required='', name='rent' value=property ? property.rent : '')

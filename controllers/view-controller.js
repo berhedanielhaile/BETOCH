@@ -127,6 +127,7 @@ exports.showPostlistingForm = catchAsync(async (req, res, next) => {
     title: property ? 'Edit Property' : 'Post your property',
     property,
     isEdit: !!property,
+    user: req.user,
   });
 });
 

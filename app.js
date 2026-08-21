@@ -8,6 +8,7 @@ const xss = require('xss-clean');
 const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
+const cors = require('cors');
 
 const userRouter = require('./routes/user-routes');
 const propertyRouter = require('./routes/property-routes');
@@ -23,6 +24,7 @@ app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));
 
 //1)Global-middleware
+app.use(cors());
 //Set Security HTTP headers
 app.use(
   helmet({
