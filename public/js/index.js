@@ -76,19 +76,19 @@ if (signupBtn) {
   // Photo upload preview for signup
   const photoInput = document.getElementById('photo');
   const fileUploadPreview = document.querySelector('.form__file-upload-preview');
-  
+
   if (photoInput && fileUploadPreview) {
-    photoInput.addEventListener('change', function(e) {
+    photoInput.addEventListener('change', function (e) {
       const file = e.target.files[0];
       if (file) {
         const reader = new FileReader();
-        reader.onload = function(e) {
+        reader.onload = function (e) {
           // Remove placeholder and show image
           const placeholder = fileUploadPreview.querySelector('.form__file-upload-placeholder');
           if (placeholder) {
             placeholder.remove();
           }
-          
+
           // Check if preview image already exists
           let previewImage = fileUploadPreview.querySelector('.form__file-upload-preview-image');
           if (!previewImage) {
@@ -96,14 +96,14 @@ if (signupBtn) {
             previewImage.className = 'form__file-upload-preview-image';
             fileUploadPreview.appendChild(previewImage);
           }
-          
+
           previewImage.src = e.target.result;
         };
         reader.readAsDataURL(file);
       }
     });
   }
-  
+
   signupBtn.addEventListener('submit', async (e) => {
     e.preventDefault();
     const firstName = document.getElementById('first-name').value.trim();
@@ -112,7 +112,7 @@ if (signupBtn) {
 
     const phoneDigits = document.getElementById('phone').value.replace(/\D/g, '').trim();
     const photoFile = document.getElementById('photo').files[0];
-    
+
     // Use FormData for file upload
     const formData = new FormData();
     formData.append('name', name);
@@ -189,8 +189,8 @@ if (postForm) {
     Array.from(files).forEach((file, index) => {
       const wrapper = document.createElement('div');
       wrapper.style.position = 'relative';
-      wrapper.style.width = '6rem';
-      wrapper.style.height = '6rem';
+      wrapper.style.width = '2rem';
+      wrapper.style.height = '2rem';
 
       const img = document.createElement('img');
       img.src = URL.createObjectURL(file);
@@ -204,7 +204,8 @@ if (postForm) {
       const removeBtn = document.createElement('button');
       removeBtn.type = 'button';
       removeBtn.textContent = '×';
-      removeBtn.style.cssText = 'position:absolute;top:-6px;right:-6px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;';
+      removeBtn.style.cssText =
+        'position:absolute;top:-6px;right:-6px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;';
       removeBtn.addEventListener('click', (e) => {
         e.preventDefault();
         e.stopPropagation();
@@ -242,7 +243,8 @@ if (postForm) {
     const removeBtn = document.createElement('button');
     removeBtn.type = 'button';
     removeBtn.textContent = '×';
-    removeBtn.style.cssText = 'position:absolute;top:8px;right:8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:24px;height:24px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;';
+    removeBtn.style.cssText =
+      'position:absolute;top:8px;right:8px;background:#ef4444;color:#fff;border:none;border-radius:50%;width:24px;height:24px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;padding:0;';
     removeBtn.addEventListener('click', (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -316,24 +318,24 @@ if (userDataForm) {
   const profilePhotoWrapper = document.querySelector('.form__profile-photo-wrapper');
   const photoChangeBtn = document.querySelector('.form__profile-photo-change');
   const photoInput = document.getElementById('photo');
-  
+
   const triggerPhotoUpload = () => {
     if (photoInput) photoInput.click();
   };
-  
+
   if (profilePhotoWrapper && photoInput) {
     profilePhotoWrapper.addEventListener('click', triggerPhotoUpload);
   }
-  
+
   if (photoChangeBtn && photoInput) {
     photoChangeBtn.addEventListener('click', triggerPhotoUpload);
   }
 
-  photoInput.addEventListener('change', function(e) {
+  photoInput.addEventListener('change', function (e) {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = function(e) {
+      reader.onload = function (e) {
         const profileImage = document.querySelector('.form__profile-photo-image');
         if (profileImage) {
           profileImage.src = e.target.result;
@@ -350,7 +352,7 @@ if (userDataForm) {
     const phoneNumber = document.getElementById('userPhone').value;
     const bio = document.getElementById('userBio')?.value || '';
     const photoFile = document.getElementById('photo').files[0];
-    
+
     // Format phone number to Ethiopian format
     let formattedPhone = phoneNumber;
     if (phoneNumber && !phoneNumber.startsWith('+251')) {
@@ -361,7 +363,7 @@ if (userDataForm) {
         formattedPhone = '+' + cleanPhone;
       }
     }
-    
+
     // Use FormData for file upload
     const formData = new FormData();
     formData.append('name', name);
@@ -371,7 +373,7 @@ if (userDataForm) {
     if (photoFile) {
       formData.append('photo', photoFile);
     }
-    
+
     const updatedUser = await updateUserData(formData);
     if (updatedUser && updatedUser.photo) {
       const preview = document.querySelector('.form__profile-photo-image');
@@ -393,7 +395,7 @@ if (passwordForm) {
     const passwordCurrent = document.getElementById('passwordCurrent').value;
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('passwordConfirm').value;
-    
+
     await updatePassword({ passwordCurrent, password, passwordConfirm });
   });
 }
@@ -403,29 +405,29 @@ if (notificationsForm) {
   // Set initial checkbox values based on user preferences
   const notifEnquiriesCheckbox = document.getElementById('notifEnquiries');
   const notifAccountCheckbox = document.getElementById('notifAccount');
-  
+
   // Get user data from the page or make an API call to set initial values
   // For now, we'll fetch the current user data to set the checkbox states
   fetch('/api/v1/user/me')
-    .then(res => res.json())
-    .then(data => {
+    .then((res) => res.json())
+    .then((data) => {
       if (data.status === 'success' && data.data.user.notificationPreferences) {
         notifEnquiriesCheckbox.checked = data.data.user.notificationPreferences.enquiries !== false;
         notifAccountCheckbox.checked = data.data.user.notificationPreferences.account !== false;
       }
     })
-    .catch(err => {
+    .catch((err) => {
       console.log('Could not fetch user preferences:', err);
       // Default to checked if we can't fetch
       notifEnquiriesCheckbox.checked = true;
       notifAccountCheckbox.checked = true;
     });
-  
+
   notificationsForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const notifEnquiries = document.getElementById('notifEnquiries').checked;
     const notifAccount = document.getElementById('notifAccount').checked;
-    
+
     const preferences = { notifEnquiries, notifAccount };
     await savePreferences(preferences);
   });

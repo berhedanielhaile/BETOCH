@@ -2482,8 +2482,8 @@ body {
       object-fit: cover;
       border: 1px solid #d8e2e7; }
     .post-listing__preview img {
-      width: 6rem;
-      height: 6rem; }
+      width: 2rem;
+      height: 2rem; }
     .post-listing__preview video {
       width: 100%;
       max-width: 30rem;
