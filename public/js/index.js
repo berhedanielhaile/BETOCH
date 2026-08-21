@@ -189,8 +189,8 @@ if (postForm) {
     Array.from(files).forEach((file, index) => {
       const wrapper = document.createElement('div');
       wrapper.style.position = 'relative';
-      wrapper.style.width = '6rem';
-      wrapper.style.height = '6rem';
+      wrapper.style.width = '2rem';
+      wrapper.style.height = '2rem';
 
       const img = document.createElement('img');
       img.src = URL.createObjectURL(file);
