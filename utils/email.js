@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+const pug = require('pug');
 
 module.exports = class Email {
   constructor(user, message) {
@@ -33,17 +34,23 @@ module.exports = class Email {
     });
   }
 
-  mailOptions() {
+  mailOptions(templateName, templateData = {}) {
+    const templatePath = `views/emails/${templateName}.pug`;
+    const html = pug.renderFile(templatePath, {
+      name: this.name,
+      ...templateData,
+    });
+
     return {
       from: process.env.EMAIL_FROM || `Betoch <${process.env.GMAIL_USER || process.env.EMAIL_USERNAME}>`,
       to: this.to,
-      subject: 'Reset your password',
-      text: this.message,
+      subject: templateData.subject || 'Message from Betoch',
+      html,
     };
   }
 
-  async sendEmail() {
+  async sendEmail(templateName, templateData = {}) {
     const transporter = this.newTransporter();
-    return await transporter.sendMail(this.mailOptions());
+    return await transporter.sendMail(this.mailOptions(templateName, templateData));
   }
 };

@@ -1,7 +1,9 @@
 const Enquiry = require('../models/enquiry-model');
 const Property = require('../models/property-model');
+const User = require('../models/user-model');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/AppError');
+const Email = require('../utils/email');
 const { deleteOne, getOne } = require('./handler-factory');
 
 exports.setPropertyUserIds = (req, res, next) => {
@@ -40,6 +42,25 @@ exports.createEnquiry = catchAsync(async (req, res, next) => {
     landlord: property.landlord,
     user: req.body.user || req.user._id || req.user,
   });
+
+  // Send enquiry notification email to landlord
+  try {
+    const landlord = await User.findById(property.landlord);
+    if (landlord) {
+      await new Email(landlord).sendEmail('enquiry-notification', {
+        subject: `New enquiry for ${property.title}`,
+        landlordName: landlord.name,
+        propertyTitle: property.title,
+        tenantName: doc.name,
+        tenantEmail: doc.email,
+        enquiryMessage: doc.message,
+        propertyUrl: `${req.protocol}://${req.get('host')}/property/${property.slug}`,
+      });
+    }
+  } catch (err) {
+    console.error('Enquiry notification email failed:', err);
+  }
+
   res.status(201).json({
     status: 'success',
     data: {

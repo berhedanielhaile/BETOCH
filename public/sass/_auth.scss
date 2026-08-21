@@ -72,6 +72,22 @@
     }
   }
 
+  &__forgot {
+    text-align: center;
+    font-size: 1.3rem;
+    margin-top: 1.2rem;
+
+    a {
+      color: $color-primary;
+      font-weight: 600;
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
   &__tabs {
     display: flex;
     margin-bottom: 2.4rem;

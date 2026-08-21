@@ -10,6 +10,8 @@ const {
   showMyListings,
   showEnquiriesPage,
   showAccountSettings,
+  showForgotPasswordForm,
+  showResetPasswordForm,
 } = require('../controllers/view-controller');
 const { isLoggedIn, protect } = require('../controllers/auth-controller');
 const AppError = require('../utils/AppError');
@@ -20,6 +22,8 @@ router.use(isLoggedIn);
 
 router.get('/login', showloginForm);
 router.get('/signup', showsignupForm);
+router.get('/forgot-password', showForgotPasswordForm);
+router.get('/reset-password/:resetToken', showResetPasswordForm);
 router.get('/', getHomePage);
 router.get('/property-listings', getPropertyListings);
 
