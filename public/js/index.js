@@ -285,22 +285,21 @@ if (userDataForm) {
   if (photoChangeBtn && photoInput) {
     photoChangeBtn.addEventListener('click', triggerPhotoUpload);
   }
-    
-    photoInput.addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-          const profileImage = document.querySelector('.form__profile-photo-image');
-          if (profileImage) {
-            profileImage.src = e.target.result;
-          }
-        };
-        reader.readAsDataURL(file);
-      }
-    });
-  }
-  
+
+  photoInput.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const profileImage = document.querySelector('.form__profile-photo-image');
+        if (profileImage) {
+          profileImage.src = e.target.result;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  });
+
   userDataForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('userName').value;
