@@ -36,7 +36,7 @@ exports.resizePropertyMedia = async (req, res, next) => {
       req.files.photos.map(async (file) => {
         const filename = `property-${req.user.id}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}.jpeg`;
         await sharp(file.buffer)
-          .resize(1200, 1500)
+          .resize(2000, 1333)
           .toFormat('jpeg')
           .jpeg({ quality: 90 })
           .toFile(`public/img/properties/${filename}`);
@@ -49,7 +49,7 @@ exports.resizePropertyMedia = async (req, res, next) => {
     const file = req.files.video[0];
     const ext = path.extname(file.originalname).toLowerCase();
     const filename = `property-${req.user.id}-${Date.now()}-video${ext}`;
-    const dir = 'public/videos';
+    const dir = 'public/img/properties/videos';
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
     fs.writeFileSync(path.join(dir, filename), file.buffer);
     req.body.video = filename;

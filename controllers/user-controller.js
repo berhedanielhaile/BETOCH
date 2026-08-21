@@ -20,7 +20,14 @@ const upload = multer({
 exports.uploadUserPhoto = upload.single('photo');
 exports.resizeUserPhoto = async (req, res, next) => {
   if (!req.file) return next();
-  await sharp(req.file.buffer).resize(500, 500).toFormat('jpeg').jpeg({ quality: 90 }).toFile('public/img/users');
+  const userId = req.user?.id || req.user?._id;
+  const filename = userId ? `user-${userId}-${Date.now()}.jpeg` : `user-${Date.now()}.jpeg`;
+  await sharp(req.file.buffer)
+    .resize(500, 500)
+    .toFormat('jpeg')
+    .jpeg({ quality: 90 })
+    .toFile(`public/img/users/${filename}`);
+  req.body.photo = filename;
   next();
 };
 const filterObj = (obj, ...allowedFields) => {
@@ -63,19 +70,6 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 
   if (!filteredBody.bio || filteredBody.bio.trim() === '') {
     delete filteredBody.bio;
-  }
-
-  // Handle photo upload
-  if (req.file) {
-    const filename = `user-${req.user._id}-${Date.now()}.jpeg`;
-
-    await sharp(req.file.buffer)
-      .resize(500, 500)
-      .toFormat('jpeg')
-      .jpeg({ quality: 90 })
-      .toFile(`public/img/users/${filename}`);
-
-    filteredBody.photo = filename;
   }
 
   if (req.body.notifEnquiries !== undefined || req.body.notifAccount !== undefined) {
