@@ -1,6 +1,60 @@
 // ── Account Settings Page ─────────────────────────────────────────────────────
 // Modern Design Enhancements for Dashboard Layout
 
+// Profile photo styling
+.form__profile-photo {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form__profile-photo-wrapper {
+  position: relative;
+  width: 8rem;
+  height: 8rem;
+  margin: 0 auto;
+  cursor: pointer;
+  border-radius: 50%;
+  overflow: hidden;
+  transition: all 0.3s;
+  
+  &:hover {
+    .form__profile-photo-overlay {
+      opacity: 1;
+    }
+  }
+}
+
+.form__profile-photo-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 3px solid $color-primary;
+}
+
+.form__profile-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.3s;
+  color: $color-surface;
+}
+
+.form__profile-photo-icon {
+  color: $color-surface;
+}
+
+.form__profile-photo-text {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: $color-surface;
+}
+
 // Enhance dashboard panels for account settings
 .dashboard__panel {
   transition: box-shadow 0.3s ease, transform 0.2s ease;

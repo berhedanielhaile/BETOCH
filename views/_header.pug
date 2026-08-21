@@ -19,9 +19,8 @@ header.header
     span.header__nav--divider
     if user 
       a.header__nav--btn.header__nav--browse(href='/dashboard')
-        svg.header__nav--icon
-          use(xlink:href='/css/icons-sprite.svg#icon-user')
-        |           #{user.name.split(' ')[0]}
+        img.header__nav--avatar(src=`/img/users/${user.photo || 'default.jpg'}` alt='User avatar')
+        | #{user.name.split(' ')[0]}
       span.header__nav--divider
       a#logout.header__nav--btn.header__nav--signup Logout
     else 

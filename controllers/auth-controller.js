@@ -5,6 +5,7 @@ const User = require('../models/user-model');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('../utils/AppError');
 const Email = require('../utils/email');
+const sharp = require('sharp');
 
 const signToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
 const createSendToken = (user, statusCode, res) => {
@@ -25,10 +26,30 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signUp = catchAsync(async (req, res, next) => {
-  const { name, email, phoneNumber, role, password, passwordConfirm } = req.body || {};
+  // Handle both FormData and regular JSON
+  const name = req.body.name || (req.body.firstName && req.body.lastName ? `${req.body.firstName} ${req.body.lastName}` : undefined);
+  const email = req.body.email;
+  const phoneNumber = req.body.phoneNumber;
+  const role = req.body.role;
+  const password = req.body.password;
+  const passwordConfirm = req.body.passwordConfirm;
 
   if (!name || !email || !password || !passwordConfirm) {
     return next(new AppError('Please provide your name, email, password and password confirmation', 400));
+  }
+
+  // Handle photo upload
+  let photo;
+  if (req.file) {
+    const filename = `user-${Date.now()}.jpeg`;
+    
+    await sharp(req.file.buffer)
+      .resize(500, 500)
+      .toFormat('jpeg')
+      .jpeg({ quality: 90 })
+      .toFile(`public/img/users/${filename}`);
+    
+    photo = filename;
   }
 
   const newUser = await User.create({
@@ -38,6 +59,7 @@ exports.signUp = catchAsync(async (req, res, next) => {
     role,
     password,
     passwordConfirm,
+    photo,
   });
   newUser.password = undefined;
   createSendToken(newUser, 201, res);

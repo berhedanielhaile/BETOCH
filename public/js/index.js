@@ -73,6 +73,37 @@ if (testimonialsContainer && testimonialsLeft && testimonialsRight) {
 //////////////////////////////////////////
 //sign up
 if (signupBtn) {
+  // Photo upload preview for signup
+  const photoInput = document.getElementById('photo');
+  const fileUploadPreview = document.querySelector('.form__file-upload-preview');
+  
+  if (photoInput && fileUploadPreview) {
+    photoInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          // Remove placeholder and show image
+          const placeholder = fileUploadPreview.querySelector('.form__file-upload-placeholder');
+          if (placeholder) {
+            placeholder.remove();
+          }
+          
+          // Check if preview image already exists
+          let previewImage = fileUploadPreview.querySelector('.form__file-upload-preview-image');
+          if (!previewImage) {
+            previewImage = document.createElement('img');
+            previewImage.className = 'form__file-upload-preview-image';
+            fileUploadPreview.appendChild(previewImage);
+          }
+          
+          previewImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+  
   signupBtn.addEventListener('submit', async (e) => {
     e.preventDefault();
     const firstName = document.getElementById('first-name').value.trim();
@@ -80,16 +111,21 @@ if (signupBtn) {
     const name = `${firstName} ${lastName}`.trim();
 
     const phoneDigits = document.getElementById('phone').value.replace(/\D/g, '').trim();
-    const payload = {
-      name,
-      email: document.getElementById('email').value.trim(),
-      phoneNumber: phoneDigits ? `+251${phoneDigits}` : '',
-      role: document.getElementById('role').value,
-      password: document.getElementById('password').value,
-      passwordConfirm: document.getElementById('confirm-password').value,
-    };
+    const photoFile = document.getElementById('photo').files[0];
+    
+    // Use FormData for file upload
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', document.getElementById('email').value.trim());
+    formData.append('phoneNumber', phoneDigits ? `+251${phoneDigits}` : '');
+    formData.append('role', document.getElementById('role').value);
+    formData.append('password', document.getElementById('password').value);
+    formData.append('passwordConfirm', document.getElementById('confirm-password').value);
+    if (photoFile) {
+      formData.append('photo', photoFile);
+    }
 
-    await signup(payload);
+    await signup(formData);
   });
 }
 //////////////////////////////////////////
@@ -142,49 +178,80 @@ if (postForm) {
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const title = document.getElementById('title')?.value;
-    const type = document.getElementById('property-type')?.value?.toLowerCase().replace(' ', '-');
-    const rent = document.getElementById('rent')?.value;
-    const city = document.getElementById('city')?.value;
-    const subcity = document.getElementById('subcity')?.value;
-    const woreda = document.getElementById('woreda')?.value;
-    const kebele = document.getElementById('kebele')?.value;
-    const bedroom = document.getElementById('bedrooms')?.value;
-    const bathroom = document.getElementById('bathrooms')?.value;
-    const description = document.getElementById('description')?.value;
+    const formData = new FormData(postForm);
+    const data = Object.fromEntries(formData.entries());
+
+    if (data.type) {
+      data.type = data.type.toLowerCase().replace(' ', '-');
+    }
+
+    if (data.rent) {
+      data.rent = Number(data.rent);
+    }
+
+    if (data.bedroom) {
+      data.bedroom = parseInt(data.bedroom, 10);
+    }
+    if (data.bathroom) {
+      data.bathroom = parseInt(data.bathroom, 10);
+    }
 
     const amenitiesNodes = document.querySelectorAll('input[name="amenity"]:checked');
-    const amenities = Array.from(amenitiesNodes).map((node) => node.value);
+    data.amenities = Array.from(amenitiesNodes).map((node) => node.value);
 
-    const data = {
-      title,
-      type,
-      rent: Number(rent),
-      location: {
-        city,
-        subcity,
-        woreda,
-        kebele,
-      },
-      bedroom: parseInt(bedroom, 10),
-      bathroom: parseInt(bathroom, 10),
-      description,
-      amenities,
+    data.location = {
+      city: data.city,
+      subcity: data.subcity,
+      woreda: data.woreda,
+      kebele: data.kebele,
     };
 
-    postProperty(data);
+    delete data.city;
+    delete data.subcity;
+    delete data.woreda;
+    delete data.kebele;
+
+    const isEdit = postForm.dataset.isEdit === 'true';
+    const propertyId = postForm.dataset.propertyId || null;
+
+    postProperty(data, isEdit, propertyId);
   });
 }
 
 // Account settings form handlers
 const userDataForm = document.getElementById('userDataForm');
 if (userDataForm) {
+  // Profile photo click handler
+  const profilePhotoWrapper = document.querySelector('.form__profile-photo-wrapper');
+  const photoInput = document.getElementById('photo');
+  
+  if (profilePhotoWrapper && photoInput) {
+    profilePhotoWrapper.addEventListener('click', () => {
+      photoInput.click();
+    });
+    
+    photoInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const profileImage = document.querySelector('.form__profile-photo-image');
+          if (profileImage) {
+            profileImage.src = e.target.result;
+          }
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+  
   userDataForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const name = document.getElementById('userName').value;
     const email = document.getElementById('userEmail').value;
     const phoneNumber = document.getElementById('userPhone').value;
     const bio = document.getElementById('userBio')?.value || '';
+    const photoFile = document.getElementById('photo').files[0];
     
     // Format phone number to Ethiopian format
     let formattedPhone = phoneNumber;
@@ -197,8 +264,27 @@ if (userDataForm) {
       }
     }
     
-    const data = { name, email, phoneNumber: formattedPhone, bio };
-    await updateUserData(data);
+    // Use FormData for file upload
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phoneNumber', formattedPhone);
+    formData.append('bio', bio);
+    if (photoFile) {
+      formData.append('photo', photoFile);
+    }
+    
+    const updatedUser = await updateUserData(formData);
+    if (updatedUser && updatedUser.photo) {
+      const preview = document.querySelector('.form__profile-photo-image');
+      if (preview) {
+        preview.src = `/img/users/${updatedUser.photo}?t=${Date.now()}`;
+      }
+      const headerAvatar = document.querySelector('.header__nav--avatar');
+      if (headerAvatar) {
+        headerAvatar.src = `/img/users/${updatedUser.photo}?t=${Date.now()}`;
+      }
+    }
   });
 }
 

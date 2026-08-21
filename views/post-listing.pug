@@ -19,7 +19,7 @@ block content
         p
           | Fill in the details below. You can save as a draft and publish when
           | you&apos;re ready.
-      form#post.post-listing__form(type='submit')
+      form#post.post-listing__form(data-is-edit=isEdit data-property-id=property ? property._id : '' type='submit')
         section.post-listing__section
           h3.post-listing__section-title Basic details
           p.post-listing__section-desc
@@ -163,41 +163,3 @@ block content
             | Save as draft
           button.btn.btn--primary(type='submit')
             | #{property ? 'Update listing' : 'Publish listing'}
-  script(type='module').
-    import { postProperty } from './js/postproperty.js';
-    
-    const form = document.getElementById('post');
-    const isEdit = #{isEdit ? 'true' : 'false'};
-    const propertyId = #{property ? `"${property._id}"` : 'null'};
-    
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      const formData = new FormData(form);
-      const data = Object.fromEntries(formData.entries());
-      
-      // Handle amenities as array
-      if (data.amenity) {
-        if (!Array.isArray(data.amenity)) {
-          data.amenity = [data.amenity];
-        }
-      } else {
-        data.amenity = [];
-      }
-      
-      // Handle location
-      data.location = {
-        city: data.city,
-        subcity: data.subcity,
-        woreda: data.woreda,
-        kebele: data.kebele
-      };
-      
-      // Clean up location fields from root
-      delete data.city;
-      delete data.subcity;
-      delete data.woreda;
-      delete data.kebele;
-      
-      await postProperty(data, isEdit === 'true', propertyId);
-    });

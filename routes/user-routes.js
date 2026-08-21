@@ -1,4 +1,5 @@
 const express = require('express');
+const multer = require('multer');
 const {
   getAllUsers,
 
@@ -22,7 +23,29 @@ const {
 
 const router = express.Router();
 
-router.post('/signup', signUp);
+// Multer configuration for photo uploads
+const multerStorage = multer.memoryStorage();
+const multerFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith('image')) {
+    cb(null, true);
+  } else if (file.mimetype === 'application/octet-stream') {
+    const allowedExtensions = ['png', 'jpg', 'jpeg', 'webp'];
+    const ext = file.originalname.split('.').pop().toLowerCase();
+    if (allowedExtensions.includes(ext)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Not an image! Please upload only images.'), false);
+    }
+  } else {
+    cb(new Error('Not an image! Please upload only images.'), false);
+  }
+};
+const upload = multer({
+  storage: multerStorage,
+  fileFilter: multerFilter,
+});
+
+router.post('/signup', upload.single('photo'), signUp);
 router.post('/login', login);
 router.get('/logout', logout);
 
@@ -31,10 +54,10 @@ router.patch('/resetPassword/:resetToken', resetPassword);
 
 router.use(protect);
 router.patch('/updateMyPassword', updatePassword);
-router.patch('/updateMe', updateMe);
+router.patch('/updateMe', upload.single('photo'), updateMe);
 router.delete('/deleteMe', deleteMe);
-router.get('/me', getMe, getUser);
-router.get('/Me', getMe, getUser);
+router.get('/me', getMe);
+router.get('/Me', getMe);
 
 router.use(restrictTo('admin'));
 router.route('/').get(getAllUsers);

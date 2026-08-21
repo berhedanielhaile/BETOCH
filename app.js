@@ -47,7 +47,7 @@ app.use('/api', limit);
 app.set('query parser', 'extended');
 app.use(express.json());
 
-//Data Sanitization against NoSQL query injection
+// Data Sanitization against NoSQL query injection
 app.use((req, res, next) => {
   try {
     mongoSanitize()(req, res, next);

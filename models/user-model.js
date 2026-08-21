@@ -130,7 +130,7 @@ const userSchema = new mongoose.Schema(
 userSchema.index({ role: 1 });
 
 userSchema.pre(/^find/, function () {
-  this.select('name email role phoneNumber');
+  this.select('name email role phoneNumber photo');
 });
 userSchema.pre('save', async function () {
   if (!this.isModified('password')) return;

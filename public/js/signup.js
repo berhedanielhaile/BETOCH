@@ -5,14 +5,7 @@ import { showAlert } from './alert';
 
 const normalizeSignupPayload = (data) => {
   if (data instanceof FormData) {
-    return {
-      name: data.get('name') || '',
-      email: data.get('email') || '',
-      phoneNumber: data.get('phoneNumber') || data.get('phone') || '',
-      role: data.get('role') || 'tenant',
-      password: data.get('password') || '',
-      passwordConfirm: data.get('passwordConfirm') || '',
-    };
+    return data; // Return FormData as-is for multipart upload
   }
 
   return data;
@@ -21,6 +14,7 @@ const normalizeSignupPayload = (data) => {
 export const signup = async (data) => {
   try {
     const payload = normalizeSignupPayload(data);
+    
     const res = await axios.post('/api/v1/user/signup', payload);
 
     if (res.data.status === 'success') {
