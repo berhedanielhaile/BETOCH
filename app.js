@@ -104,6 +104,10 @@ app.use('/api/v1/property', propertyRouter);
 app.use('/api/v1/reviews', reviewRouter);
 app.use('/api/v1/enquiries', enquiryRouter);
 
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'ok', env: process.env.NODE_ENV || 'unknown' });
+});
+
 //error handling middleware
 app.use((req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server`, 404));
