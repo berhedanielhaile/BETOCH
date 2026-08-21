@@ -175,46 +175,94 @@ if (searchBtn) {
 }
 //post listing
 if (postForm) {
+  const photosInput = document.getElementById('photos');
+  const videoInput = document.getElementById('video');
+  const photoPreview = document.getElementById('photo-preview');
+  const videoPreview = document.getElementById('video-preview');
+  const uploadAreas = document.querySelectorAll('.post-listing__upload');
+
+  const updatePhotoPreview = () => {
+    if (!photoPreview) return;
+    photoPreview.innerHTML = '';
+    const files = photosInput.files;
+    if (!files.length) return;
+    Array.from(files).forEach((file) => {
+      const img = document.createElement('img');
+      img.src = URL.createObjectURL(file);
+      img.style.width = '8rem';
+      img.style.height = '8rem';
+      img.style.objectFit = 'cover';
+      img.style.borderRadius = '0.5rem';
+      img.style.margin = '0.3rem';
+      photoPreview.appendChild(img);
+    });
+  };
+
+  const updateVideoPreview = () => {
+    if (!videoPreview) return;
+    videoPreview.innerHTML = '';
+    const file = videoInput.files[0];
+    if (!file) return;
+    const video = document.createElement('video');
+    video.src = URL.createObjectURL(file);
+    video.controls = true;
+    video.style.width = '100%';
+    video.style.maxWidth = '30rem';
+    video.style.borderRadius = '0.5rem';
+    videoPreview.appendChild(video);
+  };
+
+  uploadAreas.forEach((area) => {
+    area.addEventListener('click', () => {
+      const input = area.querySelector('input[type="file"]');
+      if (input) input.click();
+    });
+  });
+
+  if (photosInput) {
+    photosInput.addEventListener('change', updatePhotoPreview);
+  }
+  if (videoInput) {
+    videoInput.addEventListener('change', updateVideoPreview);
+  }
+
   postForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const formData = new FormData(postForm);
-    const data = Object.fromEntries(formData.entries());
+    const formData = new FormData();
+    formData.append('title', document.getElementById('title').value.trim());
+    formData.append('type', document.getElementById('property-type').value.toLowerCase());
+    formData.append('rent', document.getElementById('rent').value);
+    formData.append('bedroom', document.getElementById('bedrooms').value);
+    formData.append('bathroom', document.getElementById('bathrooms').value);
+    formData.append('description', document.getElementById('description').value.trim());
 
-    if (data.type) {
-      data.type = data.type.toLowerCase().replace(' ', '-');
-    }
-
-    if (data.rent) {
-      data.rent = Number(data.rent);
-    }
-
-    if (data.bedroom) {
-      data.bedroom = parseInt(data.bedroom, 10);
-    }
-    if (data.bathroom) {
-      data.bathroom = parseInt(data.bathroom, 10);
-    }
+    const location = {
+      city: document.getElementById('city').value.trim(),
+      subcity: document.getElementById('subcity').value,
+      woreda: document.getElementById('woreda').value.trim(),
+      kebele: document.getElementById('kebele').value.trim(),
+    };
+    formData.append('location', JSON.stringify(location));
 
     const amenitiesNodes = document.querySelectorAll('input[name="amenity"]:checked');
-    data.amenities = Array.from(amenitiesNodes).map((node) => node.value);
+    const amenities = Array.from(amenitiesNodes).map((node) => node.value);
+    formData.append('amenities', JSON.stringify(amenities));
 
-    data.location = {
-      city: data.city,
-      subcity: data.subcity,
-      woreda: data.woreda,
-      kebele: data.kebele,
-    };
+    if (photosInput && photosInput.files.length > 0) {
+      Array.from(photosInput.files).forEach((file) => {
+        formData.append('photos', file);
+      });
+    }
 
-    delete data.city;
-    delete data.subcity;
-    delete data.woreda;
-    delete data.kebele;
+    if (videoInput && videoInput.files.length > 0) {
+      formData.append('video', videoInput.files[0]);
+    }
 
     const isEdit = postForm.dataset.isEdit === 'true';
     const propertyId = postForm.dataset.propertyId || null;
 
-    postProperty(data, isEdit, propertyId);
+    await postProperty(formData, isEdit, propertyId);
   });
 }
 
