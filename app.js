@@ -25,6 +25,7 @@ app.set('views', path.join(__dirname, 'views'));
 
 //1)Global-middleware
 app.use(cors());
+app.options('*', cors());
 //Set Security HTTP headers
 app.use(
   helmet({
