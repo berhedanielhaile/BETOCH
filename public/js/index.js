@@ -223,13 +223,15 @@ const userDataForm = document.getElementById('userDataForm');
 if (userDataForm) {
   // Profile photo click handler
   const profilePhotoWrapper = document.querySelector('.form__profile-photo-wrapper');
+  const photoChangeBtn = document.querySelector('.form__profile-photo-change');
   const photoInput = document.getElementById('photo');
   
+  const triggerPhotoUpload = () => {
+    if (photoInput) photoInput.click();
+  };
+  
   if (profilePhotoWrapper && photoInput) {
-    profilePhotoWrapper.addEventListener('click', () => {
-      photoInput.click();
-    });
-    
+    profilePhotoWrapper.addEventListener('click', triggerPhotoUpload);
     photoInput.addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
@@ -243,6 +245,10 @@ if (userDataForm) {
         reader.readAsDataURL(file);
       }
     });
+  }
+  
+  if (photoChangeBtn && photoInput) {
+    photoChangeBtn.addEventListener('click', triggerPhotoUpload);
   }
   
   userDataForm.addEventListener('submit', async (e) => {

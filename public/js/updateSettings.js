@@ -2,25 +2,6 @@
 import axios from 'axios';
 import { showAlert } from './alert';
 
-export const updateSettings = async (data, type) => {
-  try {
-    const url = type === 'data' ? '/api/v1/user/updateMe' : '/api/v1/user/updateMyPassword';
-    const res = await axios({
-      method: 'PATCH',
-      url,
-      data,
-    });
-    if (res.data.status === 'success') {
-      showAlert('success', 'Profile updated successfully!');
-      return res.data.data.user;
-    }
-  } catch (err) {
-    console.error('Error updating settings:', err);
-    showAlert('error', err.response?.data?.message || 'Error updating profile!');
-    throw err;
-  }
-};
-
 export const updateUserData = async (data) => {
   try {
     const res = await axios({
